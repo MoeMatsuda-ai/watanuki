@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.104.3">
+    <meta name="generator" content="Relearn 5.6.5+tip">
+    <meta name="description" content="">
+    <title>Python :: Chiyo&#39;s blog</title>
+    <link href="https://moematsuda-ai.github.io/watanuki/python/index.html" rel="canonical" type="text/html" title="Python :: Chiyo&#39;s blog">
+    <link href="/watanuki/python/index.xml" rel="alternate" type="application/rss+xml" title="Python :: Chiyo&#39;s blog">
+    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
+    <link href="/watanuki/css/fontawesome-all.min.css?1669118580" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669118580" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/featherlight.min.css?1669118580" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669118580" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/auto-complete.css?1669118580" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/auto-complete.css?1669118580" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/perfect-scrollbar.min.css?1669118580" rel="stylesheet">
+    <link href="/watanuki/css/nucleus.css?1669118580" rel="stylesheet">
+    <link href="/watanuki/css/fonts.css?1669118580" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fonts.css?1669118580" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/theme.css?1669118580" rel="stylesheet">
+    <link href="/watanuki/css/theme-relearn-dark.css?1669118580" rel="stylesheet" id="variant-style">
+    <link href="/watanuki/css/ie.css?1669118580" rel="stylesheet">
+    <link href="/watanuki/css/variant.css?1669118580" rel="stylesheet">
+    <link href="/watanuki/css/print.css?1669118580" rel="stylesheet" media="print">
+    <link href="/watanuki/css/format-print.css?1669118580" rel="stylesheet">
+    <script src="/watanuki/js/url.js?1669118580"></script>
+    <script src="/watanuki/js/variant.js?1669118580"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      window.index_js_url="/watanuki/index.search.js";
+      var root_url="/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      window.T_No_results_found = 'No results found for \u0022{0}\u0022';
+      window.T_N_results_found = '{1} results found for \u0022{0}\u0022';
+      // some further base stuff
+      var baseUriFull='https:\/\/moematsuda-ai.github.io\/watanuki/';
+      window.variants && variants.init( [ 'relearn-dark', 'relearn-light', 'green', 'black', 'blue', 'learn' ] );
+    </script>
+    <script src="/watanuki/js/jquery.min.js?1669118580" defer></script>
+  </head>
+  <body class="mobile-support print" data-url="/watanuki/python/index.html">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable" dir="ltr">
+        <div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Moai&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Python</span><meta itemprop="position" content="2"></li>
+            </ol>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable chapter narrow" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+          <article class="chapter">
+<div class="article-subheading">Chapter 4</div>
+<h1 id="python">Python</h1>
+
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <section>
+            <h1 class="a11y-only">Subsections of Python</h1>
+          <article class="default">
+<h1 id="torch">Torch</h1>
+
+<h2 id="about-calcuration-of-gradient">About calcuration of gradient</h2>
+<h3 id="how-not-to-calculate-gradient">How not to calculate gradient</h3>
+<h4 id="use-no_grad">Use no_grad</h4>
+<p>For example;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p><strong>We can use as decorator</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@torch</span><span style="color:#f92672">.</span>no_grad()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">doubler</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h4 id="use-detach---">Use .detach() -&gt; ?</h4>
+<h4 id="use-reaquires_grad---">Use .reaquires_grad -&gt; ?</h4>
+<h1 id="reference">reference</h1>
+<ul>
+<li><a href="https://qiita.com/tttamaki/items/28f13a1507eb63387901">Pytorchの「.detach()」と「with no_grad():」と「.requires_grad = False」の違い</a></li>
+<li><a href="/watanuki/python/torch/index.html/PyTorch%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E6%8E%A8%E8%AB%96%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">PyTorchの新しい推論モードについて</a></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="pickle">Pickle</h1>
+
+<h2 id="pickleの使用方法">pickleの使用方法</h2>
+<h2 id="saving">Saving</h2>
+<h4 id="with-openでの保存読み込み">with openでの保存、読み込み</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;filename.pkl&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    pickle<span style="color:#f92672">.</span>dump(data, f)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;filename.pkl&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    hoge <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>load(f)
+</span></span></code></pre></div><h4 id="pandasでの保存読み込み">pandasでの保存、読み込み</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>to_pickle(data, <span style="color:#e6db74">&#34;filename.pkl&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>hoge <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_pickle(<span style="color:#e6db74">&#34;filename.pkl&#34;</span>)
+</span></span></code></pre></div><h4 id="joblibでの保存読み込み">joblib(?)での保存、読み込み</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>joblib<span style="color:#f92672">.</span>dump(data, <span style="color:#e6db74">&#34;filename.jb&#34;</span>, compress<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>hoge <span style="color:#f92672">=</span> joblib<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;filename.jb&#34;</span>)
+</span></span></code></pre></div>
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="useful-functions-in-numpy">Useful Functions in Numpy</h1>
+
+<p>Pythonが動的に解釈を行う言語であるという性質上、for文などのループを繰り返す場合には低速性が特に顕著に現れる。したがって一般的にPythonではfor文を多様せず、numpyやPandas等の高速なライブラリを利用する。</p>
+<p>Numpyは多くの操作に対して静的型付きでコンパイルされた関数への便利なインターフェースを提供している。
+これはベクトル化操作として知られており、配列に対して操作を実行するだけで、各要素に適用される。</p>
+<p>Numpyのベクトル化演算は、ufunc(ユニバーサル関数)を使用して実装されており、このufuncの主な目的は、Numpyの各要素に対して繰り返し演算を素早くすることにある。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="便利なnumpy関数">便利なNumpy関数</h3>
+<ul>
+<li>
+<p>以下では<code>import numpy as np</code>としてnumpyをimportしているものとする</p>
+</li>
+<li>
+<p>npはnumpy, shapeは配列の形状, arrは任意の配列を示す</p>
+</li>
+<li>
+<p><strong>Numpyで実装されている演算子とその等価なufunc</strong></p>
+<table>
+<thead>
+<tr>
+<th>関数</th>
+<th>等価なufunc</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>np.add(arr, x)</td>
+<td>加算(arrやxの順序はとわない。また配列同士、変数同士でも演算可)</td>
+</tr>
+<tr>
+<td>-</td>
+<td>np.subtract(arr, x)</td>
+<td>減算（以下同文）</td>
+</tr>
+<tr>
+<td>-</td>
+<td>np.negative(arr)</td>
+<td>単行マイナス</td>
+</tr>
+<tr>
+<td>*</td>
+<td>np.multiply(以下略)</td>
+<td>乗算</td>
+</tr>
+<tr>
+<td>/</td>
+<td>np.divide</td>
+<td>除算</td>
+</tr>
+<tr>
+<td>//</td>
+<td>np.floor_divide</td>
+<td>整数除算(小数点以下切り捨て)</td>
+</tr>
+<tr>
+<td>**</td>
+<td>np.power</td>
+<td>べき乗</td>
+</tr>
+<tr>
+<td>%</td>
+<td>np.mod</td>
+<td>剰余</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>Numpyで実装されている比較演算子とその等価なufunc</strong></p>
+<table>
+<thead>
+<tr>
+<th>演算子</th>
+<th>等価なufunc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>np.equal</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>np.not_equal</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>np.less</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>np.less_equal</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>np.greater</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>np.greater_equal</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Numpyのufunc</strong></p>
+<table>
+<thead>
+<tr>
+<th>関数</th>
+<th>説明</th>
+<th>引数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr.reshape(shape)</td>
+<td>配列arrを指定したshapeの型に変形</td>
+<td>shape</td>
+</tr>
+<tr>
+<td>arr[np.axis]</td>
+<td>新しく次元を追加</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>np.concatenate([arr1, arr2, arr3])</td>
+<td>次元の同じ複数の配列を結合</td>
+<td>連結する配列(タプルまたは配列のリスト), <code>axis=0</code>で第1の軸方向に結合（デフォルト）, <code>axis=1</code>で第2の軸方向</td>
+</tr>
+<tr>
+<td>np.vstack([arr1, arr2])</td>
+<td>混合次元の配列を垂直に重ねる</td>
+<td>連結する配列</td>
+</tr>
+<tr>
+<td>np.hstack([arr1, arr2])</td>
+<td>混合次元の配列を水平に重ねる</td>
+<td>連結する配列</td>
+</tr>
+<tr>
+<td>np.split([arr], [a,b])</td>
+<td>配列を分割</td>
+<td>分割する配列, [a,b]は分割点を与えるインデクスのリスト</td>
+</tr>
+<tr>
+<td>np.vsplit([arr], [a])</td>
+<td>配列の垂直方向の成分を分割</td>
+<td>分割する配列, [a]は分割点を与えるインデクスのリスト</td>
+</tr>
+<tr>
+<td>np.hsplit([arr], [a])</td>
+<td>配列の水平方向の成分を分割</td>
+<td>分割する配列, [a]は分割点を与えるインデクスのリスト</td>
+</tr>
+<tr>
+<td>np.dsplit([arr], [a])</td>
+<td>配列を第3軸に沿って分割</td>
+<td>分割する配列, [a]は分割点を与えるインデクスのリスト</td>
+</tr>
+<tr>
+<td>np.absolute(arr) または np.abs(arr)</td>
+<td>絶対値を返却（複素数データも扱える）</td>
+<td></td>
+</tr>
+<tr>
+<td>np.sin(arr)</td>
+<td>sin関数の計算結果を返却(cos, tanも同様)</td>
+<td></td>
+</tr>
+<tr>
+<td>np.arcsin(arr)</td>
+<td>arcsin関数の計算結果を返却(cos, tanも同様)</td>
+<td></td>
+</tr>
+<tr>
+<td>np.exp(arr)</td>
+<td>指数関数の計算結果を返却</td>
+<td></td>
+</tr>
+<tr>
+<td>np.power(x, arr)</td>
+<td>x^arrの値を返却</td>
+<td></td>
+</tr>
+<tr>
+<td>np.log(x)</td>
+<td>ln(x)の値を返却</td>
+<td></td>
+</tr>
+<tr>
+<td>np.log2(x)</td>
+<td>log2(x)の値を返却</td>
+<td></td>
+</tr>
+<tr>
+<td>np.expm1(x)</td>
+<td><code>exp(x)-1</code> の値を返却(xの値が非常に小さいときに<code>np.exp</code> よりも良い制度で計算する)</td>
+<td></td>
+</tr>
+<tr>
+<td>np.log1p(x)</td>
+<td><code>log(1+x)</code> の値を返却(xの値が非常に小さいときに<code>np.log</code> よりも良い制度で計算する)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p><strong>numpyの集約関数</strong></p>
+<table>
+<thead>
+<tr>
+<th>関数名</th>
+<th>NaNセーフ版</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>np.sum</td>
+<td>np.nansum</td>
+<td>要素の合計を計算する</td>
+</tr>
+<tr>
+<td>np.prod</td>
+<td>np.nanprod</td>
+<td>要素の積を計算する</td>
+</tr>
+<tr>
+<td>np.mean</td>
+<td>np.nanmean</td>
+<td>要素の平均値を計算する</td>
+</tr>
+<tr>
+<td>np.std</td>
+<td>np.nanstd</td>
+<td>要素の標準偏差を計算する</td>
+</tr>
+<tr>
+<td>np.var</td>
+<td>np.nanvar</td>
+<td>要素の分散を計算する</td>
+</tr>
+<tr>
+<td>np.min</td>
+<td>np.nanmin</td>
+<td>最小値を見つける</td>
+</tr>
+<tr>
+<td>np.max</td>
+<td>np.nanmax</td>
+<td>最大値を見つける</td>
+</tr>
+<tr>
+<td>np.argmin</td>
+<td>np.nanargmin</td>
+<td>最小値のインデクスを返す</td>
+</tr>
+<tr>
+<td>np.argmax</td>
+<td>np.nanargmax</td>
+<td>最大値のインデクスを返す</td>
+</tr>
+<tr>
+<td>np.median</td>
+<td>np.nanmedian</td>
+<td>要素の中央値を計算する</td>
+</tr>
+<tr>
+<td>np.percentile</td>
+<td>np.nanpercentile</td>
+<td>パーセンタイルを計算する</td>
+</tr>
+<tr>
+<td>np.any</td>
+<td>N/A</td>
+<td>いずれかの要素がtrueであるかを評価する</td>
+</tr>
+<tr>
+<td>np.all</td>
+<td>N/A</td>
+<td>すべての要素がtrueであるかを評価する</td>
+</tr>
+</tbody>
+</table>
+<p>※arr.sum()のように配列に<code>.</code>をつけることで計算もできる</p>
+</li>
+<li>
+<p><strong>ufuncの特殊な機能</strong></p>
+<table>
+<thead>
+<tr>
+<th>概要</th>
+<th>書き方</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>書き込み</td>
+<td>np.power(2, arr, out=arr2)</td>
+<td>powerの出力結果を<code>out=</code>で指定した配列arr2に直接書き込む。<code>arr2 = np.power(2, arr)</code>と等価だが、一時的な配列を作成しなくてすむため、非常に大きな配列などの場合にはメモリの節約につながる</td>
+</tr>
+<tr>
+<td>reduceメソッド</td>
+<td>np.multiply.reduce(x)</td>
+<td>任意のnumpy関数に対して<code>.reduce(x)</code>のようにすることで要素が1つになるまで演算を行う。ここではすべての要素の積を計算している。</td>
+</tr>
+<tr>
+<td>accumelateメソッド</td>
+<td>np.multiply.accumelate(x)</td>
+<td>reduceの中間バージョン)</td>
+</tr>
+<tr>
+<td>outerメソッド</td>
+<td>np.multiply.outer(x, x)</td>
+<td>2つの入力のすべての要素間で任意の計算が行える。ここではすべての要素間での積（外積）を求めている。</td>
+</tr>
+</tbody>
+</table>
+<p>※異なるサイズと形状の配列間で操作を可能とする<strong>ブロードキャスト</strong>機能と呼ばれるものもある</p>
+</li>
+</ul>
+<p>※その他にも<code>scipy.special</code>でガンマ関数や誤差関数などが実装されていたりもするので難しい計算などは検索してみること！</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="ブロードキャスト">ブロードキャスト</h3>
+<p>ブロードキャストとは異なるサイズの配列に対して二項ufunc（加算、減算、乗算など）を適用するための一連のルールである。</p>
+<h4 id="1-ブロードキャストの基礎">1. ブロードキャストの基礎</h4>
+<ol>
+<li>
+<p>同じサイズの配列に対しての二項演算は要素ごとに実行される</p>
+</li>
+<li>
+<p>ブロードキャストでは次のルールに従って行われる</p>
+<ol>
+<li>
+<p>２つの配列の次元数が異なる場合、次元数の少ない方の形状は、先頭の（左側）に１を補い次元数を揃える。</p>
+</li>
+<li>
+<p>２つの配列の形状がいずれの次元でも一致しない場合、各次元のうち長さが１に等しい次元は、他方の配列形状と一致するように引き伸ばされる。</p>
+</li>
+<li>
+<p>いずれかの次元でサイズが不一致で、長さが１に等しくもない場合は、エラーとなる、。</p>
+</li>
+</ol>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="numpy">Numpy</h1>
+
+<h2 id="1-numpy概要">1. Numpy　概要</h2>
+<p>Pythonにはデータの集合を扱うための様々なデータ型がある。</p>
+<h4 id="標準で用意されているもの">標準で用意されているもの</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">例</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">リスト(list)</td>
+<td style="text-align:left"><code>L=[&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;]</code></td>
+<td style="text-align:left">インデックス番号付き集合</td>
+</tr>
+<tr>
+<td style="text-align:left">タプル(tuple)</td>
+<td style="text-align:left"><code>T=(&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;)</code></td>
+<td style="text-align:left">インデックス番号付き集合(代入不可)</td>
+</tr>
+<tr>
+<td style="text-align:left">辞書(dict)</td>
+<td style="text-align:left"><code>D={&quot;kiwi&quot;:3, &quot;banana&quot;:2, &quot;apple&quot;:3}</code></td>
+<td style="text-align:left">インデックス番号無し (key,value) 対応表</td>
+</tr>
+<tr>
+<td style="text-align:left">集合(set)</td>
+<td style="text-align:left"><code>S={&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;}</code></td>
+<td style="text-align:left">インデックス番号無し集合</td>
+</tr>
+</tbody>
+</table>
+<h4 id="拡張モジュールを利用するもの">拡張モジュールを利用するもの。</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">例</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>numpy.ndarray</strong></td>
+<td style="text-align:left"><code>N=np.array([1,2,3])</code></td>
+<td style="text-align:left"><strong>数値計算用の多次元配列</strong>（<strong>ブロードキャスト</strong>を提供する高速で目盛り効率の良い多次元配列が実装されている。 ）</td>
+</tr>
+<tr>
+<td style="text-align:left">pandas.Series</td>
+<td style="text-align:left"><code>s=pd.Series([280,198],index=['tomato','banana'])</code></td>
+<td style="text-align:left">行に名前がある1次元配列</td>
+</tr>
+<tr>
+<td style="text-align:left">pandas.DataFrame</td>
+<td style="text-align:left"><code>df=pd.DataFrame([['tomato',280],['banana', 198]], columns=['name','price'])</code></td>
+<td style="text-align:left">列や行に名前がある2次元配列</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="numpyとは">Numpyとは？</h3>
+<p>Numpyとは<strong>N次元配列(N-dimensional array, ndarray)を定義し、ベクトルや行列をはじめとする数値計算を行うためのモジュール</strong>であり、以下のような特徴を持つ。</p>
+<ul>
+<li>C言語で記述されているため高速処理可能</li>
+<li>高速に動作し、呼び出しにループ記法を必要としない標準的な数学関数</li>
+<li>Numpyモジュールで生成する配列の型名は<code>numpy.ndarray</code></li>
+<li>ディスクへの読み書きに加え、メモリマップファイル機能を提供する入出力</li>
+<li>行列計算、乱数生成、フーリエ変換の各機能</li>
+<li>C, C++, Fortran へのインタフェース(C言語呼び出しのAPIがあることで、NumpyからC言語で書かれた外部ライブラリへデータを渡したり、逆に外部ライブラリの計算結果をNumpyに戻し、ndarrayとして扱うこともできる。)</li>
+</ul>
+<p>※Numpyはデータ演算の基盤を提供するが、実際に構造化データや表形式データを分析する場面ではpandasを用いるのが一般的</p>
+<!-- raw HTML omitted -->
+<h3 id="モジュールの読み込み">モジュールの読み込み</h3>
+<p>NumPyモジュールは慣例的に<code>np</code>の名称で利用される。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>print(np<span style="color:#f92672">.</span>__version__)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="numpyのマニュアル参照">Numpyのマニュアル参照</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#960050;background-color:#1e0010">?</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="numpyの関数とメソッド">Numpyの関数とメソッド</h3>
+<ul>
+<li>配列<code>ndarray</code>の<strong>生成</strong>や，<strong>複数の配列に対する操作</strong>(結合等)には, NumPyの<strong>関数</strong>を使う</li>
+<li>すで生成されている<code>ndarray</code>オブジェクトの<strong>加工</strong>には，<code>ndarray</code>に対する<strong>メソッド</strong>を使う</li>
+</ul>
+<p>※　以下では，NumPyの関数とメソッドの説明の際に，両者を以下のように書いて区別する</p>
+<ul>
+<li><strong>関数</strong>: <code>numpy.array()</code>のように，モジュール名<code>numpy</code>もしくは略称<code>np</code>をつけて説明</li>
+<li><strong>メソッド</strong>: <code>ndarray.reshape()</code>のように、<code>ndarray</code>をつけて説明（<code>ndarray</code>の部分には配列名が入る）</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="2-配列ndarrayの生成">2. 配列<code>ndarray</code>の生成</h2>
+<h3 id="生成関数一覧">生成関数一覧</h3>
+<table>
+<thead>
+<tr>
+<th>関数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array</td>
+<td>リスト、タプル、Python配列、その他列挙型といったデータを受取り、ndarrayを生成（要素の型は推測されてもの、あるいは明示的に指定されたもの）</td>
+</tr>
+<tr>
+<td>asarray</td>
+<td>array同様ndarrayを生成。ただし入力がndarrayの場合には新規に変数を生成しない</td>
+</tr>
+<tr>
+<td>arange</td>
+<td>Python組み込み関数のrange関数と同じ動作でndarrayを生成</td>
+</tr>
+<tr>
+<td>ones, ones_like</td>
+<td>指定された形状の配列で要素をすべて 1 で埋めたndarrayを生成</td>
+</tr>
+<tr>
+<td>zeros, zeros_like</td>
+<td>ones, ones_like同様にndarrayを生成。要素はすべて 0 で埋められる</td>
+</tr>
+<tr>
+<td>empty, empty_like</td>
+<td>以下同文。要素は初期化されておらず不定</td>
+</tr>
+<tr>
+<td>eye, identity</td>
+<td>N ✕ N の単位行列となるndarrayを生成</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ndarray-に関する情報の取得">ndarray に関する情報の取得</h3>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x.dtype</td>
+<td>値のデータ型(int, float など)</td>
+</tr>
+<tr>
+<td>x.ndim</td>
+<td>次元</td>
+</tr>
+<tr>
+<td>x.shape</td>
+<td>形状(1次元なら要素数、2次元なら行と列数etc.)</td>
+</tr>
+<tr>
+<td>x.size</td>
+<td>要素数</td>
+</tr>
+<tr>
+<td>x.itemsize</td>
+<td>要素のメモリサイズ [byte]</td>
+</tr>
+<tr>
+<td>len(x)</td>
+<td>1次元配列に対しては要素数と同じ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="関数">関数</h3>
+<table>
+<thead>
+<tr>
+<th>関数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>astype</td>
+<td>引数には<code>&quot;型名&quot;</code>を指定(ndarrayの配列に対して arr.dtype などでもOK)</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="21-リストやタプルからndarrayへの変換">2.1 リストやタプルから<code>ndarray</code>への変換</h3>
+<ol>
+<li>
+<p>リスト(list)のndarrayへの変換</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  print(x)
+</span></span></code></pre></div>【出力】
+<pre tabindex="0"><code>[1 2 3]
+</code></pre></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  l <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(l, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;float&#39;</span>)
+</span></span><span style="display:flex;"><span>  print(y)
+</span></span></code></pre></div>【出力】
+<pre tabindex="0"><code>[1 3 5]
+</code></pre><!-- raw HTML omitted -->※<code>dtype=</code>で変数の型を明示的に指定<!-- raw HTML omitted --></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]])
+</span></span></code></pre></div>【出力】
+<pre tabindex="0"><code>array([[0, 1],
+[2, 3]])
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>タプル(tuple)からndarrayへの変換</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  t <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>  z <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(t)
+</span></span><span style="display:flex;"><span>  print(z)
+</span></span></code></pre></div>【出力】
+<pre tabindex="0"><code>[2 4 6]
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h3 id="22-関数を用いた配列ndarrayの生成">2.2 関数を用いた配列<code>ndarray</code>の生成</h3>
+<h4 id="同じ要素値をもつndarrayの生成">同じ要素値をもつndarrayの生成</h4>
+<p>※以下での<code>shape</code>には配列の形状を記述する（配列の形状については後述）</p>
+<ol>
+<li>
+<p>要素の初期値なし(適当な値が入っているおそれあり)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>empty(shape) 
+</span></span></code></pre></div></li>
+<li>
+<p>要素値は0に初期化</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>zeros(shape) 
+</span></span></code></pre></div></li>
+<li>
+<p>要素値は0に初期化し、形状(shape)が配列aと同じになる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>zeros_like(a)
+</span></span></code></pre></div></li>
+<li>
+<p>要素値は1に初期化</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>ones(shape) 
+</span></span></code></pre></div></li>
+<li>
+<p>要素値は1に初期化し、形状(shape)が配列aと同じになる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>ones_like(a)
+</span></span></code></pre></div></li>
+<li>
+<p>要素値はvalに初期化</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>full(shape, val) 
+</span></span></code></pre></div></li>
+<li>
+<p>要素値はvalに初期化し、形状(shape)が配列aと同じになる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>full_like(a, val)
+</span></span></code></pre></div><p>（例）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">10</span>, dtype<span style="color:#f92672">=</span>int)) <span style="color:#75715e">#値が1となる10個の要素を持つint型の配列</span>
+</span></span><span style="display:flex;"><span>print(np<span style="color:#f92672">.</span>full(<span style="color:#ae81ff">5</span>, np<span style="color:#f92672">.</span>pi)) <span style="color:#75715e">#値がπ(np.pi)となる5個の要素を持つ配列</span>
+</span></span></code></pre></div><p>※上記のように要素の型を指定することも可能(要素の型の指定については以下で後述)</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="等差数列の生成">等差数列の生成</h4>
+<ol>
+<li>区間と間隔(step)を指定する方法
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  np<span style="color:#f92672">.</span>arange(end) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#[0, end)の区間の整数値を生成</span>
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  np<span style="color:#f92672">.</span>arange(start, end) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#[start, end)の区間の整数値を生成</span>
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  np<span style="color:#f92672">.</span>arange(start, end, step) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#[start, end)の区間内でstep幅ごとの整数値を生成</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>区間と分割数を指定する方法
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  numpy<span style="color:#f92672">.</span>linspace(start, end, num)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#[start, stop]の区間を端点を含むnum個の境界値で分割し、その境界値を返す</span>
+</span></span></code></pre></div><strong>※numは端点を含むので、<code>num = 分割したい個数＋1</code>になることに注意</strong></li>
+</ul>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="単位行列の生成">単位行列の生成</h4>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  numpy<span style="color:#f92672">.</span>identity(n) <span style="color:#75715e">#n×nの単位行列の生成</span>
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  numpy<span style="color:#f92672">.</span>eye(n, m<span style="color:#f92672">=</span>n) <span style="color:#75715e">#n×mの単位行列の生成</span>
+</span></span></code></pre></div><p>※<code>m</code>は省略可能。省略した場合は正方行列になる</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h4 id="乱数による配列の生成">乱数による配列の生成</h4>
+<ol>
+<li>
+<p>一様乱数による配列の生成</p>
+<ul>
+<li>
+<p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html">numpy.random.rand(dim0, dim1, &hellip;)</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(dim0, dim1, <span style="color:#f92672">...</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#要素値が0から1の一様乱数であり、shapeが(d0, d1, ...)となるndarrayの生成</span>
+</span></span></code></pre></div><p>(例)　<strong>要素値が0から1の一様乱数である、2×3の二次元配列の生成</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">```</span>
+</span></span></code></pre></div></li>
+<li>
+<p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html">numpy.random.randint(low, high, size)</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numpy<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(low, high, size) 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[low, high)の区間における整数乱数を要素値とし、shapeがsizeのndarrayを生成</span>
+</span></span></code></pre></div><p>(例)　<strong>0以上5以下の整数乱数を要素とする2×2×2の3次元配列の生成</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">6</span>, (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">6</span>, size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">```</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>正規分布に従う乱数の生成</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(loc, scale, size) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#平均がloc, 標準偏差scaleのガウス分布に従う乱数を要素とする、</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#shapeがsizeのndarrayを生成</span>
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  numpy<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(d0, d1, d2, <span style="color:#f92672">...</span>) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#平均0, 標準偏差1のガウス分布に従う乱数を要素とする、</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#shapeが(d0, d1, d2, ...)のndarrayを生成</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h2 id="3-ndarrayの要素の型">3. <code>ndarray</code>の要素の型</h2>
+<h3 id="要素の型の確認">要素の型の確認</h3>
+<p>リスト(list)では要素にいろいろな型を混在させることができるが、Numpyの配列では各要素が同じ型である必要がある。</p>
+<ul>
+<li>
+<p><code>ndarray</code>の要素のデータ型は次のように確認できる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>dtype)
+</span></span></code></pre></div></li>
+<li>
+<p>Numpyオブジェクトの要素の方は次のように陽に（明示的に）指定することもできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>int)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#x = np.array([1, 2.1, 3], dtype=&#34;int&#34;) # 上と同じ意味</span>
+</span></span></code></pre></div><p>※関数を用いて配列を生成するときも使用できる！</p>
+</li>
+<li>
+<p>要素の型を混在させて定義させた場合、どちらかの型で定義される</p>
+<ul>
+<li><code>int</code>と<code>float</code>ではすべて<code>float</code>に変換して定義される。</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="4-配列ndarrayの次元形状要素数">4. 配列<code>ndarray</code>の次元、形状、要素数</h2>
+<p>配列<code>ndarray</code>の次元、形状、要素数は属性<code>ndim</code>, <code>shape</code>, <code>size</code>に定義されている。</p>
+<p>次のように<code>ndim</code>, <code>shape</code>, <code>size</code>にアクセスすることで次元、形状、要素数の情報を取得することができる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]])
+</span></span><span style="display:flex;"><span>print(x)
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>ndim) <span style="color:#75715e">#次元</span>
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>shape) <span style="color:#75715e">#形状(1次元なら要素数、2次元なら行と列数etc.)</span>
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>size) <span style="color:#75715e">#要素数</span>
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>itemsize) <span style="color:#75715e">#各要素のメモリサイズ [byte]</span>
+</span></span><span style="display:flex;"><span>print(x<span style="color:#f92672">.</span>nbytes) <span style="color:#75715e"># 配列の合計サイズ [byte]</span>
+</span></span><span style="display:flex;"><span>print(len(x)) <span style="color:#75715e">#1次元配列に対しては要素数と同じ</span>
+</span></span></code></pre></div><p>【出力結果】</p>
+<pre tabindex="0"><code>[[0 1]
+ [2 3]
+ [4 5]]
+ndim: 2
+shape: (3, 2)
+size:  6
+itemsize:  8
+length: 3
+</code></pre><h2 id="5-配列の参照">5. 配列の参照</h2>
+<h3 id="51-1次元配列の参照">5.1 1次元配列の参照</h3>
+<p><code>ndarray</code>の要素値を参照する方法はリスト(list)と同様に行うことができる。
+つまりインデックスに<code>[begin:end:step]</code>と記述し範囲を指定することで参照できる。</p>
+<p>(例)次のように定義したリストxについての参照</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><ol>
+<li>
+<p>xの要素一覧</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div></li>
+<li>
+<p>一番はじめの要素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[<span style="color:#ae81ff">0</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>最後から２番めの要素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>はじめの３つの要素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[:<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>最後の３つの要素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]
+</span></span></code></pre></div></li>
+<li>
+<p>はじめの要素から、一つおきに要素値を表示</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[::<span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>要素を逆順に表示(インデックス指定のステップ値に負の値を使う)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h3 id="52-2次元配列の参照">5.2 2次元配列の参照</h3>
+<p><code>ndarray</code>の2次元配列では、行および列それぞれに対する範囲を<code>[行に対する範囲, 列に対する範囲]</code>と指定することで参照・スライスできる。</p>
+<p>※スライス構文では<code>[start:stop:step]</code>のように指定する（stepは省略可）</p>
+<p>(例)次のように定義した2次元配列の参照</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>], [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">12</span>]])
+</span></span><span style="display:flex;"><span>print(N)
+</span></span></code></pre></div><pre tabindex="0"><code>[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+</code></pre><ol>
+<li>
+<p>はじめの行のみ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(N[<span style="color:#ae81ff">0</span>, :])
+</span></span><span style="display:flex;"><span>print(N[<span style="color:#ae81ff">0</span>])
+</span></span></code></pre></div></li>
+<li>
+<p>最後の列のみ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N[;, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>はじめの2行かつ、はじめの3列以内の要素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N[:<span style="color:#ae81ff">2</span>, :<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div></li>
+<li>
+<p>奇数番目の列とすべての行要素でできる行列</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N[:, ::<span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div></li>
+<li>
+<p><code>N</code>の右下部分の要素でできる2行2列の部分行列（インデックスに負の値を使う）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>:, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>:]
+</span></span></code></pre></div></li>
+<li>
+<p>行を逆順にした（列順は変えない）行列</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,]
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h2 id="6-配列ndarrayのコピー">6 配列<code>ndarray</code>のコピー</h2>
+<p>配列<code>ndarray</code>のコピーには<a href="https://docs.python.org/ja/3/library/copy.html">shallow copy と Deep copy</a>の2通りがある</p>
+<ul>
+<li>
+<p><strong>Shallow Copy</strong> : 浅いコピー</p>
+<ul>
+<li>pythonではオブジェクトの生成時に固有の<code>id</code>がふられる。(C言語で言うポインタとはまた別のもの、ポインタの役割をするものは別に存在する？)</li>
+<li>Shallow Copyではオブジェクトの<code>id</code>のみをコピーする。</li>
+<li>同じ<code>id</code>を参照するための別名をつくることになる。</li>
+<li>次のような変数への<code>ndarray</code>の代入もリストオブジェクトと同様にShallow Copyとなる。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>p <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>], [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">12</span>]])
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> p
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Deep Copy</strong>  : 深いコピー</p>
+<ul>
+<li>新たなオブジェクトを生成し，そこに参照元の値をコピーすること。</li>
+<li><code>ndarray</code>の Deep Copy には，次のように<code>copy()</code>メソッドを使う。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>p <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>], [<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">12</span>]])
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>copy()
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="shalow-copyでは値のコピーは行わず値を参照するためのid情報のコピーのみを行うのでほとんどの場合deep-copyより高速でありメモリ消費も少ない">Shalow Copyでは値のコピーは行わず、値を参照するための<code>id</code>情報のコピーのみを行うので、ほとんどの場合Deep Copyより高速であり、メモリ消費も少ない。</h4>
+<!-- raw HTML omitted -->
+<h2 id="7-配列ndarrayの変形">7. 配列<code>ndarray</code>の変形</h2>
+<h4 id="shapeの変更の仕方">shapeの変更の仕方</h4>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>概要</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ndarray.reshape(new_shape)</td>
+<td>1次元配列を多次元配列に変形</td>
+<td>new_shape：shapeを整数かtupleで指定</td>
+</tr>
+<tr>
+<td>ndarray.ravel()</td>
+<td>多次元配列を1次元配列に変形(Shallow Copy)</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>ndarray.flatten()</td>
+<td>多次元配列を1次元配列に変形(Deep Copy)</td>
+<td>&mdash;</td>
+</tr>
+</tbody>
+</table>
+<p>※<code>ndarray.reshape()</code>メソッドと<code>ndarray.revel()</code>メソッドは要素値を<strong>Shallow copy</strong>し、配列の見かけ(<code>shape</code>)のみが異なるオブジェクトを生成する。</p>
+<ol>
+<li><strong><code>ndarray.reshape()</code>メソッドによるshapeの変更</strong></li>
+</ol>
+<ul>
+<li>
+<p>要素数9の1次元配列を3×3の2次元配列に変形する例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>print(x)
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div><p>【出力】</p>
+<pre tabindex="0"><code>[0 1 2 3 4 5 6 7 8]
+[[0 1 2]
+[3 4 5]
+[6 7 8]]
+</code></pre></li>
+<li>
+<p>配列のshapeに-1を指定する例
+※-1を指定することで自動でサイズを決めてくれる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>print(x)
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div><p>【出力】</p>
+<pre tabindex="0"><code>[0 1 2 3 4 5 6 7 8]
+[[0 1 2]
+[3 4 5]
+[6 7 8]]
+</code></pre></li>
+<li>
+<p>NumPyの関数<code>numpy.arange()</code>で生成した<code>ndarray</code>をメソッド<code>ndarray.reshape()</code>で変形する例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">9</span>)<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)) 
+</span></span></code></pre></div><pre tabindex="0"><code>array([[0, 1, 2],
+   [3, 4, 5],
+   [6, 7, 8]])
+</code></pre></li>
+<li>
+<p>1から9の整数値を要素とする縦ベクトルの定義（以下2つの方法のどちらでも同様の出力を得られる）</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">9</span>)<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span> x <span style="color:#f92672">=</span> x[:, np<span style="color:#f92672">.</span>newaxis] <span style="color:#75715e"># `np.newaxis`で新たな次元を追加(1次元なら2次元に、2次元なら3次元に)</span>
+</span></span><span style="display:flex;"><span> print(x)
+</span></span></code></pre></div></li>
+</ol>
+<ul>
+<li>【出力】
+<pre tabindex="0"><code>[[1]
+[2]
+[3]
+[4]
+[5]
+[6]
+[7]
+[8]]
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="8-配列ndarrayの要素の追加">8. 配列<code>ndarray</code>の要素の追加</h2>
+<h4 id="配列xに対して配列yを追加した配列は次のように得られる">配列<code>x</code>に対して配列<code>y</code>を追加した配列は次のように得られる。</h4>
+<pre><code>```python
+x = np.array([1, 2, 3])
+y = np.array([8, 9])
+x = np.append(x, y)
+print(x)
+```
+【出力】
+```
+[1 2 3 8 9]
+```
+</code></pre>
+<h4 id="2次元配列における配列の要素の追加">2次元配列における配列の要素の追加</h4>
+<ol>
+<li>
+<p>行数は変化させず、列数を増やす方向に<code>q</code>を結合する場合</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#f92672">.</span>append(p,q)
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>L <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(p, q, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>列数は変化させず、行数を増やす方向に<code>q</code>を結合する場合</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>L <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(p, q, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div></li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="参考資料">参考資料</h2>
+<ul>
+<li><a href="https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/02.02-The-Basics-Of-NumPy-Arrays.ipynb">PythonDataScienceHandbook</a></li>
+<li><a href="https://numpy.org/">Numpy</a></li>
+<li><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html">numpy.random.rand(dim0, dim1, &hellip;)</a></li>
+<li><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html">numpy.random.randint(low, high, size)</a></li>
+<li><a href="https://docs.python.org/ja/3/library/copy.html">shallow copy と Deep copy</a></li>
+<li></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="matplotlib">Matplotlib</h1>
+
+<h2 id="matplotlibとは">Matplotlibとは？</h2>
+<p>グラフやそれ以外の2次元の形式で行うデータの可視化に用いるライブラリ。</p>
+<p>出版に適したグラフを作るのに非常に適しており、IPythonとうまく統合されているためIPythonとmatplotlibはデータのグラフ化や探索を容易に行えるインタラクティブな環境を提供している。
+ウィンドウに表示されているツールバーからプロットの特定の領域をズームしたり、プロットで表示されれる範囲を変更することができる。</p>
+<!-- raw HTML omitted -->
+<h2 id="matplotlibにおけるグラフを書く方法">Matplotlibにおけるグラフを書く方法</h2>
+<ol>
+<li>
+<p>pypplot インターフェース</p>
+<ul>
+<li>単純なグラフの描画には便利</li>
+</ul>
+</li>
+<li>
+<p>オズジェクト指向インターフェース</p>
+<ul>
+<li>サブグラフを用意するなど細かい指定をするときに便利</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="pyplotインターフェース">Pyplotインターフェース</h2>
+<ul>
+<li><code>plt.</code>から始まる命令で簡単にグラフをかける</li>
+<li>単純なグラフ作成向け</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="numpyモジュールの使用">Numpyモジュールの使用</h4>
+<p>数学関数の描画には、ベクトル・行列演算用の<strong>NumPy</strong>モジュールを使うと便利。Numpyはリストと似ているが数値データの処理に特化した<strong>メソッド</strong>が色々用意されている。</p>
+<p>(例)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>step<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">20</span><span style="color:#f92672">+</span>step,step)  <span style="color:#75715e"># 0以上20+step未満の数値をstep刻みで生成</span>
+</span></span><span style="display:flex;"><span>sint<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>sin(time)             <span style="color:#75715e"># timeの各要素に対するsin関数の値をリスト化</span>
+</span></span><span style="display:flex;"><span>cost<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>cos(time)             <span style="color:#75715e"># timeの各要素に対するsin関数の値をリスト化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(time, sint, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sin t&#34;</span>)  <span style="color:#75715e"># x,y軸データから，labelは省略可</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(time, cost, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cos t&#34;</span>)  <span style="color:#75715e"># pltにcos関数のグラフも追加</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ラベル等の追加</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;time [s]&#34;</span>)  <span style="color:#75715e"># pltにx軸ラベル追加</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;y&#34;</span>)  <span style="color:#75715e"># pltにy軸ラベル追加</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;upper right&#34;</span>)  <span style="color:#75715e"># pltに凡例(plot()の引数に指定したlabel)を追加</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># plt.savefig(&#39;figure.png&#39;)    # グラフを保存したい場合。拡張子に応じてpng,jpg,pdf等の出力可能</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()  <span style="color:#75715e"># グラフオブジェクトpltの描画</span>
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="オブジェクト指向インターフェース">オブジェクト指向インターフェース</h2>
+<ul>
+<li>グラフの見栄え等に関する細かい設定をすることができる。</li>
+<li>コンテナと呼ばれるオブジェクトの中に、描画パーツやさらにコンテナを配置していくことでグラフを作成する。</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="matplotlibのオブジェクト指向インターフェースの基本構造">matplotlibのオブジェクト指向インターフェースの基本構造</h4>
+<p>matplotlibのオブジェクト指向インタフェースでは，以下のように階層的にコンテナや基本パーツを配置する。</p>
+<ul>
+<li><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure">Figure</a> (図)コンテナ
+<ul>
+<li>全ての描画オブジェクトに対して，一番上の階層にあるクラス。</li>
+<li>複数のグラフ等(Axesオブジェクト等)を配置するキャンバス的な役割のオブジェクト</li>
+</ul>
+</li>
+<li><a href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes">Axes</a> (座標系)コンテナ
+<ul>
+<li>個々のグラフ等に対応するオブジェクト</li>
+<li>以下の座標軸(Axis)や描画グラフ(Primitives)を要素として登録する</li>
+</ul>
+</li>
+<li><a href="https://matplotlib.org/api/axis_api.html#matplotlib.axis.Axis">Axis</a> (座標軸)コンテナ
+<ul>
+<li>個々の座標軸を表現するオブジェクト</li>
+<li>ラベルや目盛りなどを要素とする</li>
+</ul>
+</li>
+<li>Primitives (基本パーツ)
+<ul>
+<li>直線オブジェクト(Line2D), テキストオブジェクト(Text)など各グラフに描画するオブジェクト</li>
+<li>コンテナの中に配置する</li>
+</ul>
+</li>
+</ul>
+<p>(例)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># time, sint, costの部分は前述のNumpyを使った方法と同じなので省略(すでに実行済みの場合，再度定義の必要なし)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>step <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>time <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">20</span> <span style="color:#f92672">+</span> step, step)  <span style="color:#75715e"># 0以上20+step未満の数値をstep刻みで生成</span>
+</span></span><span style="display:flex;"><span>sint <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(time)  <span style="color:#75715e"># timeの各要素に対するsin関数の値をリスト化</span>
+</span></span><span style="display:flex;"><span>cost <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>cos(time)  <span style="color:#75715e"># timeの各要素に対するsin関数の値をリスト化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#34;font.size&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>    <span style="color:#75715e"># グラフのタイトルなどのフォントの大きさをまとめて16pointに</span>
+</span></span><span style="display:flex;"><span>fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>))  <span style="color:#75715e"># Figureオブジェクトfigを生成(横:縦=6:5)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">211</span>)  <span style="color:#75715e"># figの中に座標(Axes)オブジェクト生成。2行1列に配置した1番目とする</span>
+</span></span><span style="display:flex;"><span>ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">212</span>)  <span style="color:#75715e"># 2行1列に配置した2番目のAxes生成</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>plot(time, sint, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sin t&#34;</span>)  <span style="color:#75715e"># ax1にsin関数の折れ線グラフ(Primitives)登録(labelは省略可)</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>plot(time, cost, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cos t&#34;</span>)  <span style="color:#75715e"># ax2にはcos関数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ax1にラベル等の追加</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;upper right&#34;</span>)  <span style="color:#75715e"># plot()で指定したlabelを右上に配置</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;graph example&#34;</span>)  <span style="color:#75715e"># タイトル</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;t [s]&#34;</span>)  <span style="color:#75715e"># x軸ラベル</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;sin t&#34;</span>)  <span style="color:#75715e"># y軸ラベル</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 格子を描く</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_xlim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">20</span>)  <span style="color:#75715e"># 描画範囲は[0, 20]</span>
+</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_ylim(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># 描画範囲は[-1, 1]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ax2にラベル等の追加</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;upper right&#34;</span>)  <span style="color:#75715e"># plot()で指定したlabelを右上に配置</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;t [s]&#34;</span>)  <span style="color:#75715e"># x軸ラベル</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;cos t&#34;</span>)  <span style="color:#75715e"># y軸ラベル</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 格子を描く</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_xlim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">20</span>)   <span style="color:#75715e"># 描画範囲は[0, 20]</span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_ylim(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># 描画範囲は[-1, 1]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()  <span style="color:#75715e"># タイトルやラベルが重ならないように配置調整し、Figureオブジェクトを描画</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># plt.savefig(&#39;triangular.png&#39;)    # グラフを保存したい場合。拡張子に応じてpng,jpg,pdf等の出力可能</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()      <span style="color:#75715e"># 以上の命令を出力(画面表示)。Jupyter Notebookの場合は省略可能</span>
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="ヒートマップ">ヒートマップ</h2>
+<p>3次元グラフのz軸の値を、2次元グラフ上の色や濃淡で表したグラフをヒートマップと呼ぶ。</p>
+<p>（例）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%</span>matplotlib inline
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ここまでは，すでに実行ずみなら不要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>)) <span style="color:#75715e"># グラフを生成</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">=</span>fig<span style="color:#f92672">.</span>subplots()             <span style="color:#75715e"># 座標コンテナを1つ生成してaxに代入</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ax.invert_yaxis() # y軸を上下ひっくり返したいとき</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>map<span style="color:#f92672">=</span>ax<span style="color:#f92672">.</span>pcolor(data,cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;seismic&#34;</span>) <span style="color:#75715e"># 数値データからカラーデータを作成 cmapの値により配色変化</span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>colorbar(map, ax<span style="color:#f92672">=</span>ax) <span style="color:#75715e"># カラーデータと軸データを使ってグラフデータ生成</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show() <span style="color:#75715e"># 表示(生成されているグラフデータを画面表示)</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>カラーマップ指定
+カラーマップに用いる配色は，<code>ax.pcolor()</code>の引数<code>cmap</code>で指定している。</p>
+<ul>
+<li>cmap(カラーマップ)の一覧は<a href="http://pynote.hatenablog.com/entry/seaborn-color-map">こちら</a>。いろいろと変えてみると楽しい</li>
+</ul>
+</li>
+<li>
+<p>軸目盛りの間隔
+x軸やy軸の目盛(tick)の間隔を変更したいときは，リストで指定する。以下は，0から9までの整数値を軸名に指定する場合の例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_xticks([range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">1</span>)])
+</span></span><span style="display:flex;"><span>tick <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_yticks(tick)
+</span></span></code></pre></div><p>注) リストではなく，numpy配列でも良い</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="棒グラフ">棒グラフ</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(x, y, width)
+</span></span></code></pre></div><ul>
+<li>x：x軸</li>
+<li>y：y軸</li>
+<li>width：横幅</li>
+</ul>
+<p><strong>2つの棒グラフを表示</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>height1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">54</span>] <span style="color:#75715e"># y座標①</span>
+</span></span><span style="display:flex;"><span>height2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">21</span>] <span style="color:#75715e"># y座標②</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>left <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(len(height1))
+</span></span><span style="display:flex;"><span>labels <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Japanese&#39;</span>, <span style="color:#e6db74">&#39;Math&#39;</span>, <span style="color:#e6db74">&#39;Science&#39;</span>, <span style="color:#e6db74">&#39;Social&#39;</span>, <span style="color:#e6db74">&#39;English&#39;</span>] <span style="color:#75715e"># 座標軸に表示する文字列</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>width <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(left, height1, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;r&#39;</span>, width<span style="color:#f92672">=</span>width, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>) <span style="color:#75715e"># 1つ目のデータを表示</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(left<span style="color:#f92672">+</span>width, height2, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>, width<span style="color:#f92672">=</span>width, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center&#39;</span>) <span style="color:#75715e"># 2つ目のデータを表示</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xticks(left<span style="color:#f92672">+</span>width<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, labels) <span style="color:#75715e"># 指定した文字列を座標軸に表示</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><strong>【参考】</strong></p>
+<ul>
+<li><a href="https://www.sejuku.net/blog/74185">【Python】matplotlibで色んな種類の棒グラフを表示する方法</a></li>
+<li><a href="https://qiita.com/iwama_takumi/items/faaf784a77812c0295de">Pyplot(1) 棒グラフ</a></li>
+<li><a href="https://pythondatascience.plavox.info/matplotlib/%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95">matplotlib で棒グラフを描く</a></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="グラフで矢印の表示">グラフで矢印の表示</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>annotate(<span style="color:#e6db74">&#39;&#39;</span>, xy<span style="color:#f92672">=</span>point[<span style="color:#e6db74">&#39;end&#39;</span>], xytext<span style="color:#f92672">=</span>point[<span style="color:#e6db74">&#39;start&#39;</span>], arrowprops<span style="color:#f92672">=</span>dict(shrink<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, width<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, headwidth<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, headlength<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, connectionstyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;arc3&#39;</span>, facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>, edgecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>))
+</span></span></code></pre></div><p>※&lsquo;start&rsquo;から&rsquo;end&rsquo;方向への矢印</p>
+<p>【引数】</p>
+<ul>
+<li>s：注釈文章の内容</li>
+<li>xy：終点の位置</li>
+<li>xytext：始点の位置（テキストの位置）</li>
+<li>arrowprops：始点と終点間を結ぶ矢印の設定
+<ul>
+<li>width：矢印の線の幅</li>
+<li>headwith：矢印自体の横幅</li>
+<li>headlength：矢印自体の長さ</li>
+<li>shrink：矢印を縮小する割合
+etc.</li>
+</ul>
+</li>
+</ul>
+<p>※始点と終点の経路は<code>connectionstyle</code>で制御できる</p>
+<p>**【参考】</p>
+<ul>
+<li><a href="https://python.atelierkobato.com/annotate/">[Matplotlib] 注釈と矢印</a></li>
+<li><a href="https://qiita.com/haru1843/items/e85fe45163cd9763023c">matplotlibで矢印を描画したい! annotateを使おう! </a></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="グラフ上での日本語表記">グラフ上での日本語表記</h2>
+<p><code>japanize_matplotlib</code> を import すればOK!（※外部ライブラリをインストール必要あり）</p>
+<pre tabindex="0"><code>pip install japanize-matplotlib
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> japanize_matplotlib
+</span></span></code></pre></div><p>これだけで日本語表記ができる！！</p>
+<!-- raw HTML omitted -->
+<h2 id="style-の変更と自作">style の変更と自作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;&lt;style name&gt;&#39;</span>)
+</span></span></code></pre></div><p>でスタイルを変更できる。使用可能なスタイルは以下のコマンドで確認可</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>available
+</span></span></code></pre></div><ul>
+<li>デフォルトで付属しているスタイルは<code>~/anaconda3/lib/python3.9/site-packages/matplotlib/mpl-data/stylelib</code>にある。</li>
+<li>自作する場合は<code>~/.config/matplotlib/stylelib</code>の下に<code>.mplstyle</code>ファルを作成する</li>
+</ul>
+<p><a href="https://matplotlib.org/stable/tutorials/introductory/customizing.html#the-default-matplotlibrc-file">mplstyleファイルの設定の仕方はこちらを参照</a></p>
+<h4 id="参考">参考</h4>
+<ul>
+<li><a href="https://hogelog.com/python/customizing-matplotlib.html">【Matplotlibの使い方】Matplotlibで作成したグラフをカッコ良くする方法</a></li>
+<li><a href="https://note.nkmk.me/python-matplotlib-matplotlibrc-stylesheet/">note.nkmk.me</a></li>
+<li><a href="https://helve-blog.com/posts/python/matplotlib-object-oriented-style/">Matplotlib スタイルによるグラフの見た目の変更</a></li>
+<li><a href="https://matplotlib.org/stable/tutorials/introductory/customizing.html">Customizing Matplotlib with style sheets and rcParams</a></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="jupyter-notebook">Jupyter notebook</h1>
+
+<h2 id="jupyterの語源と読み方">Jupyterの語源と読み方</h2>
+<p>もともと，プログラミング言語 Julia と Python と R を実行できる環境だったため Jupyter と名付けられたらしい。
+ギリシャ神話の神様ユピテル(ジュピター)とかけてるのだと思うが，こちらの綴は Jupiter と1文字違う。</p>
+<p>Jupyterのほうは，Python(パイソン)の読み方に合わせて国内では&quot;ジュパイター&quot;と読む人もいるが，開発者は&quot;ジュピター&quot;と呼んでいるようで，Youtubeにある英語でのjupyter関連の解説を聞いても大抵&quot;ジュピター&quot;に聞こえる。
+<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="セル">セル</h2>
+<ul>
+<li>編集モードへの変更：ダブルクリックまたは&quot;Enter&quot;</li>
+<li>コマンドモードへの変更：ESC</li>
+<li>セルの内容の実行
+<ul>
+<li>Windows：Ctrl+Enter</li>
+<li>MacOS：command+Return</li>
+<li>OS共通：Shift+Enter
+<!-- raw HTML omitted --><!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+<h2 id="markdownセルとcodeセル">Markdownセルとcodeセル</h2>
+<ul>
+<li>Markdownセル：テキストを入力するためのセル</li>
+<li>Codeセル：Pythonの実行を行うセル
+<!-- raw HTML omitted --><!-- raw HTML omitted --></li>
+</ul>
+<h2 id="arkdownセルの編集方法">arkdownセルの編集方法</h2>
+<ul>
+<li>&ldquo;#&ldquo;でタイトル</li>
+<li>&ldquo;##&ldquo;でサブタイトル</li>
+<li>&ldquo;-&ldquo;で箇条書き</li>
+<li>&ldquo;<strong>太文字</strong>&ldquo;で太文字
+<!-- raw HTML omitted --><!-- raw HTML omitted --></li>
+</ul>
+<h2 id="便利なショートカットキーwindow">便利なショートカットキー（Window）</h2>
+<h4 id="コマンドモード">コマンドモード</h4>
+<table>
+<thead>
+<tr>
+<th>ショートカットキー</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>検索・置換</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>-Shift</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>-Shift</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>編集モードにする</td>
+</tr>
+<tr>
+<td>P</td>
+<td>コマンドパレットを開く</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-Enter</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>-Enter</td>
+</tr>
+<tr>
+<td>Alt</td>
+<td>-Enter</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>コードセルにする</td>
+</tr>
+<tr>
+<td>M</td>
+<td>マークダウンセルにする</td>
+</tr>
+<tr>
+<td>R</td>
+<td>rawセルにする</td>
+</tr>
+<tr>
+<td>1</td>
+<td>見出し１にする</td>
+</tr>
+<tr>
+<td>2</td>
+<td>見出し２にする</td>
+</tr>
+<tr>
+<td>3</td>
+<td>見出し３にする</td>
+</tr>
+<tr>
+<td>4</td>
+<td>見出し４にする</td>
+</tr>
+<tr>
+<td>5</td>
+<td>見出し５にする</td>
+</tr>
+<tr>
+<td>6</td>
+<td>見出し６にする</td>
+</tr>
+<tr>
+<td>K</td>
+<td>上のセルを選択する</td>
+</tr>
+<tr>
+<td>Up</td>
+<td>上のセルを選択する</td>
+</tr>
+<tr>
+<td>Down</td>
+<td>下のセルを選択する</td>
+</tr>
+<tr>
+<td>J</td>
+<td>下のセルを選択する</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-K</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-Up</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-Down</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-J</td>
+</tr>
+<tr>
+<td>A</td>
+<td>上にセルを追加する</td>
+</tr>
+<tr>
+<td>B</td>
+<td>下にセルを追加する</td>
+</tr>
+<tr>
+<td>X</td>
+<td>選択しているセルをカット</td>
+</tr>
+<tr>
+<td>C</td>
+<td>選択しているセルをコピー</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-V</td>
+</tr>
+<tr>
+<td>V</td>
+<td>下に貼り付け</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>セルの削除をやり直す</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>選択しているセルを削除する</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-M</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>-S</td>
+</tr>
+<tr>
+<td>S</td>
+<td>保存する</td>
+</tr>
+<tr>
+<td>L</td>
+<td>行番号の表示・非表示</td>
+</tr>
+<tr>
+<td>O</td>
+<td>セルの出力結果の表示・非表示</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-O</td>
+</tr>
+<tr>
+<td>H</td>
+<td>キーボードショートカット表示</td>
+</tr>
+<tr>
+<td>I×2</td>
+<td>カーネルをインタラプト</td>
+</tr>
+<tr>
+<td>0</td>
+<td>カーネルを再起動</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>ページャーを閉じる</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>ページャーを閉じる</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-L</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>-Space</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>下にスクロール</td>
+</tr>
+</tbody>
+</table>
+<h4 id="編集モード">編集モード</h4>
+<table>
+<thead>
+<tr>
+<th>ショートカットキー</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab</td>
+<td>コード補完・タブ</td>
+</tr>
+<tr>
+<td>Shift-Tab</td>
+<td>ツールチップ</td>
+</tr>
+<tr>
+<td>Ctrl-]</td>
+<td>インデント</td>
+</tr>
+<tr>
+<td>Ctrl-[</td>
+<td>ディデント</td>
+</tr>
+<tr>
+<td>Ctrl-A</td>
+<td>全選択</td>
+</tr>
+<tr>
+<td>Ctrl-Z</td>
+<td>やり直し</td>
+</tr>
+<tr>
+<td>Ctrl-Shift</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Ctrl-Y</td>
+<td>やり直し</td>
+</tr>
+<tr>
+<td>Ctrl-Home</td>
+<td>セルの最初に移動</td>
+</tr>
+<tr>
+<td>Ctrl-Up</td>
+<td>セルの最初に移動</td>
+</tr>
+<tr>
+<td>Ctrl-End</td>
+<td>セルの最後に移動</td>
+</tr>
+<tr>
+<td>Ctrl-Down</td>
+<td>セルの最後に移動</td>
+</tr>
+<tr>
+<td>Ctrl-Left</td>
+<td>一単語前に移動</td>
+</tr>
+<tr>
+<td>Ctrl-Right</td>
+<td>一単語後に移動</td>
+</tr>
+<tr>
+<td>Ctrl-Backspace</td>
+<td>前の単語を削除</td>
+</tr>
+<tr>
+<td>Ctrl-Delete</td>
+<td>後の単語を削除</td>
+</tr>
+<tr>
+<td>Ctrl-M</td>
+<td>コマンドモードにする</td>
+</tr>
+<tr>
+<td>Ctrl-Shift-F</td>
+<td>コマンドパレットを開く</td>
+</tr>
+<tr>
+<td>Ctrl-Shift-P</td>
+<td>コマンドパレットを開く</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>コマンドモードにする</td>
+</tr>
+<tr>
+<td>Shift-Enter</td>
+<td>セルを実行し、下のセルを選択する</td>
+</tr>
+<tr>
+<td>Ctrl-Enter</td>
+<td>セルを実行する</td>
+</tr>
+<tr>
+<td>Alt-Enter</td>
+<td>セルを実行し、下にセルを追加する</td>
+</tr>
+<tr>
+<td>Ctrl-Shift-Minus</td>
+<td>セルを分割する</td>
+</tr>
+<tr>
+<td>Ctrl-S</td>
+<td>保存する</td>
+</tr>
+<tr>
+<td>Down</td>
+<td>カーソルを下に移動</td>
+</tr>
+<tr>
+<td>Up</td>
+<td>カーソルを上に移動</td>
+</tr>
+<tr>
+<td>Ctrl-/</td>
+<td>選択部分をコメントアウト</td>
+</tr>
+</tbody>
+</table>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="kernel">Kernel</h2>
+<ul>
+<li>セルの左の &ldquo;In[]&rdquo; の括弧内の数字は実行を行った順番を示す。</li>
+<li>順番によっては正常に作動しない場合もあるため最後は左上の欄から&quot;Kernel &gt; Restart &amp; Run All&quot;をクリック</li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="function">Function</h1>
+
+<h2 id="基本演算">基本演算</h2>
+<ul>
+<li>Cとおおむね同じ (演算子一覧は p.54, 71)</li>
+<li>ただし，<code>++</code>, <code>--</code>は使えない。<code>+=</code>, <code>-=</code>は使える</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="関数の定義">関数の定義</h2>
+<ul>
+<li><code>def</code>で始まる行で関数名と引数を定義する</li>
+<li><strong>次行から関数の終わりまではインデント</strong>して命令文を書く</li>
+</ul>
+<p>書式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">function_name</span>(args):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Docstring&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    命令文       <span style="color:#75715e">#ここから関数の終わりまでインデントをする</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result
+</span></span></code></pre></div><ul>
+<li>Docstring（ドックストリング） は　<code>help(function_name)</code> を実行したときに出力される文字列（<code>function_name</code>関数の説明文）のこと。一般的に関数名の直後に書き、三重引用符で囲む</li>
+<li>ただし，返り値は省略できる。</li>
+<li>C言語と同様に引数を設定して呼び出せば実行できる。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print_name(<span style="color:#e6db74">&#34;Yamaguchi&#34;</span>,<span style="color:#e6db74">&#34;Daisuki&#34;</span>)
+</span></span><span style="display:flex;"><span>My name <span style="color:#f92672">is</span> Daisuki Yamaguchi<span style="color:#f92672">.</span>
+</span></span></code></pre></div></li>
+<li>引数名をつけて，引数の値を指定することもできる。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print_name(family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Yamaguchi&#34;</span>,first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Daisuki&#34;</span>)
+</span></span><span style="display:flex;"><span>My name <span style="color:#f92672">is</span> Daisuki Yamaguchi<span style="color:#f92672">.</span>
+</span></span></code></pre></div></li>
+<li>引数名をつければ，引数の順番はランダムでも良い
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print_name(first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Daisuki&#34;</span>,family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Yamaguchi&#34;</span>)
+</span></span><span style="display:flex;"><span>My name <span style="color:#f92672">is</span> Daisuki Yamaguchi<span style="color:#f92672">.</span>
+</span></span></code></pre></div></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h3 id="引数のデフォルト値-p243">引数のデフォルト値, p.243</h3>
+<p>引数にデフォルト値を設定することもできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_name</span>(family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Momo&#34;</span>,first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Taro&#34;</span>): <span style="color:#75715e"># family: 姓,  first: 名</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;My name is </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">.&#34;</span><span style="color:#f92672">.</span>format(first, family))
+</span></span></code></pre></div><p>デフォルト値の設定されている引数は，呼び出し時に省略可能。以下では<code>family</code>の方のみ省略している。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print_name(first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Daisuki&#34;</span>)
+</span></span></code></pre></div><p>実行結果
+My name is Daisuki Momo.</p>
+<!-- raw HTML omitted -->
+<h3 id="複数の返り値をもつ関数">複数の返り値をもつ関数</h3>
+<p>Pythonの関数では，<strong>返り値を複数</strong>指定できる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">interval</span>(mean,sd): <span style="color:#75715e"># 平均mean, 標準偏差sdから，サンプルの約68%が含まれる区間を出力</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> mean<span style="color:#f92672">-</span>sd, mean<span style="color:#f92672">+</span>sd
+</span></span></code></pre></div><p>複数の返り値を，それぞれ別の変数で受け取ることができる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>low,high<span style="color:#f92672">=</span>interval(<span style="color:#ae81ff">70</span>,<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>print(low,high)
+</span></span></code></pre></div><ul>
+<li>実行結果
+60 80</li>
+</ul>
+<p>複数の返り値を，一つの変数でまとめて受け取ることもできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ret<span style="color:#f92672">=</span>interval(<span style="color:#ae81ff">70</span>,<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>print(ret[<span style="color:#ae81ff">0</span>], ret[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>print(type(ret))      <span style="color:#75715e">## 返り値の型はタプル(要素の書き換えを出来ないリスト。タプルの詳細については後述)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## ret[0]=3            # 返り値の要素を変更するとエラーが出る。(タプルの要素は書き換え不可。後述)</span>
+</span></span></code></pre></div><ul>
+<li>実行結果
+60 80
+&lt;class &rsquo;tuple'&gt;</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="print文">print文</h2>
+<h3 id="フォーマット指定その1-printf形式">フォーマット指定その1: printf形式</h3>
+<p>print(&ldquo;x=%d, y=%e&rdquo; % (x, y))</p>
+<!-- raw HTML omitted -->
+<h3 id="フォーマット指定方法その2-format-method">フォーマット指定方法その2: format method</h3>
+<p>今後おすすめの方法は，文字列に対するメソッド<code>format()</code>を使う<a href="https://docs.python.org/ja/3.8/tutorial/inputoutput.html#the-string-format-method">&ldquo;format()メソッド&rdquo;</a>と呼ばれる方法。</p>
+<ul>
+<li>実行例
+print(&ldquo;x={0}, y={1}&quot;.format(x, y)) # {}の中の数字で，format()の何番目の引数か指定
+print(&ldquo;x={}, y={}&quot;.format(x, y))   # format()の引数順に表示するなら{}内の数字は省略可
+print(&ldquo;x={1}, y={0}&quot;.format(x, y)) # {}内の数字を変えてみた
+print(&ldquo;x={0:+d}, y={1:4.2f}&quot;.format(x, y)) # 数値フォーマットの指定も可能</li>
+<li>実行結果
+x=9, y=False
+x=9, y=False
+x=False, y=9
+x=+9, y=0.00</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="フォーマット指定方法その3-その他">フォーマット指定方法その3: その他</h2>
+<p>他にもいろんな方法があって切りがない。。。</p>
+<ul>
+<li>実行例
+x=5
+print(f&quot;x={x}&rdquo;)
+print(&ldquo;x=&quot;+str(x))</li>
+<li>実行結果
+x=5
+x=5</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="if文">if文</h2>
+<!-- raw HTML omitted -->
+<h3 id="if文-p96">if文 p.96</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>    print(x, <span style="color:#e6db74">&#34;is zero&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>    print(x, <span style="color:#e6db74">&#34;is positive&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(x, <span style="color:#e6db74">&#34;is negative&#34;</span>)
+</span></span></code></pre></div><p>注) pythonはC言語のように<code>{}</code>を使わない。インデント(空白4文字)で構文単位を表現</p>
+<!-- raw HTML omitted -->
+<h3 id="if-elseを1行で書く-p110">if-elseを1行で書く p.110</h3>
+<p><strong>1行if文の書式</strong> : <code>返り値 if 条件式 else 返り値</code></p>
+<p>例えば，絶対値を求める関数<code>absval</code>を<code>def</code>を使って書くと以下のようになる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">absval</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> x<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        absval<span style="color:#f92672">=</span>x
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        absval<span style="color:#f92672">=-</span>x
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> absval
+</span></span></code></pre></div><p>この関数を1行にまとめて書くと，以下のようにとても簡潔になる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">absval</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#66d9ef">if</span> x<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span>x
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="while文">While文</h2>
+<!-- raw HTML omitted -->
+<h3 id="while文-p112">while文, p.112</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+</span></span><span style="display:flex;"><span>    print(i, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="for文">for文</h2>
+<ul>
+<li>
+<p><strong>for文の特徴</strong></p>
+<p>Pythonのデフォルト実装では、動的に解釈を行う（型が柔軟である)という言語の性質上、CやFortranなどのように効率的なマシンコードへのコンパイルができないという特徴を持つ。この弱点を克服するための手法として</p>
+<ul>
+<li>PyPyプロジェクト：PythonのJust-In-Time実装</li>
+<li>Cythonプロジェクト：PythonコードをCコードに変換する</li>
+<li>Numbaプロジェクト：Pythonコードブロックを高速LLVMバイトコードに変換する</li>
+</ul>
+<p>などが知られているが、このどれもが標準CPythonエンジンほどには普及していない。このようなPythonの低速性はfor文などの小さな操作を大量に繰り返す状況で顕著になる。</p>
+</li>
+<li>
+<p><strong>for文の構造</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> 変数 <span style="color:#f92672">in</span> イテラブル:
+</span></span><span style="display:flex;"><span>    実行文
+</span></span></code></pre></div><ul>
+<li><strong>イテラブル</strong>: 順に一つずつ要素を取り出すことができるオブジェクト
+<ul>
+<li>ex) リスト, <code>range()</code> でつくるシーケンスなど(後述)</li>
+</ul>
+</li>
+<li><code>for</code> と <code>in</code> の間の変数にイテラブルの要素が順に代入される</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h4 id="リストを使う">リストを使う</h4>
+<p><strong>リスト</strong>とはPythonに用意されている<strong>配列の一種</strong>で，要素を<code>[]</code>内に列挙する。要素の取り出しは，例えば以下のように<code>for</code>文で行える。
+リストの詳細は今後の課題でも扱う。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>]:
+</span></span><span style="display:flex;"><span>    print(x, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+</span></span></code></pre></div><ul>
+<li>実行結果
+1 5 9</li>
+</ul>
+<p>リストの要素を順に変数に代入することも簡単にできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numlist <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> numlist:
+</span></span><span style="display:flex;"><span>    print(i, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34; &#34;</span>)
+</span></span></code></pre></div><ul>
+<li>実行結果
+1 5 9</li>
+</ul>
+<!-- raw HTML omitted -->
+<h4 id="range関数を使う">range()関数を使う</h4>
+<ul>
+<li><code>range(end)</code>: 0以上end<strong>未満</strong>の数列を生成する</li>
+<li><strong><code>range(begin, end)</code></strong>: begin以上end<strong>未満</strong>の数列を生成する。</li>
+<li><strong><code>range(begin, end, step)</code></strong>: begin以上end<strong>未満</strong>の数列を生成する。stepは要素間の間隔</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="filter-with-python">Filter with python</h1>
+
+<h2 id="filtfiltを用いたバンドパスフィルタバターワースフィルタの記述例">filtfiltを用いたバンドパスフィルタ(バターワースフィルタ)の記述例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#バターワースフィルタ（バンドパス）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">50</span>])       <span style="color:#75715e">#通過域端周波数[Hz]</span>
+</span></span><span style="display:flex;"><span>fs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>])       <span style="color:#75715e">#阻止域端周波数[Hz]</span>
+</span></span><span style="display:flex;"><span>gpass <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>       <span style="color:#75715e">#通過域端最大損失[dB]</span>
+</span></span><span style="display:flex;"><span>gstop <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>      <span style="color:#75715e">#阻止域端最小損失[dB]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bandpass</span>(x, samplerate, fp, fs, gpass, gstop):<span style="color:#75715e">#samplerate がサンプリング周波数</span>
+</span></span><span style="display:flex;"><span>    fn <span style="color:#f92672">=</span> samplerate <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>                           <span style="color:#75715e">#ナイキスト周波数</span>
+</span></span><span style="display:flex;"><span>    wp <span style="color:#f92672">=</span> fp <span style="color:#f92672">/</span> fn                                  <span style="color:#75715e">#ナイキスト周波数で通過域端周波数を正規化</span>
+</span></span><span style="display:flex;"><span>    ws <span style="color:#f92672">=</span> fs <span style="color:#f92672">/</span> fn                                  <span style="color:#75715e">#ナイキスト周波数で阻止域端周波数を正規化</span>
+</span></span><span style="display:flex;"><span>    N, Wn <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>buttord(wp, ws, gpass, gstop)  <span style="color:#75715e">#オーダーとバターワースの正規化周波数を計算</span>
+</span></span><span style="display:flex;"><span>    b, a <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>butter(N, Wn, <span style="color:#e6db74">&#39;bandpass&#39;</span>)            <span style="color:#75715e">#フィルタ伝達関数の分子と分母を計算</span>
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>filtfilt(b, a, x)                  <span style="color:#75715e">#信号に対してフィルタをかける</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> y                                      <span style="color:#75715e">#フィルタ後の信号を返す</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> bandpass(f_biceps, samplerate, fp, fs, gpass, gstop)
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="scipysignalfiltfilt">scipy.signal.filtfilt</h2>
+<p><strong>scipyのfiltfiltを使用する場合は以下のようにインポートする</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> signal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span></code></pre></div><p>※pltはインポートしなくても大丈夫？</p>
+<!-- raw HTML omitted -->
+<h4 id="filtfiltの記述の仕方">○filtfiltの記述の仕方</h4>
+<p>filtfiltでバターワースフィルターをかける場合には以下のように記述する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>b, a <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>butter(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">0.125</span>)
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>filtfilt(b, a, x, padlen<span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="filtfiltのパラメータと返り値">○filtfiltのパラメータと返り値</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>scipy<span style="color:#f92672">.</span>signal<span style="color:#f92672">.</span>filtfilt(b, a, x, axis<span style="color:#f92672">=-</span> <span style="color:#ae81ff">1</span>, padtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;odd&#39;</span>, padlen<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pad&#39;</span>, irlen<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span></code></pre></div><ol>
+<li>
+<p>parameters</p>
+<ul>
+<li>
+<p>b : (<em>N</em>,)arrau_like
+フィルターの分子係数</p>
+</li>
+<li>
+<p>a : (<em>N</em>,)array_like
+フィルターの分母係数</p>
+<p>a[0]が1でなければaもbもa[0]で正規化される。</p>
+</li>
+<li>
+<p>x : array_like
+フィルターをかける配列のデータ</p>
+</li>
+<li>
+<p>axis : int, optional
+フィルターを適用するx軸。デフォルトは-1</p>
+</li>
+<li>
+<p>padtype</p>
+</li>
+<li>
+<p>pandlen</p>
+</li>
+<li>
+<p>method</p>
+</li>
+<li>
+<p>irlen</p>
+</li>
+</ul>
+</li>
+<li>
+<p>return</p>
+<ul>
+<li>ndarray
+xと同じ形状の(?)フィルタリングされた出力</li>
+</ul>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h2 id="バターワースデジタルフィルターバターワースアナログフィルターの設計">バターワースデジタルフィルター、バターワースアナログフィルターの設計</h2>
+<p>バターワースフィルターの設計では<code>scipy.signal.butter</code>モジュールを使用する。
+このモジュールでは N 次元のデジタル、またはアナログバターワースフィルターを設計し、係数を返す。</p>
+<!-- raw HTML omitted -->
+<h4 id="記述方法">○記述方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> signal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>b, a <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>butter(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#39;low&#39;</span>, analog<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="パラメータと返り値">○パラメータと返り値</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>scipy<span style="color:#f92672">.</span>signal<span style="color:#f92672">.</span>butter(N, Wn, btype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;low&#39;</span>, analog<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, output<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ba&#39;</span>, fs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span></code></pre></div><ol>
+<li>
+<p>parameters</p>
+<ul>
+<li>
+<p>N : int
+フィルターの次数　←　<code>buttor</code>モジュールで必要な最低次数を求められる(？)</p>
+</li>
+<li>
+<p>Wn : array_like
+臨界周波数。</p>
+<p>ローパス、ハイパスフィルターでは、Wn はスカラー。バンドパス、バンドストップフィルターでは長さ2の配列。</p>
+<p>バターワースフィルターでは、ゲインが通過帯域の1/√2 まで低下する点(「-3dB点」)を表す。</p>
+<p>アナログフィルターでは Wn は各周波数(例：rad/s)</p>
+</li>
+<li>
+<p>btype : {‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’}, optional
+filterのタイプ。デフォルトはlowpass</p>
+</li>
+<li>
+<p>analog</p>
+</li>
+<li>
+<p>output</p>
+</li>
+<li>
+<p>fs</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Returns</p>
+<ul>
+<li>
+<p>b, a : nadarray, ndarray
+IIR フィルターの分子 (b) および 分母 (a) 多項式。   output=&lsquo;ba&rsquo; のときだけ返される。</p>
+</li>
+<li>
+<p>z, p, k</p>
+</li>
+<li>
+<p>sos</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="バターワースフィルターの次数選択">バターワースフィルターの次数選択</h2>
+<p>バターワースフィルターの次数選択では <code>buttord</code> モジュールを用いる。</p>
+<p>このモジュールでは、通過帯域で gpass dB 以上の減衰がなく、停止帯域で gstop dB 以上の減衰がある最低次のデジタルまたはアナログバターワースフィルタの次数を返す。</p>
+<!-- raw HTML omitted -->
+<h4 id="記述方法-1">○記述方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> signal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> pltN<span style="color:#f92672">,</span> Wn <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>buttord([<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>], [<span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">60</span>], <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">40</span>, <span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>b, a <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>butter(N, Wn, <span style="color:#e6db74">&#39;band&#39;</span>, <span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>w, h <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>freqs(b, a, np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">500</span>))
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="パラメータと返り値-1">○パラメータと返り値</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>scipy<span style="color:#f92672">.</span>signal<span style="color:#f92672">.</span>buttord(wp, ws, gpass, gstop, analog<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, fs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span></code></pre></div><ol>
+<li>
+<p>parameters</p>
+<ul>
+<li>
+<p>wp, ws : float
+通過帯域と阻止帯域のエッジ周波数。</p>
+<p>デジタルフィルタの場合、これらはfsと同じ単位である。デフォルトでは、fsは 2 half-cycles/sample なので、これらは0から1に正規化され、1がナイキスト周波数となる。(wpとwsはhalf-cycles/sample )例えば</p>
+<pre><code>      ローパス：wp=0.2, ws=0.3
+
+      ハイパス：wp = 0.3, ws = 0.2
+
+      バンドパス：wp = [0.2, 0.5]、ws = [0.1, 0.6].
+
+      バンドストップ：wp＝［0.1，0.6］，ws＝［0.2，0.5］。
+</code></pre>
+<p>アナログフィルタの場合、wpとwsは角周波数（例：rad/s）です。</p>
+</li>
+<li>
+<p>gpass : float
+通過帯域の最大損失(dB)。</p>
+</li>
+<li>
+<p>gstop : float
+停止帯域の最小減衰量（dB）。</p>
+</li>
+<li>
+<p>analog : bool, optional</p>
+</li>
+<li>
+<p>fs : float, optional
+デジタルシステムのサンプリング周波数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>returns</p>
+<ul>
+<li>
+<p>ord : int
+使用を満たすバターワースフィルターの最低次数</p>
+</li>
+<li>
+<p>wn : ndarray or float
+バターワース固有振動数（すなわち &ldquo;3dB振動数&rdquo;）。フィルタリングの結果を得るために、butterと一緒に使用する必要がある。fs が指定された場合、これは同じ単位であり、fs も butter に渡さなければならない。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.filtfilt.html">scipy.signal.filtfilt</a></li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html">scipy.signal.butter</a></li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.buttord.html#scipy.signal.buttord">scipy.signal.buttor</a></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="dict">Dict</h1>
+
+<h2 id="1-辞書dictの特徴">1. 辞書(dict)の特徴</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">例</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">リスト(list)</td>
+<td style="text-align:left"><code>L=[&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;]</code></td>
+<td style="text-align:left">インデックス番号付き集合</td>
+</tr>
+<tr>
+<td style="text-align:left">タプル(tuple)</td>
+<td style="text-align:left"><code>T=(&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;)</code></td>
+<td style="text-align:left">インデックス番号付き集合(代入不可)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>辞書(dict)</strong></td>
+<td style="text-align:left"><code>D={&quot;kiwi&quot;:3, &quot;banana&quot;:2, &quot;apple&quot;:3}</code></td>
+<td style="text-align:left"><strong>インデックス番号無し (key,value) 対応表</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">集合(set)</td>
+<td style="text-align:left"><code>S={&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;}</code></td>
+<td style="text-align:left">インデックス番号無し集合</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>書式:</strong> <code>dict_name={key 1: value 1, key 2: value 2, ...}</code></li>
+<li>辞書(<code>dict</code>)には，検索のための<code>key</code>と，検索キーに紐付けられる<code>value</code>のペアを登録する。</li>
+<li>各要素に対するインデックスは存在しない。</li>
+</ul>
+<p><strong>注意:</strong></p>
+<ul>
+<li><strong>Python 3.5以前</strong> ではdictに対する要素の登録順序と，実際に保存されている順序と異なることがある。(<strong>順序非保存</strong>)</li>
+<li><strong>Python 3.7以降</strong> ではdictでも順序は保存(<strong>順序保存</strong>)</li>
+<li>Python 3.6では非公式に順序保存</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="2-dictの定義">2. dictの定義</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reward<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;cheese&#34;</span> : <span style="color:#ae81ff">100</span> , <span style="color:#75715e"># リストや辞書等では，折返し記号&#34;\&#34;なしで改行可</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;enemy&#34;</span> : <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;friend&#34;</span> : <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(reward)
+</span></span><span style="display:flex;"><span>print(reward[<span style="color:#e6db74">&#34;friend&#34;</span>]) <span style="color:#75715e"># 辞書の参照は dict[key]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Qvalue<span style="color:#f92672">=</span>{(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;right&#34;</span>) : <span style="color:#ae81ff">0.5</span>, 
+</span></span><span style="display:flex;"><span>        (<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;left&#34;</span>) : <span style="color:#ae81ff">1.5</span>, 
+</span></span><span style="display:flex;"><span>        (<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;right&#34;</span>) : <span style="color:#ae81ff">0</span>, 
+</span></span><span style="display:flex;"><span>        (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;left&#34;</span>) : <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(Qvalue)
+</span></span><span style="display:flex;"><span>print(Qvalue[(<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;right&#34;</span>)])
+</span></span></code></pre></div><h5 id="出力結果">出力結果</h5>
+<pre tabindex="0"><code>{&#39;cheese&#39;: 100, &#39;enemy&#39;: -10, &#39;friend&#39;: -1}
+-1
+
+{(1, &#39;right&#39;): 0.5, (1, &#39;left&#39;): 1.5, (2, &#39;right&#39;): 0, (2, &#39;left&#39;): -1}
+0
+</code></pre><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="3-辞書の更新追加">3. 辞書の更新・追加</h2>
+<ol>
+<li>dict[key]の使用</li>
+</ol>
+<p><code>dict[key]=new_value</code></p>
+<ul>
+<li><code>key</code>が辞書<code>dict</code>に存在しない　→　<code>{key:new_value}</code>のペアを登録</li>
+<li><code>key</code>が辞書<code>dict</code>に存在する　→　<code>key</code>に対応する<code>value</code>を<code>new_value</code>に変更</li>
+</ul>
+<ol>
+<li>dict.setdefault()の使用</li>
+</ol>
+<p>メソッド<code>dict.setdefault(key,value)</code>を使用する。</p>
+<ul>
+<li><code>key</code>が辞書<code>dict</code>に存在しない場合　→　<code>{key:value}</code>ペアを登録する</li>
+<li><code>key</code>が辞書<code>dict</code>に存在する場合　→　変化なし</li>
+<li>返り値は<code>key</code>に対する<code>value</code>（上記の処理後に返却)</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="4-辞書の参照の仕方">4. 辞書の参照の仕方</h2>
+<ol>
+<li>dict[key]
+<ul>
+<li>直接辞書要素にアクセスする</li>
+<li>存在しないキーに対してアクセスするとエラーになる</li>
+</ul>
+</li>
+<li>dct.get(key)
+<ul>
+<li>存在しないキーに対してもエラーにならず、<code>None</code>が返り値になる</li>
+</ul>
+</li>
+<li>dict.get(key,[default])
+<ul>
+<li>メソッド<code>dict.get()</code>は存在しないkeyにアクセスした場合に返す値(difault)を指定できる。</li>
+<li>注）<code>[]</code>で囲んだ引数は、省略可能なことを示す。</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="5-辞書の値一覧の返却">5. 辞書の値一覧の返却</h2>
+<ul>
+<li>
+<p>doct.keys()
+辞書に含まれるすべてのkeyの一覧を返却する</p>
+</li>
+<li>
+<p>dict.values()
+辞書に含まれるすべてのvalueの一覧を返却する</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="6-関数とmutableな引数">6. 関数とMutableな引数</h2>
+<ul>
+<li>引数が<strong>Immutable(変更不可)</strong>　→　呼び出した側の引数（実引数）は変化しない
+<ul>
+<li>int</li>
+<li>float</li>
+<li>str</li>
+<li>tuple 型など…</li>
+</ul>
+</li>
+<li>引数が<strong>Mutable(変更可)</strong>　→　実引数も変化
+<ul>
+<li>list</li>
+<li>dict</li>
+<li>set 型など…</li>
+</ul>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="create-library">Create Library</h1>
+
+<h1 id="ライブラリの作成方法">ライブラリの作成方法</h1>
+<ol>
+<li>directory に <code>__init.py__</code> ファイルを作成</li>
+<li><code>site-packages</code> ディレクトリに作成したライブラリを追加する（シンボリックリンクでも可）
+<ul>
+<li>site-packages の場所は
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python -m site
+</span></span></code></pre></div>で確認できる</li>
+<li>ディレクトリをパスに追加する場合は次の通り
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ export PYTHONPATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path&gt;:</span>$PYTHONPATH<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="class">Class</h1>
+
+<h2 id="クラスclass">クラス(class)</h2>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="1-用語クラス-インスタンスオブジェクト">1. 用語(クラス, インスタンス，オブジェクト)</h2>
+<h3 id="クラス">クラス</h3>
+<ul>
+<li>pythonにおける型のようなもの。予め定義されているものもあるが，ユーザが定義して使うこともできる。
+<ul>
+<li>例) int, float, list, tuple, dict</li>
+</ul>
+</li>
+<li>名簿を作るとき，住所や名前を書いてもらう様式(テンプレート)に該当</li>
+</ul>
+<h3 id="インスタンス-instance">インスタンス (instance)</h3>
+<ul>
+<li>クラス(型)から生成されるデータのこと。インスタンス・オブジェクトともいう
+<ul>
+<li>intはクラス，<code>1</code>, <code>2</code>, ..はインスタンス</li>
+<li>listはクラス, <code>[1, 3]</code>はインスタンス</li>
+</ul>
+</li>
+<li>名簿用テンプレートの空欄に，実際にデータを書いてもらった1枚1枚にインスタンスは対応</li>
+</ul>
+<h3 id="オブジェクトobject">オブジェクト(object)</h3>
+<ul>
+<li>定義できるものはなんでもかんでもオブジェクト。。。
+<ul>
+<li>例) クラスもインスタンスもメソッドもオブジェクト。</li>
+</ul>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="2-クラスを作る">2. クラスを作る</h2>
+<!-- raw HTML omitted -->
+<h2 id="キーワード">キーワード</h2>
+<ul>
+<li><strong>初期化メソッド</strong>
+<ul>
+<li>定義したクラスによりインスタンスを生成するときに実行される関数</li>
+</ul>
+</li>
+<li><strong>インスタンス変数</strong>
+<ul>
+<li>クラス内の様々なメソッド(関数)で使うことができる変数。クラス内でのみ使える大域変数のようなもの。</li>
+<li>大抵，初期化メソッドで生成・参照。</li>
+<li>クラス内では， <code>self.name</code>のように，必ず<code>self.</code>をつけて参照する(具体例は次のセルの問に)</li>
+<li>インスタンス化したオブジェクトからは，<code>オブジェクト名.変数名</code> (<code>taro.name</code>など)で参照(具体例は次のセルの問に)</li>
+</ul>
+</li>
+<li><strong>インスタンス・メソッド</strong>
+<ul>
+<li>クラス内で第一引数に<code>self</code>を指定して定義する関数</li>
+<li>クラス内では<code>self.関数名</code> で相互参照できる(引数からは<code>self</code>は省略)</li>
+<li>インスタンス化したオブジェクトからは，<code>オブジェクト名.関数名</code> で参照(呼び出し時に第一引数<code>self</code>は省略)</li>
+</ul>
+</li>
+</ul>
+<h4 id="クラスの例">クラスの例</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Name_list</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Momo&#34;</span>, first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Taro&#34;</span>):  <span style="color:#75715e"># 初期化メソッド(インスタンス生成時に実行)</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>family <span style="color:#f92672">=</span> family  <span style="color:#75715e"># インスタンス変数 family の生成</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>first <span style="color:#f92672">=</span> first  <span style="color:#75715e"># インスタンス変数には&#34;self.&#34;をつける</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print</span>(self):  <span style="color:#75715e"># インスタンス・メソッド(第一引数は必ずself)</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;My name is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.&#34;</span><span style="color:#f92672">.</span>format(self<span style="color:#f92672">.</span>first, self<span style="color:#f92672">.</span>family))  <span style="color:#75715e"># インスタンス変数には&#34;self.&#34;をつけて参照</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>momo <span style="color:#f92672">=</span> Name_list()  <span style="color:#75715e"># インスタンスを生成し，変数momoに代入</span>
+</span></span><span style="display:flex;"><span>dai <span style="color:#f92672">=</span> Name_list(family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Yamaguchi&#34;</span>, first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Daisuki&#34;</span>)  <span style="color:#75715e"># インスタンスを生成し，変数daiに代入</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>momo<span style="color:#f92672">.</span>print()  <span style="color:#75715e"># インスタンスmomoのメソッドprint()を実行</span>
+</span></span><span style="display:flex;"><span>dai<span style="color:#f92672">.</span>print()  <span style="color:#75715e"># インスタンスdaiのメソッドprint()を実行</span>
+</span></span><span style="display:flex;"><span>print(momo<span style="color:#f92672">.</span>family)  <span style="color:#75715e"># インスタンスmomoのインスタンス変数familyにアクセス</span>
+</span></span></code></pre></div><h4 id="実行結果">実行結果</h4>
+<pre tabindex="0"><code>My name is Taro Momo.
+My name is Daisuki Yamaguchi.
+Momo
+</code></pre><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h2 id="3-クラスの継承">3. クラスの継承</h2>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Name_list</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Momo&#34;</span>,first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Taro&#34;</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>family <span style="color:#f92672">=</span> family
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>first <span style="color:#f92672">=</span> first
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print</span>(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;My name is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.&#34;</span><span style="color:#f92672">.</span>format(self<span style="color:#f92672">.</span>first, self<span style="color:#f92672">.</span>family))
+</span></span></code></pre></div><p>上記クラス<code>Name_List</code>(本シート初めの例と同じ)の改造版のクラス<code>Name_List_osk</code>を定義し，インスタンス・メソッド<code>print</code>の表示を日本語にしたかったとする。
+このように，一部のインスタンス・メソッドの修正や追加のみをしたクラスを作成する場合，<strong>クラスの継承</strong>を用いると必要箇所のみの定義ですむ。</p>
+<!-- raw HTML omitted -->
+<h3 id="51-スーパークラスの一部の関数を置き換える">5.1 スーパークラスの一部の関数を置き換える</h3>
+<p>以下の例では，初期化インスタンスは<code>class Name_list</code>と同じものを使うため再定義はせず，<code>print()</code>の再定義のみしている。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Name_list_osk</span>(Name_list):  <span style="color:#75715e"># class Name_Listを継承したクラス Name_list_jpを定義</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print</span>(self):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">っていいまんねん。&#34;</span><span style="color:#f92672">.</span>format(self<span style="color:#f92672">.</span>family, self<span style="color:#f92672">.</span>first))
+</span></span></code></pre></div><p>クラスAを継承してクラスBを定義した時，クラスAをスーパークラス，クラスBをサブクラス(もしくは派生クラス)と呼ぶ。上記の例では，Name_listがスーパークラス，Name_list_oskがサブクラスになる。親クラスと子クラスと呼ぶこともある。</p>
+<h4 id="実行例">実行例</h4>
+<pre tabindex="0"><code>```python
+momo = Name_list()  # インスタンスを生成し，変数momoに代入
+dai = Name_list_osk(family=&#34;山口&#34;, first=&#34;大鋤&#34;)  # インスタンスを生成し，変数daiに代入
+
+dai.print()
+</code></pre><pre tabindex="0"><code>山口 大鋤っていいまんねん。
+</code></pre><h3 id="52-スーパークラスの関数を呼び出しつつさらに追加の処理も行う">5.2 スーパークラスの関数を呼び出しつつ，さらに追加の処理も行う</h3>
+<p>以下は，クラス<code>Name_list</code>を継承し，学籍番号もインスタンス変数にもつクラス<code>NameID_list</code>を定義した例。
+<code>super().__init__()</code>を呼び出すことで，スーパークラスの初期化メソッドを実行するとともに，追加の処理も行っている。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NameID_list</span>(Name_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Momo&#34;</span>, first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Taro&#34;</span>, ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;000&#34;</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(family, first)  <span style="color:#75715e"># スーパークラス(Name_list)の初期化メソッドを呼び出す</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>ID <span style="color:#f92672">=</span> ID
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">printID</span>(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;ID:&#34;</span> <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>ID)
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><h4 id="実行例-1">実行例</h4>
+<p>スーパークラス(Name_list)の初期化メソッドも実行されているので，インスタンス変数family, firstへの値の代入もなされていることに注意。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dai <span style="color:#f92672">=</span> NameID_list(family<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Yamaguchi&#34;</span>, first<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Daisuki&#34;</span>, ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;999&#34;</span>)  <span style="color:#75715e"># インスタンスを生成し，変数daiに代入</span>
+</span></span><span style="display:flex;"><span>dai<span style="color:#f92672">.</span>printID()      <span style="color:#75715e"># NameID_listで追加したインスタンス関数の呼び出し</span>
+</span></span><span style="display:flex;"><span>dai<span style="color:#f92672">.</span>print()        <span style="color:#75715e"># Name_listのインスタンス関数を呼び出せる</span>
+</span></span><span style="display:flex;"><span>print(dai<span style="color:#f92672">.</span>family)  <span style="color:#75715e"># スーパークラスの初期化メソッドにより，インスタンス変数`family`に値が代入されている。</span>
+</span></span></code></pre></div><pre tabindex="0"><code>ID:999
+My name is Daisuki Yamaguchi.
+Yamaguchi
+</code></pre>
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="anaconda-update">Anaconda Update</h1>
+
+<h2 id="pip-のアップデート">pip のアップデート</h2>
+<h3 id="pip-と-setuptools-のアップデート">pip と setuptools のアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python -m pip install --upgrade pip setuptools
+</span></span></code></pre></div><p>※<code>-m</code>はインターフェイスオプションで、pythonのモジュール（パッケージ）を実行するために使用</p>
+<h3 id="パッケージのアップデート">パッケージのアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install -U &lt;package-name&gt;
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install --upgrade &lt;package name&gt;
+</span></span></code></pre></div><h2 id="naconda-のアップデート">naconda のアップデート</h2>
+<h3 id="すべてのパッケージをアップデート">すべてのパッケージをアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update --all
+</span></span></code></pre></div><h3 id="特定のパッケージのアップデート">特定のパッケージのアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update &lt;package name1&gt; &lt;package name2&gt;
+</span></span></code></pre></div><h3 id="anaconda-本体のアップデート">anaconda 本体のアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update -n base -c defaults conda
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update -n base conda
+</span></span></code></pre></div><p>※上は(base)と作成した仮想環境両方アップデートされた…（下のコマンドは不明）</p>
+<p>※<a href="https://qiita.com/FukuharaYohei/items/928f5b417337a5068a07">よく使うオプションは以下の通り</a></p>
+<ul>
+<li><code>-n</code> は <code>--name</code> の略で、環境名の指定</li>
+<li><code>-c</code> は <code>--channel</code> の略で、デフォルトリポジトリだけでなくチャネルを追加で指定</li>
+</ul>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://qiita.com/saspy/items/a9a66d510e180ed8d326">Anaconda パッケージ アップデート方法</a></li>
+<li><a href="https://qiita.com/HyunwookPark/items/242a8ceea656416b6da8">pipでアップデートするときのコマンド pip update</a></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="tuple">Tuple</h1>
+
+<h2 id="タプルtuple">タプル(tuple)</h2>
+<!-- raw HTML omitted -->
+<p>Pythonにはデータの集合を扱うための様々なデータ型がある。</p>
+<p>以下は標準で用意されているもの。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">例</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">リスト(list)</td>
+<td style="text-align:left"><code>L=[&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;]</code></td>
+<td style="text-align:left">インデックス番号付き集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>タプル(tuple)</strong></td>
+<td style="text-align:left"><code>T=(&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;)</code></td>
+<td style="text-align:left"><strong>インデックス番号付き集合(代入不可)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">辞書(dict)</td>
+<td style="text-align:left"><code>D={&quot;kiwi&quot;:3, &quot;banana&quot;:2, &quot;apple&quot;:3}</code></td>
+<td style="text-align:left">インデックス番号無し (key,value) 対応表</td>
+</tr>
+<tr>
+<td style="text-align:left">集合(set)</td>
+<td style="text-align:left"><code>S={&quot;kiwi&quot;, &quot;banana&quot;, &quot;apple&quot;}</code></td>
+<td style="text-align:left">インデックス番号無し集合</td>
+</tr>
+</tbody>
+</table>
+<p>以下は拡張モジュールを利用するもの。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">例</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">numpy.ndarray</td>
+<td style="text-align:left"><code>N=np.array([1,2,3])</code></td>
+<td style="text-align:left">数値計算用の多次元配列</td>
+</tr>
+<tr>
+<td style="text-align:left">pandas.Series</td>
+<td style="text-align:left"><code>s=pd.Series([280,198],index=['tomato','banana'])</code></td>
+<td style="text-align:left">行に名前がある1次元配列</td>
+</tr>
+<tr>
+<td style="text-align:left">pandas.DataFrame</td>
+<td style="text-align:left"><code>df=pd.DataFrame([['tomato',280],['banana', 198]], columns=['name','price'])</code></td>
+<td style="text-align:left">列や行に名前がある2次元配列</td>
+</tr>
+</tbody>
+</table>
+<h2 id="タプルの特徴">タプルの特徴</h2>
+<ul>
+<li>タプルの定義，要素へのアクセス，スライス等はリストとほぼ同様</li>
+<li>リストは要素を<code>[]</code>で囲むが，タプルは<code>()</code>で囲む</li>
+<li>リストと異なり，一度定義したら<strong>要素の書き換えはできない</strong></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="タプルの定義">タプルの定義</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fruits<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#e6db74">&#34;prange&#34;</span>, <span style="color:#e6db74">&#34;apple&#34;</span>)
+</span></span><span style="display:flex;"><span>a, b, c <span style="color:#f92672">=</span> fruits<span style="color:#75715e">#変数a,b,cへそれぞれ一括代入</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> tuple(range(<span style="color:#ae81ff">5</span>))
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="タプルへの代入">タプルへの代入</h4>
+<p>一度定義したタプルの要素を後で書き換えることはできない。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>      <span style="color:#75715e"># 要素を書き換えようとするとエラーが出る(試してみること)</span>
+</span></span></code></pre></div><p>ただし，以下のように変数に代入されているタプルを別のタプルに置き換えることはできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)   <span style="color:#75715e"># タプルの置き換え (タプル(5,2,3)のidがaの参照先に)</span>
+</span></span></code></pre></div>
+            <footer class="footline">
+            </footer>
+          </article>
+
+          <article class="default">
+<h1 id="python">python</h1>
+
+<h2 id="pythonの便利なモジュール">Pythonの便利なモジュール</h2>
+<h3 id="モジュールパッケージライブラリの違い"><strong>モジュール・パッケージ・ライブラリの違い</strong></h3>
+<ol>
+<li>
+<p>ライブラリ</p>
+<p>クラスや関数を記述したファイル(.py)</p>
+</li>
+<li>
+<p>パッケージ</p>
+<p>いくつかのモジュールを一つのディレクトリ（フォルダ）にまとめたもの</p>
+</li>
+<li>
+<p>ライブラリ</p>
+<p>いくつかのパッケージをまとめたもの。モジュールやパッケージをライブラリと呼ぶことも、、、</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h3 id="pythonのライブラリ">pythonのライブラリ</h3>
+<ol>
+<li>
+<p>Numpy</p>
+<p>NumpyとはN次元配列(N-dimensional array, ndarray)を定義し、ベクトルや行列をはじめとする数値計算を行うためのモジュールである。</p>
+<ul>
+<li>C言語で記述されているため高速処理可能</li>
+<li>Numpyモジュールで生成する配列の型名はnumpy.ndarray</li>
+</ul>
+</li>
+<li>
+<p>pandas</p>
+<p>pandasはデータ解析を容易にするPythonのサードパーティライブラリです。 データ構造に対して様々な処理を施す機能を提供しており、他のライブラリをバックエンドとして利用して連携して動作できることやデータに対する豊富な処理機能を備えていることから、高度なデータ解析に欠かせないツールとなっている。NumpyのようにC言語による実装であるため配列演算の高速化が図られている点も大規模データの扱いを容易にする魅力の一つとなっている。</p>
+</li>
+<li>
+<p>matplotlib</p>
+<p>グラフやそれ以外の2次元の形式で行うデータの可視化に用いるライブラリ。</p>
+<p>出版に適したグラフを作るのに非常に適しており、IPythonとうまく統合されているためIPythonとmatplotlibはデータのグラフ化や探索を容易に行えるインタラクティブな環境を提供している。
+ウィンドウに表示されているツールバーからプロットの特定の領域をズームしたり、プロットで表示されれる範囲を変更することができる。</p>
+</li>
+<li>
+<p>IPython</p>
+<p>インタラクティブで探索的な計算を行うことができ、ロバスト性と生産性を持つ環境が提供される。
+Pythonのシェルを拡張したもので、Pythonのコードの記述、テスト、デバッグを加速するように設計されている。特に、インタラクティブなデータ操作とmatplotlibによるデータの可視化に非常に便利。</p>
+<p>標準的なターミナル操作形式のIPythonシェル以外にも、次のようなものも提供している。</p>
+<ul>
+<li>Webブラウザを通じてIPythonと接続することができる、mathematica風のHTMLノートブック</li>
+<li>インラインのグラフ描画、複数行の編集、文法のハイライトが可能なQtフレームワークを用いたGUIコンソール</li>
+<li>並列・分散コンピューティングをインタラクティブに行える基盤</li>
+</ul>
+</li>
+<li>
+<p>Scipy</p>
+<p>科学計算の計算における様々な一般的な問題に取り組めるパッケージ群。</p>
+<ul>
+<li>scipy.integrate：数値積分ルーチンや微分方程式ソルバ</li>
+<li>scipy.linalg：線形代数ルーチンやnumpy.linalgで提供されている機能を拡張した行列の分解機能</li>
+<li>scipy.optimaze：関数の最適化（最短化）と求根アルゴリズム</li>
+<li>scipy.signal：信号処理ツール</li>
+<li>scipy.sparse：疎（スパース）なデータを持つ行列や線形システムの解法</li>
+<li>scipy.special：ガンマ関数のような多数の一般的な数学の関数を実装したFortanのライブラリSPECFUNを使うためのラッパー</li>
+<li>scipy.stats：標準的な連続分布や離散分布（密度関数、サンプラー、連続分布関数）、様々な統計検定、その他の記述統計</li>
+<li>scipy.weave：配列計算の加速のために用いるインラインでのC++コードを利用するためのツール</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="標準モジュール">標準モジュール</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>print</td>
+<td>print(&ldquo;出力1&rdquo;, &ldquo;出力2&rdquo;, sep=&lsquo;sep&rsquo;, end=&lsquo;end&rsquo;)</td>
+<td>引数を出力する。sepには値の間に挿入される文字列（デフォルトはsep=&rsquo; &lsquo;）、endには最後の値の後につかされる文字列（デフォルトはend=&rsquo;\n&rsquo;）を指定</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>dir(オブジェクト名)</td>
+<td>オブジェクトのすべての属性（含まれる関数やメソッド等）を表示</td>
+</tr>
+<tr>
+<td>type</td>
+<td>type(オブジェクト名)</td>
+<td>どのような型のオブジェクトであるかを確認できる。</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>sum(リスト)</td>
+<td>リスト要素の数値の合計を返却する</td>
+</tr>
+<tr>
+<td>input</td>
+<td>input(&ldquo;文字列&rdquo;)</td>
+<td>文字列を出力し、キーボードからの入力を返却する</td>
+</tr>
+<tr>
+<td>max</td>
+<td>max(x,y,z,key=function)</td>
+<td>x,y,zの中で最も大きい値を返却する。<code>key'に任意の関数f(x)を渡すと </code>argmax f(x)&lsquo;を計算する（関数f(x), f(y), f(z) の計算結果が最大となる変数を返す)</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="jupyter-notebook">Jupyter notebook</h3>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%timeit</td>
+<td>%timeit function()</td>
+<td>指定した関数の実行時間を計算</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="numpyライブラリ">NumPyライブラリ</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>import</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arange</td>
+<td>np.arange(0, 20+step, step)</td>
+<td>numpy</td>
+<td>0以上20+step未満の数値をstep刻みで生成</td>
+</tr>
+<tr>
+<td>sin</td>
+<td>np.sin(time)</td>
+<td>numpy</td>
+<td>timeの各要素に対するsin関数の値をリスト化</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>np.mean(L)</td>
+<td>numpy</td>
+<td>Lの平均値を計算</td>
+</tr>
+<tr>
+<td>std</td>
+<td>np.std(L)</td>
+<td>numpy</td>
+<td>Lの標準偏差を計算</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h5 id="pyplot-インターフェース">PyPlot インターフェース</h5>
+<table>
+<thead>
+<tr>
+<th>記述法</th>
+<th>import</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plt.figure(figsize=(8.4))</td>
+<td>matplotlib.pyplot</td>
+<td>figureオブジェクトの生成、figsuzeは省略可能</td>
+</tr>
+<tr>
+<td>plt.plot(x, y, label=&ldquo;y=x&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>x軸y軸データを指定しプロット。labelは省略可能</td>
+</tr>
+<tr>
+<td>plt.xlabel(&ldquo;time[s]&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>pltにx軸ラベルを追加</td>
+</tr>
+<tr>
+<td>plt.legend(loc=&ldquo;upper right&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>plt似凡例(plot()の引数に指定したlabel)を追加</td>
+</tr>
+<tr>
+<td>plt.show</td>
+<td>matplotlib.pyplot</td>
+<td>グラフオブジェクトpltの描画</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h5 id="オブジェクト指向インターフェース">オブジェクト指向インターフェース</h5>
+<table>
+<thead>
+<tr>
+<th>記述法</th>
+<th>import</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ax1 = fig.add_subplot(211)</td>
+<td>&mdash;</td>
+<td>figの中に座標(Axes)オブジェクト生成。2行1列に配置した1番目とするオブジェクトの生成が1つだけの場合は<code>ax</code>とする。</td>
+</tr>
+<tr>
+<td>ax1.plot(time, sint, label=&ldquo;sin t&rdquo;)</td>
+<td>&mdash;</td>
+<td>ax1にsin関数の折れ線グラフ(Primitives)登録(labelは省略可)</td>
+</tr>
+<tr>
+<td>ax1.legend(loc=&ldquo;upper right&rdquo;)</td>
+<td>&mdash;</td>
+<td>plot()で指定したlabelを右上に配置</td>
+</tr>
+<tr>
+<td>ax1.set_xlabel(&ldquo;t [s]&rdquo;)</td>
+<td>&mdash;</td>
+<td>x軸ラベルの挿入</td>
+</tr>
+<tr>
+<td>ax1.grid(True)</td>
+<td>&mdash;</td>
+<td>格子を描く</td>
+</tr>
+<tr>
+<td>ax1.set_xlim(0, 20)</td>
+<td>&mdash;</td>
+<td>描画範囲の指定</td>
+</tr>
+<tr>
+<td>plt.tight_layout()</td>
+<td>&mdash;</td>
+<td>タイトルやラベルが重ならないように配置調整し、Figureオブジェクトを描画</td>
+</tr>
+<tr>
+<td>plt.savefig(&rsquo;triangular.png&rsquo;)</td>
+<td>&mdash;</td>
+<td>グラフを保存したい場合。拡張子に応じてpng,jpg,pdf等の出力可能</td>
+</tr>
+<tr>
+<td>plt.show()</td>
+<td>&mdash;</td>
+<td>画像の出力。Jupyter Notebookの場合は省略可能</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="pandasライブラリ">Pandasライブラリ</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timeit</td>
+<td>%timeit df.at[&lsquo;y&rsquo;, &lsquo;b&rsquo;]</td>
+<td>df.at[&lsquo;x&rsquo;, &lsquo;a&rsquo;]の実行速度を出力</td>
+</tr>
+<tr>
+<td>idxmin()</td>
+<td>df.idxmin()</td>
+<td>最小値を持つ場所を示すインデックスを返す</td>
+</tr>
+<tr>
+<td>idxmax()</td>
+<td>df.idxmax()</td>
+<td>最大値を持つ場所を示すインデックスを返す</td>
+</tr>
+<tr>
+<td>agg</td>
+<td>df.groupby([&lsquo;country&rsquo;]).price.agg([len, min, max])</td>
+<td>列ごとに異なる関数を使って集約したい場合や複数の関数を同時に使って集約できる。len, min, maxの３つの記述統計量について集約を行っている</td>
+</tr>
+</tbody>
+</table>
+<h2 id="便利な関数">便利な関数</h2>
+<table>
+<thead>
+<tr>
+<th>関数名</th>
+<th>実行例</th>
+<th>実行結果</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type()</td>
+<td>print(type(x))</td>
+<td>&lt;class &lsquo;int&rsquo;&gt;</td>
+<td>xの型名を返却する</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>※mathモジュール、randomモジュールに関しては下記参照</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="便利な書き方">便利な書き方</h2>
+<ul>
+<li>
+<p>実行例
+print(type(x) is bool)
+print(type(x) is not bool)</p>
+</li>
+<li>
+<p>実行結果
+False
+True</p>
+</li>
+<li>
+<p>実行例</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="モジュールのいろいろな読み込み方法-p81">モジュールのいろいろな読み込み方法, p.81</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">as</span> <span style="color:#f92672">&lt;</span>alias<span style="color:#f92672">&gt;</span> <span style="color:#75715e">## モジュールに省略名をつける。最もよく使われる(多分)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>function<span style="color:#f92672">&gt;</span> <span style="color:#75715e">## 関数呼び出し時にモジュール名不要にする (多用しないこと。同名関数が異なるモジュールにあるときトラブルのもと)</span>
+</span></span></code></pre></div><p>例)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>print(math<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> math <span style="color:#66d9ef">as</span> ma
+</span></span><span style="display:flex;"><span>print(ma<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> cos
+</span></span><span style="display:flex;"><span>print(cos(<span style="color:#ae81ff">0</span>))
+</span></span></code></pre></div><h2 id="math-モジュール-p78">math モジュール p.78</h2>
+<p>mathモジュールを読み込むと，いろいろな数学関数や定数を使える(一覧p.80-81)</p>
+<p>次のセルは，math モジュールの読み込みと関数実行の例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math <span style="color:#75715e">## mathモジュールの読み込み</span>
+</span></span><span style="display:flex;"><span>x<span style="color:#f92672">=</span>math<span style="color:#f92672">.</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>math<span style="color:#f92672">.</span>sin(x)
+</span></span></code></pre></div><ul>
+<li>実行結果
+1.0</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="モジュール内の関数呼び出し">モジュール内の関数呼び出し</h2>
+<p>モジュール名に続けて関数名を書く。<code>math</code>モジュールにある<code>sin()</code>関数ならば次のように書く。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>math<span style="color:#f92672">.</span>sin()
+</span></span></code></pre></div><p>マニュアル等での表記も同様に書くのが一般。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="mathモジュールの関数や定数">mathモジュールの関数や定数</h2>
+<ul>
+<li>数学関数の例
+<ul>
+<li><code>math.sin()</code></li>
+<li><code>math.cos()</code></li>
+<li><code>math.log()</code></li>
+</ul>
+</li>
+<li>定数の例
+<ul>
+<li><code>math.pi</code></li>
+<li><code>math.e</code></li>
+</ul>
+</li>
+</ul>
+<p>ライブラリやモジュール, 関数についての詳細を知りたいときには以下のように<code>help()</code>を使う</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>help(math)
+</span></span><span style="display:flex;"><span>help(math<span style="color:#f92672">.</span>sin)
+</span></span></code></pre></div><p><strong>注意:</strong>
+jupyter notebook上で一度<code>import</code>したライブラリやモジュールは他のセルでも使える。複数のセルで同じモジュールを何度も<code>import</code>する必要はない。</p>
+<h2 id="random-モジュール-p82">random モジュール p.82</h2>
+<p>関数例</p>
+<ul>
+<li><code>random.randint(min,max)</code>   ## randomモジュールの<code>randint()</code>関数</li>
+<li><code>random.random()</code></li>
+</ul>
+<p>実行例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>x<span style="color:#f92672">=</span>random<span style="color:#f92672">.</span>random()
+</span></span><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div><ul>
+<li>ramdint(a,b)：a以上b以下の値をランダムに生成</li>
+<li>random()：0以上1未満の値をランダムに生成</li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+
+          </section>        </div>
+      </main>
+    </div>
+    <script src="/watanuki/js/clipboard.min.js?1669118580" defer></script>
+    <script src="/watanuki/js/perfect-scrollbar.min.js?1669118580" defer></script>
+    <script src="/watanuki/js/featherlight.min.js?1669118580" defer></script>
+    <script src="/watanuki/js/theme.js?1669118580" defer></script>
+  </body>
+</html>
