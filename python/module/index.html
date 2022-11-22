@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>python :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/python/module/index.xml" rel="alternate" type="application/rss+xml" title="python :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/python/module/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/post/index.html" title="Posts (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/python/tuple/index.html" title="Tuple (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,17 +59,31 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/python/index.html"><span itemprop="name">Python</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">python</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#pythonの便利なモジュール">Pythonの便利なモジュール</a>
+      <ul>
+        <li><a href="#モジュールパッケージライブラリの違い"><strong>モジュール・パッケージ・ライブラリの違い</strong></a></li>
+        <li><a href="#pythonのライブラリ">pythonのライブラリ</a></li>
+        <li><a href="#標準モジュール">標準モジュール</a></li>
+        <li><a href="#jupyter-notebook">Jupyter notebook</a></li>
+        <li><a href="#numpyライブラリ">NumPyライブラリ</a></li>
+        <li><a href="#pandasライブラリ">Pandasライブラリ</a></li>
+      </ul>
+    </li>
+    <li><a href="#便利な関数">便利な関数</a></li>
+    <li><a href="#便利な書き方">便利な書き方</a></li>
+    <li><a href="#モジュールのいろいろな読み込み方法-p81">モジュールのいろいろな読み込み方法, p.81</a></li>
+    <li><a href="#math-モジュール-p78">math モジュール p.78</a></li>
+    <li><a href="#モジュール内の関数呼び出し">モジュール内の関数呼び出し</a></li>
+    <li><a href="#mathモジュールの関数や定数">mathモジュールの関数や定数</a></li>
+    <li><a href="#random-モジュール-p82">random モジュール p.82</a></li>
   </ul>
 </nav>
             </div>
@@ -80,58 +95,422 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="python">python</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
+<h2 id="pythonの便利なモジュール">Pythonの便利なモジュール</h2>
+<h3 id="モジュールパッケージライブラリの違い"><strong>モジュール・パッケージ・ライブラリの違い</strong></h3>
+<ol>
+<li>
+<p>ライブラリ</p>
+<p>クラスや関数を記述したファイル(.py)</p>
+</li>
+<li>
+<p>パッケージ</p>
+<p>いくつかのモジュールを一つのディレクトリ（フォルダ）にまとめたもの</p>
+</li>
+<li>
+<p>ライブラリ</p>
+<p>いくつかのパッケージをまとめたもの。モジュールやパッケージをライブラリと呼ぶことも、、、</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h3 id="pythonのライブラリ">pythonのライブラリ</h3>
+<ol>
+<li>
+<p>Numpy</p>
+<p>NumpyとはN次元配列(N-dimensional array, ndarray)を定義し、ベクトルや行列をはじめとする数値計算を行うためのモジュールである。</p>
 <ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
+<li>C言語で記述されているため高速処理可能</li>
+<li>Numpyモジュールで生成する配列の型名はnumpy.ndarray</li>
 </ul>
-<h2 id="参考">参考</h2>
+</li>
+<li>
+<p>pandas</p>
+<p>pandasはデータ解析を容易にするPythonのサードパーティライブラリです。 データ構造に対して様々な処理を施す機能を提供しており、他のライブラリをバックエンドとして利用して連携して動作できることやデータに対する豊富な処理機能を備えていることから、高度なデータ解析に欠かせないツールとなっている。NumpyのようにC言語による実装であるため配列演算の高速化が図られている点も大規模データの扱いを容易にする魅力の一つとなっている。</p>
+</li>
+<li>
+<p>matplotlib</p>
+<p>グラフやそれ以外の2次元の形式で行うデータの可視化に用いるライブラリ。</p>
+<p>出版に適したグラフを作るのに非常に適しており、IPythonとうまく統合されているためIPythonとmatplotlibはデータのグラフ化や探索を容易に行えるインタラクティブな環境を提供している。
+ウィンドウに表示されているツールバーからプロットの特定の領域をズームしたり、プロットで表示されれる範囲を変更することができる。</p>
+</li>
+<li>
+<p>IPython</p>
+<p>インタラクティブで探索的な計算を行うことができ、ロバスト性と生産性を持つ環境が提供される。
+Pythonのシェルを拡張したもので、Pythonのコードの記述、テスト、デバッグを加速するように設計されている。特に、インタラクティブなデータ操作とmatplotlibによるデータの可視化に非常に便利。</p>
+<p>標準的なターミナル操作形式のIPythonシェル以外にも、次のようなものも提供している。</p>
 <ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li>Webブラウザを通じてIPythonと接続することができる、mathematica風のHTMLノートブック</li>
+<li>インラインのグラフ描画、複数行の編集、文法のハイライトが可能なQtフレームワークを用いたGUIコンソール</li>
+<li>並列・分散コンピューティングをインタラクティブに行える基盤</li>
+</ul>
+</li>
+<li>
+<p>Scipy</p>
+<p>科学計算の計算における様々な一般的な問題に取り組めるパッケージ群。</p>
+<ul>
+<li>scipy.integrate：数値積分ルーチンや微分方程式ソルバ</li>
+<li>scipy.linalg：線形代数ルーチンやnumpy.linalgで提供されている機能を拡張した行列の分解機能</li>
+<li>scipy.optimaze：関数の最適化（最短化）と求根アルゴリズム</li>
+<li>scipy.signal：信号処理ツール</li>
+<li>scipy.sparse：疎（スパース）なデータを持つ行列や線形システムの解法</li>
+<li>scipy.special：ガンマ関数のような多数の一般的な数学の関数を実装したFortanのライブラリSPECFUNを使うためのラッパー</li>
+<li>scipy.stats：標準的な連続分布や離散分布（密度関数、サンプラー、連続分布関数）、様々な統計検定、その他の記述統計</li>
+<li>scipy.weave：配列計算の加速のために用いるインラインでのC++コードを利用するためのツール</li>
+</ul>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="標準モジュール">標準モジュール</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>print</td>
+<td>print(&ldquo;出力1&rdquo;, &ldquo;出力2&rdquo;, sep=&lsquo;sep&rsquo;, end=&lsquo;end&rsquo;)</td>
+<td>引数を出力する。sepには値の間に挿入される文字列（デフォルトはsep=&rsquo; &lsquo;）、endには最後の値の後につかされる文字列（デフォルトはend=&rsquo;\n&rsquo;）を指定</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>dir(オブジェクト名)</td>
+<td>オブジェクトのすべての属性（含まれる関数やメソッド等）を表示</td>
+</tr>
+<tr>
+<td>type</td>
+<td>type(オブジェクト名)</td>
+<td>どのような型のオブジェクトであるかを確認できる。</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>sum(リスト)</td>
+<td>リスト要素の数値の合計を返却する</td>
+</tr>
+<tr>
+<td>input</td>
+<td>input(&ldquo;文字列&rdquo;)</td>
+<td>文字列を出力し、キーボードからの入力を返却する</td>
+</tr>
+<tr>
+<td>max</td>
+<td>max(x,y,z,key=function)</td>
+<td>x,y,zの中で最も大きい値を返却する。<code>key'に任意の関数f(x)を渡すと </code>argmax f(x)&lsquo;を計算する（関数f(x), f(y), f(z) の計算結果が最大となる変数を返す)</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="jupyter-notebook">Jupyter notebook</h3>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%timeit</td>
+<td>%timeit function()</td>
+<td>指定した関数の実行時間を計算</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="numpyライブラリ">NumPyライブラリ</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>import</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arange</td>
+<td>np.arange(0, 20+step, step)</td>
+<td>numpy</td>
+<td>0以上20+step未満の数値をstep刻みで生成</td>
+</tr>
+<tr>
+<td>sin</td>
+<td>np.sin(time)</td>
+<td>numpy</td>
+<td>timeの各要素に対するsin関数の値をリスト化</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>np.mean(L)</td>
+<td>numpy</td>
+<td>Lの平均値を計算</td>
+</tr>
+<tr>
+<td>std</td>
+<td>np.std(L)</td>
+<td>numpy</td>
+<td>Lの標準偏差を計算</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h5 id="pyplot-インターフェース">PyPlot インターフェース</h5>
+<table>
+<thead>
+<tr>
+<th>記述法</th>
+<th>import</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plt.figure(figsize=(8.4))</td>
+<td>matplotlib.pyplot</td>
+<td>figureオブジェクトの生成、figsuzeは省略可能</td>
+</tr>
+<tr>
+<td>plt.plot(x, y, label=&ldquo;y=x&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>x軸y軸データを指定しプロット。labelは省略可能</td>
+</tr>
+<tr>
+<td>plt.xlabel(&ldquo;time[s]&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>pltにx軸ラベルを追加</td>
+</tr>
+<tr>
+<td>plt.legend(loc=&ldquo;upper right&rdquo;)</td>
+<td>matplotlib.pyplot</td>
+<td>plt似凡例(plot()の引数に指定したlabel)を追加</td>
+</tr>
+<tr>
+<td>plt.show</td>
+<td>matplotlib.pyplot</td>
+<td>グラフオブジェクトpltの描画</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h5 id="オブジェクト指向インターフェース">オブジェクト指向インターフェース</h5>
+<table>
+<thead>
+<tr>
+<th>記述法</th>
+<th>import</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ax1 = fig.add_subplot(211)</td>
+<td>&mdash;</td>
+<td>figの中に座標(Axes)オブジェクト生成。2行1列に配置した1番目とするオブジェクトの生成が1つだけの場合は<code>ax</code>とする。</td>
+</tr>
+<tr>
+<td>ax1.plot(time, sint, label=&ldquo;sin t&rdquo;)</td>
+<td>&mdash;</td>
+<td>ax1にsin関数の折れ線グラフ(Primitives)登録(labelは省略可)</td>
+</tr>
+<tr>
+<td>ax1.legend(loc=&ldquo;upper right&rdquo;)</td>
+<td>&mdash;</td>
+<td>plot()で指定したlabelを右上に配置</td>
+</tr>
+<tr>
+<td>ax1.set_xlabel(&ldquo;t [s]&rdquo;)</td>
+<td>&mdash;</td>
+<td>x軸ラベルの挿入</td>
+</tr>
+<tr>
+<td>ax1.grid(True)</td>
+<td>&mdash;</td>
+<td>格子を描く</td>
+</tr>
+<tr>
+<td>ax1.set_xlim(0, 20)</td>
+<td>&mdash;</td>
+<td>描画範囲の指定</td>
+</tr>
+<tr>
+<td>plt.tight_layout()</td>
+<td>&mdash;</td>
+<td>タイトルやラベルが重ならないように配置調整し、Figureオブジェクトを描画</td>
+</tr>
+<tr>
+<td>plt.savefig(&rsquo;triangular.png&rsquo;)</td>
+<td>&mdash;</td>
+<td>グラフを保存したい場合。拡張子に応じてpng,jpg,pdf等の出力可能</td>
+</tr>
+<tr>
+<td>plt.show()</td>
+<td>&mdash;</td>
+<td>画像の出力。Jupyter Notebookの場合は省略可能</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="pandasライブラリ">Pandasライブラリ</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール名</th>
+<th>記述法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timeit</td>
+<td>%timeit df.at[&lsquo;y&rsquo;, &lsquo;b&rsquo;]</td>
+<td>df.at[&lsquo;x&rsquo;, &lsquo;a&rsquo;]の実行速度を出力</td>
+</tr>
+<tr>
+<td>idxmin()</td>
+<td>df.idxmin()</td>
+<td>最小値を持つ場所を示すインデックスを返す</td>
+</tr>
+<tr>
+<td>idxmax()</td>
+<td>df.idxmax()</td>
+<td>最大値を持つ場所を示すインデックスを返す</td>
+</tr>
+<tr>
+<td>agg</td>
+<td>df.groupby([&lsquo;country&rsquo;]).price.agg([len, min, max])</td>
+<td>列ごとに異なる関数を使って集約したい場合や複数の関数を同時に使って集約できる。len, min, maxの３つの記述統計量について集約を行っている</td>
+</tr>
+</tbody>
+</table>
+<h2 id="便利な関数">便利な関数</h2>
+<table>
+<thead>
+<tr>
+<th>関数名</th>
+<th>実行例</th>
+<th>実行結果</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type()</td>
+<td>print(type(x))</td>
+<td>&lt;class &lsquo;int&rsquo;&gt;</td>
+<td>xの型名を返却する</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>※mathモジュール、randomモジュールに関しては下記参照</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="便利な書き方">便利な書き方</h2>
+<ul>
+<li>
+<p>実行例
+print(type(x) is bool)
+print(type(x) is not bool)</p>
+</li>
+<li>
+<p>実行結果
+False
+True</p>
+</li>
+<li>
+<p>実行例</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="モジュールのいろいろな読み込み方法-p81">モジュールのいろいろな読み込み方法, p.81</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">as</span> <span style="color:#f92672">&lt;</span>alias<span style="color:#f92672">&gt;</span> <span style="color:#75715e">## モジュールに省略名をつける。最もよく使われる(多分)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#f92672">&lt;</span>function<span style="color:#f92672">&gt;</span> <span style="color:#75715e">## 関数呼び出し時にモジュール名不要にする (多用しないこと。同名関数が異なるモジュールにあるときトラブルのもと)</span>
+</span></span></code></pre></div><p>例)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>print(math<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> math <span style="color:#66d9ef">as</span> ma
+</span></span><span style="display:flex;"><span>print(ma<span style="color:#f92672">.</span>cos(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> cos
+</span></span><span style="display:flex;"><span>print(cos(<span style="color:#ae81ff">0</span>))
+</span></span></code></pre></div><h2 id="math-モジュール-p78">math モジュール p.78</h2>
+<p>mathモジュールを読み込むと，いろいろな数学関数や定数を使える(一覧p.80-81)</p>
+<p>次のセルは，math モジュールの読み込みと関数実行の例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> math <span style="color:#75715e">## mathモジュールの読み込み</span>
+</span></span><span style="display:flex;"><span>x<span style="color:#f92672">=</span>math<span style="color:#f92672">.</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>math<span style="color:#f92672">.</span>sin(x)
+</span></span></code></pre></div><ul>
+<li>実行結果
+1.0</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="モジュール内の関数呼び出し">モジュール内の関数呼び出し</h2>
+<p>モジュール名に続けて関数名を書く。<code>math</code>モジュールにある<code>sin()</code>関数ならば次のように書く。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>math<span style="color:#f92672">.</span>sin()
+</span></span></code></pre></div><p>マニュアル等での表記も同様に書くのが一般。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="mathモジュールの関数や定数">mathモジュールの関数や定数</h2>
+<ul>
+<li>数学関数の例
+<ul>
+<li><code>math.sin()</code></li>
+<li><code>math.cos()</code></li>
+<li><code>math.log()</code></li>
+</ul>
+</li>
+<li>定数の例
+<ul>
+<li><code>math.pi</code></li>
+<li><code>math.e</code></li>
+</ul>
+</li>
+</ul>
+<p>ライブラリやモジュール, 関数についての詳細を知りたいときには以下のように<code>help()</code>を使う</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>help(math)
+</span></span><span style="display:flex;"><span>help(math<span style="color:#f92672">.</span>sin)
+</span></span></code></pre></div><p><strong>注意:</strong>
+jupyter notebook上で一度<code>import</code>したライブラリやモジュールは他のセルでも使える。複数のセルで同じモジュールを何度も<code>import</code>する必要はない。</p>
+<h2 id="random-モジュール-p82">random モジュール p.82</h2>
+<p>関数例</p>
+<ul>
+<li><code>random.randint(min,max)</code>   ## randomモジュールの<code>randint()</code>関数</li>
+<li><code>random.random()</code></li>
+</ul>
+<p>実行例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>x<span style="color:#f92672">=</span>random<span style="color:#f92672">.</span>random()
+</span></span><span style="display:flex;"><span>print(x)
+</span></span></code></pre></div><ul>
+<li>ramdint(a,b)：a以上b以下の値をランダムに生成</li>
+<li>random()：0以上1未満の値をランダムに生成</li>
 </ul>
 
             <footer class="footline">
@@ -245,7 +624,7 @@
           <li data-nav-id="/watanuki/docker/docker-compose-cuda/index.html" class="dd-item"><a href="/watanuki/docker/docker-compose-cuda/index.html">Docker Compose</a></li>
           <li data-nav-id="/watanuki/docker/base/index.html" class="dd-item"><a href="/watanuki/docker/base/index.html">Basic docker usage</a></li>
           <li data-nav-id="/watanuki/docker/appendix/index.html" class="dd-item"><a href="/watanuki/docker/appendix/index.html">Appendix</a></li></ul></li>
-          <li data-nav-id="/watanuki/python/index.html" class="dd-item"><a href="/watanuki/python/index.html">Python</a><ul id="subsections-c8861a2651b27ee3930a98ce392020d1">
+          <li data-nav-id="/watanuki/python/index.html" class="dd-item parent"><a href="/watanuki/python/index.html">Python</a><ul id="subsections-c8861a2651b27ee3930a98ce392020d1">
           <li data-nav-id="/watanuki/python/torch/index.html" class="dd-item"><a href="/watanuki/python/torch/index.html">Torch</a></li>
           <li data-nav-id="/watanuki/python/pickle/index.html" class="dd-item"><a href="/watanuki/python/pickle/index.html">Pickle</a></li>
           <li data-nav-id="/watanuki/python/numpy_function/index.html" class="dd-item"><a href="/watanuki/python/numpy_function/index.html">Useful Functions in Numpy</a></li>
@@ -259,9 +638,9 @@
           <li data-nav-id="/watanuki/python/class/index.html" class="dd-item"><a href="/watanuki/python/class/index.html">Class</a></li>
           <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
-          <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/python/module/index.html" class="dd-item active"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">

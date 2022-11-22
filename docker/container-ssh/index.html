@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>Connect to Docker Container via ssh :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/docker/container-ssh/index.xml" rel="alternate" type="application/rss+xml" title="Connect to Docker Container via ssh :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/docker/container-ssh/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/docker/instalation-docker-compose/index.html" title="How to install Docker Compose (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/docker/container-cuda/index.html" title="Docker Container for Cuda (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,17 +59,28 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/docker/index.html"><span itemprop="name">Docker</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Connect to Docker Container via ssh</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#参照">参照</a></li>
   </ul>
 </nav>
             </div>
@@ -80,58 +92,44 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="connect-to-docker-container-via-ssh">Connect to Docker Container via ssh</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
+<p>dockerでsshを行う場合にはopensshd-serverをインストールし、設定を行う必要がある。</p>
+<blockquote>
+<p>settings.sh</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export DEBIAN_FRONTEND<span style="color:#f92672">=</span>noninteractive
+</span></span><span style="display:flex;"><span>apt-get install -y openssh-server 
+</span></span><span style="display:flex;"><span>export mkdir /var/run/sshd
+</span></span><span style="display:flex;"><span>export ENV<span style="color:#f92672">=</span>NOTVISIBLE <span style="color:#e6db74">&#34;in users profile&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export VISIBLE=now&#34;</span> &gt;&gt; /etc/profile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;service ssh start&#34;</span> &gt;&gt; /etc/profile
+</span></span></code></pre></div><blockquote>
+<p>Dockerfile</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> bash /tmp/setting.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> &lt;port&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>ただしssh-serverが起動していなければ接続できない。そのため、コンテナ内で以下のコマンドを使用し、サーバーが止まっていないかを確認すること。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ service ssh status
+</span></span></code></pre></div><h4 id="start-or-stop-ssh">start or stop ssh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ service ssh start
+</span></span></code></pre></div><pre tabindex="0"><code>$ service ssh stop
+</code></pre><h1 id="trouble">trouble</h1>
+<h4 id="何度もuser名などを変えているとssh接続できない">何度もuser名などを変えているとssh接続できない…</h4>
+<p>known_hostsファイルの情報と異なるためsshできなくなる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh-keygen -f <span style="color:#e6db74">&#34;&lt;path of known-hosts file&gt;&#34;</span> -R <span style="color:#e6db74">&#34;[&lt;host&gt;]:&lt;port&gt;&#34;</span>
+</span></span></code></pre></div><p>と実行すればOK! (log標準出力でも表示されるのでそちらを参照！）</p>
 <ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
+<li>詳しくは<a href="https://qiita.com/hnw/items/0eeee62ce403b8d6a23c">こちら</a></li>
 </ul>
-<h2 id="参考">参考</h2>
+<h2 id="参照">参照</h2>
 <ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li><a href="https://qiita.com/YumaInaura/items/1d5c18a9e55484ccad89">docker 「コンテナを ssh 接続できるようにするDockerfile」チュートリアル解説</a></li>
+<li><a href="https://qiita.com/yagince/items/deba267f789604643bab">Docker Ubuntu18.04でtzdataをinstallするときにtimezoneの選択をしないでinstallする</a></li>
+<li><a href="https://qiita.com/dev-tatsuya/items/997c438019850e275a3e">はじめてのLinux(CentOS)サーバ構築 〜SSH接続、IP制限〜</a></li>
+<li><a href="https://qiita.com/hnw/items/0eeee62ce403b8d6a23c">「SSHホスト鍵が変わってるよ！」と怒られたときの対処</a></li>
 </ul>
 
             <footer class="footline">
@@ -235,12 +233,12 @@
           <li data-nav-id="/watanuki/latex/figure/index.html" class="dd-item"><a href="/watanuki/latex/figure/index.html">Figure</a></li>
           <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item"><a href="/watanuki/latex/table/index.html">Table</a></li>
           <li data-nav-id="/watanuki/latex/base/index.html" class="dd-item"><a href="/watanuki/latex/base/index.html">Basic</a></li></ul></li>
-          <li data-nav-id="/watanuki/docker/index.html" class="dd-item"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
+          <li data-nav-id="/watanuki/docker/index.html" class="dd-item parent"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
           <li data-nav-id="/watanuki/docker/post-installation-step/index.html" class="dd-item"><a href="/watanuki/docker/post-installation-step/index.html">Post Installation Steps for linux</a></li>
           <li data-nav-id="/watanuki/docker/copy-mount/index.html" class="dd-item"><a href="/watanuki/docker/copy-mount/index.html">Copy and Mount from Docker container or to Docker container</a></li>
           <li data-nav-id="/watanuki/docker/installation-docker/index.html" class="dd-item"><a href="/watanuki/docker/installation-docker/index.html">How to install Docker</a></li>
           <li data-nav-id="/watanuki/docker/container-cuda/index.html" class="dd-item"><a href="/watanuki/docker/container-cuda/index.html">Docker Container for Cuda</a></li>
-          <li data-nav-id="/watanuki/docker/container-ssh/index.html" class="dd-item"><a href="/watanuki/docker/container-ssh/index.html">Connect to Docker Container via ssh</a></li>
+          <li data-nav-id="/watanuki/docker/container-ssh/index.html" class="dd-item active"><a href="/watanuki/docker/container-ssh/index.html">Connect to Docker Container via ssh</a></li>
           <li data-nav-id="/watanuki/docker/instalation-docker-compose/index.html" class="dd-item"><a href="/watanuki/docker/instalation-docker-compose/index.html">How to install Docker Compose</a></li>
           <li data-nav-id="/watanuki/docker/docker-compose-cuda/index.html" class="dd-item"><a href="/watanuki/docker/docker-compose-cuda/index.html">Docker Compose</a></li>
           <li data-nav-id="/watanuki/docker/base/index.html" class="dd-item"><a href="/watanuki/docker/base/index.html">Basic docker usage</a></li>
@@ -260,8 +258,8 @@
           <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
           <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">

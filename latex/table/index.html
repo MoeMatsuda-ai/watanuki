@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>Table :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/latex/table/index.xml" rel="alternate" type="application/rss+xml" title="Table :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/latex/table/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/latex/base/index.html" title="Basic (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/latex/figure/index.html" title="Figure (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,17 +59,19 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/latex/index.html"><span itemprop="name">Latex</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Table</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#表の書き方">表の書き方</a></li>
+    <li><a href="#コマンド">コマンド</a></li>
+    <li><a href="#packageを用いた表作成">packageを用いた表作成</a></li>
+    <li><a href="#tabularの設定パラメータ">tabularの設定パラメータ</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
             </div>
@@ -80,58 +83,174 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="table">Table</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
+<h2 id="表の書き方">表の書き方</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{table}
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">\label</span>{ラベル名}
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">\caption</span>{表題}
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">\begin</span>{tabular}{|c|c|c|}<span style="color:#75715e">%3列で表示、列と列の間に縦罫線を引く
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>      西暦 &amp; 測定者 &amp; 測定方法 &amp; 測定結果 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>      &amp; &amp; &amp; <span style="color:#e6db74">$</span>\times <span style="color:#ae81ff">10</span>^<span style="color:#ae81ff">8</span><span style="color:#e6db74">$</span> [m/sec] <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">\hline</span> <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>      1638 &amp; Galileo &amp; 二人が離れてランプの光を見る &amp; (音速10倍以上) <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>      1675 &amp; Roemer &amp; 木星の衛星の観測から &amp; 2 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">\end</span>{tabular}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{table}
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h2 id="コマンド">コマンド</h2>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\hline</td>
+<td>横罫線を引く ※2回かけば2つ横罫線が引かれる</td>
+</tr>
+<tr>
+<td>\multicolmn{横に結合するマスの数}{表示形式、<code>|c|</code>等}{文字}</td>
+<td>横に並んだ表の要素を結合する</td>
+</tr>
+<tr>
+<td>\cline{3-5}</td>
+<td>任意の列に横罫線を引く(ここでは3列目から5列目に横罫線を引く)</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h2 id="packageを用いた表作成">packageを用いた表作成</h2>
+<table>
+<thead>
+<tr>
+<th>概要</th>
+<th>コマンド</th>
+<th>備考</th>
+<th>package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>セルの結合（縦）</td>
+<td>\multirow{結合要素数}{*}{文字}</td>
+<td>縦に並んだ表の要素を結合</td>
+<td>multirow</td>
+</tr>
+<tr>
+<td>幅を指定した横罫線</td>
+<td>\toprule[<!-- raw HTML omitted -->]</td>
+<td>表の最上部の横罫線を引きます．<!-- raw HTML omitted -->は線幅です．線幅を設定しないデフォルトを強く推奨します．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>横罫線(列見出しと本文、幅指定)</td>
+<td>\midrule[<!-- raw HTML omitted -->]</td>
+<td>列見出しと本文の間に横罫線を引きます．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>横罫線(表の最下部、幅指定)</td>
+<td>\bottomrule[<!-- raw HTML omitted -->]</td>
+<td>表の最下部の横罫線を引きます．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>任意の行への縦罫線</td>
+<td>\cmidrule<a href="trim"><!-- raw HTML omitted --></a>{a-b}</td>
+<td>a 行目から b 行目まで罫線を引きます．trim の設定(lr)を強く勧めます．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>行間スペース</td>
+<td>\addlinespace[<!-- raw HTML omitted -->]</td>
+<td>行間にスペースを挿入します．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>二重罫線(\cmidrule)</td>
+<td>\morecmidrules</td>
+<td>\cmidrule を二重罫線にするときに使います．他の罫線 (\toprule, \midrule, \bottomrule) では不要です．</td>
+<td>booktabs</td>
+</tr>
+<tr>
+<td>スペースありの罫線</td>
+<td>\specialrule{<!-- raw HTML omitted -->}{<!-- raw HTML omitted -->}{<!-- raw HTML omitted -->}</td>
+<td>上下にスペースを挿入した罫線を引きます．これを使う場合，三つの引数が必須です．</td>
+<td>booktabs</td>
+</tr>
+</tbody>
+</table>
+<p>※＜wd＞は幅指定（pt,em, cmなど)</p>
+<p>※「<!-- raw HTML omitted -->」は線のトリミングの指定です．「(lr)」とすると，列の幅より少し短い罫線になります．格好良い罫線が引きますので，このオプションをつけることを強く推奨します．「l{-2.3mm}r{3.4mm}」のようにすると，罫線を左側に 2.3 mm 伸び，右側に 3.4 mm 短くなります．</p>
+<p>※「<!-- raw HTML omitted -->」と「<!-- raw HTML omitted -->」は，罫線上下の空白の幅を指定します．幅指定は (1pt, 0.5em, 1.2mm) のようにします．</p>
+<!-- raw HTML omitted -->
+<h2 id="tabularの設定パラメータ">tabularの設定パラメータ</h2>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>動作</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l</td>
+<td>左詰(left)</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>r</td>
+<td>右詰</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>c</td>
+<td>センタリング</td>
+<td>引き続くブロックのセンタリング指定</td>
+</tr>
+<tr>
+<td>p{長さ}</td>
+<td>上/左詰めの幅指定カラム(paragraph)</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>m{長さ}</td>
+<td>中/左詰めの幅指定カラム(middle)</td>
+<td><code>arry.sty</code>が必要</td>
+</tr>
+<tr>
+<td>b{長さ}</td>
+<td>下/左詰めの幅指定カラム(bottom)</td>
+<td><code>arry.sty</code>が必要</td>
+</tr>
+<tr>
+<td>@{文字列}</td>
+<td>文字列がセパレーターになる</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>縦線(1本)</td>
+</tr>
+<tr>
+<td>`</td>
+<td></td>
+<td>`</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h2 id="参考文献">参考文献</h2>
 <ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
-</ul>
-<h2 id="参考">参考</h2>
-<ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li><a href="http://www.yamamo10.jp/yamamoto/comp/latex/make_doc/table/table.php">LaTeX 表組</a></li>
 </ul>
 
             <footer class="footline">
@@ -228,12 +347,12 @@
       </div>
       <div id="content-wrapper" class="highlightable">
         <ul class="topics">
-          <li data-nav-id="/watanuki/latex/index.html" class="dd-item"><a href="/watanuki/latex/index.html">Latex</a><ul id="subsections-e514a696637a00c4d532475690a2be70">
+          <li data-nav-id="/watanuki/latex/index.html" class="dd-item parent"><a href="/watanuki/latex/index.html">Latex</a><ul id="subsections-e514a696637a00c4d532475690a2be70">
           <li data-nav-id="/watanuki/latex/problem/index.html" class="dd-item"><a href="/watanuki/latex/problem/index.html">Problem</a></li>
           <li data-nav-id="/watanuki/latex/references/index.html" class="dd-item"><a href="/watanuki/latex/references/index.html">References</a></li>
           <li data-nav-id="/watanuki/latex/item/index.html" class="dd-item"><a href="/watanuki/latex/item/index.html">Bulletins in latex</a></li>
           <li data-nav-id="/watanuki/latex/figure/index.html" class="dd-item"><a href="/watanuki/latex/figure/index.html">Figure</a></li>
-          <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item"><a href="/watanuki/latex/table/index.html">Table</a></li>
+          <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item active"><a href="/watanuki/latex/table/index.html">Table</a></li>
           <li data-nav-id="/watanuki/latex/base/index.html" class="dd-item"><a href="/watanuki/latex/base/index.html">Basic</a></li></ul></li>
           <li data-nav-id="/watanuki/docker/index.html" class="dd-item"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
           <li data-nav-id="/watanuki/docker/post-installation-step/index.html" class="dd-item"><a href="/watanuki/docker/post-installation-step/index.html">Post Installation Steps for linux</a></li>
@@ -260,8 +379,8 @@
           <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
           <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">

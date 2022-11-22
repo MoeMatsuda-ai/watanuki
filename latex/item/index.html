@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>Bulletins in latex :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/latex/item/index.xml" rel="alternate" type="application/rss+xml" title="Bulletins in latex :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/latex/item/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/latex/figure/index.html" title="Figure (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/latex/references/index.html" title="References (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,16 +59,23 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/latex/index.html"><span itemprop="name">Latex</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Bulletins in latex</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
+    <li><a href="#記号付き箇条書き">記号付き箇条書き</a></li>
+    <li><a href="#itemizeのマークの変更">itemizeのマークの変更</a></li>
+    <li><a href="#番号付き箇条書き">番号付き箇条書き</a></li>
+    <li><a href="#enumerateの番号の変更">enumerateの番号の変更</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#見出し語付き箇条書き">見出し語付き箇条書き</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
@@ -80,58 +88,183 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="bulletins-in-latex">Bulletins in latex</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
-<ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
-</ul>
+<h2 id="記号付き箇条書き">記号付き箇条書き</h2>
+<p>　見出し記号付きの箇条書きをするためには¥itemizeを使用する。</p>
+<p>【入力例】</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥begin{itemize}
+</span></span><span style="display:flex;"><span>　　¥item aaa
+</span></span><span style="display:flex;"><span>　　¥item bbb
+</span></span><span style="display:flex;"><span>　　¥begin{itemize}
+</span></span><span style="display:flex;"><span>　　　　¥item ccc
+</span></span><span style="display:flex;"><span>　　¥end{itemize}
+</span></span><span style="display:flex;"><span>　　¥item ddd
+</span></span><span style="display:flex;"><span>¥end{itemize}
+</span></span></code></pre></div><p>【出力例】</p>
+<pre tabindex="0"><code>・ aaa
+・ bbb
+    - ccc
+・ ddd
+</code></pre><!-- raw HTML omitted -->
+<h2 id="itemizeのマークの変更">itemizeのマークの変更</h2>
+<p>　itemizeを入れ子にすると、各項目の見出しとなる記号が変化する。
+これらの記号は、クラスファイルのなかで次の命令に定義されている。</p>
+<table>
+<thead>
+<tr>
+<th>レベル</th>
+<th>命令</th>
+<th>デフォルト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>１</td>
+<td>¥labelitemi</td>
+<td>●</td>
+</tr>
+<tr>
+<td>２</td>
+<td>¥labelitemii</td>
+<td>−</td>
+</tr>
+<tr>
+<td>３</td>
+<td>¥labelitemiii</td>
+<td>＊</td>
+</tr>
+<tr>
+<td>４</td>
+<td>¥labelitemiv</td>
+<td>・</td>
+</tr>
+</tbody>
+</table>
+<p>【入力例１】itemizeの第１レベルの見出し記号を”○”に変更</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥renewcommand{¥labelitemi}{○}
+</span></span><span style="display:flex;"><span>　　¥begin{itemize}
+</span></span><span style="display:flex;"><span>　　　　¥item マークが変わった！
+</span></span><span style="display:flex;"><span>　　¥end{itemize}
+</span></span></code></pre></div><p>【出力例１】</p>
+<pre tabindex="0"><code>○ マークが変わった！
+</code></pre><p>【入力例２】見出し記号を１つだけ”○”に変更</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥begin{itemize}
+</span></span><span style="display:flex;"><span>　　¥item 普通のマーク
+</span></span><span style="display:flex;"><span>　　¥item[○]マークが変わります
+</span></span><span style="display:flex;"><span>¥end{itemize}
+</span></span></code></pre></div><p>【出力例２】</p>
+<pre tabindex="0"><code>・ 普通のマーク
+○ マークが変わります
+</code></pre><!-- raw HTML omitted -->
+<h2 id="番号付き箇条書き">番号付き箇条書き</h2>
+<p>　見出し番号付きの箇条書きをするためには¥enumerateを使用する。</p>
+<p>【入力例】</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥begin{enumerate}
+</span></span><span style="display:flex;"><span>　　¥item aaa
+</span></span><span style="display:flex;"><span>　　¥begin{enumerate}
+</span></span><span style="display:flex;"><span>　　　　　¥item bbb
+</span></span><span style="display:flex;"><span>　　　　　¥begin{enumerate}
+</span></span><span style="display:flex;"><span>　　　　　　　　¥item ccc
+</span></span><span style="display:flex;"><span>　　　　　¥end{enumerate}
+</span></span><span style="display:flex;"><span>　　¥end{enumerate}
+</span></span><span style="display:flex;"><span>　　¥item ddd
+</span></span><span style="display:flex;"><span>　　¥item eee
+</span></span><span style="display:flex;"><span>¥end{enumerate}
+</span></span></code></pre></div><p>【出力例】</p>
+<pre tabindex="0"><code>1. aaa
+    (a) bb
+        i. ccc
+2. ddd
+3. eee
+</code></pre><!-- raw HTML omitted -->
+<h2 id="enumerateの番号の変更">enumerateの番号の変更</h2>
+<p>　enumerateの番号の出力形式を変更するには、カウンタの値を出力する命令を定義し直す。</p>
+<table>
+<thead>
+<tr>
+<th>レベル</th>
+<th>カウンタ</th>
+<th>出力する命令</th>
+<th>デフォルトの出力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>１</td>
+<td>enumi</td>
+<td>¥theenumi</td>
+<td>アラビア数字（１，２，３，・・・）</td>
+</tr>
+<tr>
+<td>２</td>
+<td>enumii</td>
+<td>¥theenumii</td>
+<td>小文字のアルファベット（a，b，c，・・・）</td>
+</tr>
+<tr>
+<td>３</td>
+<td>enumiii</td>
+<td>¥theenumiii</td>
+<td>小文字のローマ数字（小文字のローマ数字（ⅰ，ⅱ，ⅲ，・・・）</td>
+</tr>
+<tr>
+<td>４</td>
+<td>enumiv</td>
+<td>¥theenumiv</td>
+<td>大文字のアルファベット（A，B，C，・・・）</td>
+</tr>
+</tbody>
+</table>
+<p>【例】¥enumiカウンタを大文字のローマ数字で出力する設定</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥renewcommand{¥theenumi}{¥Roman{enumi}}
+</span></span></code></pre></div><h4 id="番号の出力形式">番号の出力形式</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>出力形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¥arabic</td>
+<td>アラビア数字（１、２、３、・・・）</td>
+</tr>
+<tr>
+<td>¥roman</td>
+<td>ローマ数字（ⅰ、ⅱ、ⅲ、・・・）</td>
+</tr>
+<tr>
+<td>¥Roman</td>
+<td>ローマ数字（Ⅰ、Ⅱ、Ⅲ、・・・）</td>
+</tr>
+<tr>
+<td>¥alph</td>
+<td>アルファベット（a、b、c、・・・）</td>
+</tr>
+<tr>
+<td>¥Alph</td>
+<td>アルファベット（A、B、C、・・・）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="見出し語付き箇条書き">見出し語付き箇条書き</h2>
+<p>　見出し語付きの箇条書きをするためには¥descriptionを使用する。</p>
+<p>【入力例】</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>¥begin{description}
+</span></span><span style="display:flex;"><span>　　¥item[日時] ○月○日
+</span></span><span style="display:flex;"><span>　　¥item[場所] どこか
+</span></span><span style="display:flex;"><span>　　¥item[時間] ○時○分
+</span></span><span style="display:flex;"><span>　 ¥end{description}
+</span></span></code></pre></div><p>【出力例】</p>
+<pre tabindex="0"><code>日時 ○月○日
+場所 どこか
+時間 ○時○分
+</code></pre><!-- raw HTML omitted -->
 <h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li><a href="http://www3.otani.ac.jp/fkdsemi/pLaTeX_manual/kajyo.html">箇条書き</a></li>
 </ul>
 
             <footer class="footline">
@@ -228,10 +361,10 @@
       </div>
       <div id="content-wrapper" class="highlightable">
         <ul class="topics">
-          <li data-nav-id="/watanuki/latex/index.html" class="dd-item"><a href="/watanuki/latex/index.html">Latex</a><ul id="subsections-e514a696637a00c4d532475690a2be70">
+          <li data-nav-id="/watanuki/latex/index.html" class="dd-item parent"><a href="/watanuki/latex/index.html">Latex</a><ul id="subsections-e514a696637a00c4d532475690a2be70">
           <li data-nav-id="/watanuki/latex/problem/index.html" class="dd-item"><a href="/watanuki/latex/problem/index.html">Problem</a></li>
           <li data-nav-id="/watanuki/latex/references/index.html" class="dd-item"><a href="/watanuki/latex/references/index.html">References</a></li>
-          <li data-nav-id="/watanuki/latex/item/index.html" class="dd-item"><a href="/watanuki/latex/item/index.html">Bulletins in latex</a></li>
+          <li data-nav-id="/watanuki/latex/item/index.html" class="dd-item active"><a href="/watanuki/latex/item/index.html">Bulletins in latex</a></li>
           <li data-nav-id="/watanuki/latex/figure/index.html" class="dd-item"><a href="/watanuki/latex/figure/index.html">Figure</a></li>
           <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item"><a href="/watanuki/latex/table/index.html">Table</a></li>
           <li data-nav-id="/watanuki/latex/base/index.html" class="dd-item"><a href="/watanuki/latex/base/index.html">Basic</a></li></ul></li>
@@ -260,8 +393,8 @@
           <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
           <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">

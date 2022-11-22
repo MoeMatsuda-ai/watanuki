@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>Anaconda Update :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/python/anaconda-update/index.xml" rel="alternate" type="application/rss+xml" title="Anaconda Update :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/python/anaconda-update/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/python/tuple/index.html" title="Tuple (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/python/class/index.html" title="Class (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,17 +59,27 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/python/index.html"><span itemprop="name">Python</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Anaconda Update</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#pip-のアップデート">pip のアップデート</a>
+      <ul>
+        <li><a href="#pip-と-setuptools-のアップデート">pip と setuptools のアップデート</a></li>
+        <li><a href="#パッケージのアップデート">パッケージのアップデート</a></li>
+      </ul>
+    </li>
+    <li><a href="#naconda-のアップデート">naconda のアップデート</a>
+      <ul>
+        <li><a href="#すべてのパッケージをアップデート">すべてのパッケージをアップデート</a></li>
+        <li><a href="#特定のパッケージのアップデート">特定のパッケージのアップデート</a></li>
+        <li><a href="#anaconda-本体のアップデート">anaconda 本体のアップデート</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
             </div>
@@ -80,58 +91,35 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="anaconda-update">Anaconda Update</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
+<h2 id="pip-のアップデート">pip のアップデート</h2>
+<h3 id="pip-と-setuptools-のアップデート">pip と setuptools のアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python -m pip install --upgrade pip setuptools
+</span></span></code></pre></div><p>※<code>-m</code>はインターフェイスオプションで、pythonのモジュール（パッケージ）を実行するために使用</p>
+<h3 id="パッケージのアップデート">パッケージのアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install -U &lt;package-name&gt;
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install --upgrade &lt;package name&gt;
+</span></span></code></pre></div><h2 id="naconda-のアップデート">naconda のアップデート</h2>
+<h3 id="すべてのパッケージをアップデート">すべてのパッケージをアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update --all
+</span></span></code></pre></div><h3 id="特定のパッケージのアップデート">特定のパッケージのアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update &lt;package name1&gt; &lt;package name2&gt;
+</span></span></code></pre></div><h3 id="anaconda-本体のアップデート">anaconda 本体のアップデート</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update -n base -c defaults conda
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda update -n base conda
+</span></span></code></pre></div><p>※上は(base)と作成した仮想環境両方アップデートされた…（下のコマンドは不明）</p>
+<p>※<a href="https://qiita.com/FukuharaYohei/items/928f5b417337a5068a07">よく使うオプションは以下の通り</a></p>
 <ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
+<li><code>-n</code> は <code>--name</code> の略で、環境名の指定</li>
+<li><code>-c</code> は <code>--channel</code> の略で、デフォルトリポジトリだけでなくチャネルを追加で指定</li>
 </ul>
-<h2 id="参考">参考</h2>
+<h1 id="参考">参考</h1>
 <ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li><a href="https://qiita.com/saspy/items/a9a66d510e180ed8d326">Anaconda パッケージ アップデート方法</a></li>
+<li><a href="https://qiita.com/HyunwookPark/items/242a8ceea656416b6da8">pipでアップデートするときのコマンド pip update</a></li>
 </ul>
 
             <footer class="footline">
@@ -245,7 +233,7 @@
           <li data-nav-id="/watanuki/docker/docker-compose-cuda/index.html" class="dd-item"><a href="/watanuki/docker/docker-compose-cuda/index.html">Docker Compose</a></li>
           <li data-nav-id="/watanuki/docker/base/index.html" class="dd-item"><a href="/watanuki/docker/base/index.html">Basic docker usage</a></li>
           <li data-nav-id="/watanuki/docker/appendix/index.html" class="dd-item"><a href="/watanuki/docker/appendix/index.html">Appendix</a></li></ul></li>
-          <li data-nav-id="/watanuki/python/index.html" class="dd-item"><a href="/watanuki/python/index.html">Python</a><ul id="subsections-c8861a2651b27ee3930a98ce392020d1">
+          <li data-nav-id="/watanuki/python/index.html" class="dd-item parent"><a href="/watanuki/python/index.html">Python</a><ul id="subsections-c8861a2651b27ee3930a98ce392020d1">
           <li data-nav-id="/watanuki/python/torch/index.html" class="dd-item"><a href="/watanuki/python/torch/index.html">Torch</a></li>
           <li data-nav-id="/watanuki/python/pickle/index.html" class="dd-item"><a href="/watanuki/python/pickle/index.html">Pickle</a></li>
           <li data-nav-id="/watanuki/python/numpy_function/index.html" class="dd-item"><a href="/watanuki/python/numpy_function/index.html">Useful Functions in Numpy</a></li>
@@ -257,11 +245,11 @@
           <li data-nav-id="/watanuki/python/dict/index.html" class="dd-item"><a href="/watanuki/python/dict/index.html">Dict</a></li>
           <li data-nav-id="/watanuki/python/create-library/index.html" class="dd-item"><a href="/watanuki/python/create-library/index.html">Create Library</a></li>
           <li data-nav-id="/watanuki/python/class/index.html" class="dd-item"><a href="/watanuki/python/class/index.html">Class</a></li>
-          <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
+          <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item active"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
           <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">

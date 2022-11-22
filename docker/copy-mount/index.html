@@ -6,7 +6,8 @@
     <meta name="generator" content="Hugo 0.104.3">
     <meta name="generator" content="Relearn 5.6.5+tip">
     <meta name="description" content="">
-    <title>hugo note :: Chiyo&#39;s blog</title>
+    <title>Copy and Mount from Docker container or to Docker container :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/docker/copy-mount/index.xml" rel="alternate" type="application/rss+xml" title="Copy and Mount from Docker container or to Docker container :: Chiyo&#39;s blog">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669109996" rel="stylesheet"></noscript>
     <link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669109996" rel="stylesheet"></noscript>
@@ -39,17 +40,17 @@
     </script>
     <script src="/watanuki/js/jquery.min.js?1669109996" defer></script>
   </head>
-  <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
+  <body class="mobile-support html" data-url="/watanuki/docker/copy-mount/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+            <a class="nav nav-next" href="/watanuki/docker/installation-docker/index.html" title="How to install Docker (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="/watanuki/post/index.html" title="Posts (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="/watanuki/docker/post-installation-step/index.html" title="Post Installation Steps for linux (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -58,17 +59,29 @@
             <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Chiyo&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/post/index.html"><span itemprop="name">Posts</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">hugo note</span><meta itemprop="position" content="3"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/docker/index.html"><span itemprop="name">Docker</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Copy and Mount from Docker container or to Docker container</span><meta itemprop="position" content="3"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
-    <li><a href="#thema">thema</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#コピー">コピー</a></li>
+    <li><a href="#マウント">マウント</a>
+      <ul>
+        <li><a href="#バインドマウント">バインドマウント</a></li>
+        <li><a href="#ボリュームマウント">ボリュームマウント</a></li>
+        <li><a href="#ボリュームマウントとバインドマウントを明示的に指定した設定方法">ボリュームマウントとバインドマウントを明示的に指定した設定方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#appendix">appendix</a>
+      <ul>
+        <li><a href="#ボリュームのバックアップ方法">ボリュームのバックアップ方法</a></li>
+        <li><a href="#バックアップのリストア">バックアップのリストア</a></li>
+        <li><a href="#データボリュームコンテナ">データボリュームコンテナ</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
             </div>
@@ -80,59 +93,99 @@
           <div id="head-tags">
           </div>
           <article class="default">
-<h1 id="hugo-note">hugo note</h1>
+<h1 id="copy-and-mount-from-docker-container-or-to-docker-container">Copy and Mount from Docker container or to Docker container</h1>
 
-<h2 id="hugoでプロジェクトを作成">hugoでプロジェクトを作成</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;プロジェクト名&gt;
-</span></span><span style="display:flex;"><span>Congratulations! Your new Hugo site is created in PATH/hugo/test.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Just a few more steps and you<span style="color:#960050;background-color:#1e0010">&#39;</span>re ready to go:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>1. Download a theme into the same-named folder.
-</span></span><span style="display:flex;"><span>   Choose a theme from https://themes.gohugo.io/ or
-</span></span><span style="display:flex;"><span>   create your own with the <span style="color:#e6db74">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-</span></span><span style="display:flex;"><span>2. Perhaps you want to add some content. You can add single files
-</span></span><span style="display:flex;"><span>   with <span style="color:#e6db74">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-</span></span><span style="display:flex;"><span>3. Start the built-in live server via <span style="color:#e6db74">&#34;hugo server&#34;</span>.
-</span></span></code></pre></div><p>プロジェクトを作成すると次のようなファイルが作成される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree &lt;directory name&gt;/ -L <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>&lt;directory name&gt;/
-</span></span><span style="display:flex;"><span>├── archetypes
-</span></span><span style="display:flex;"><span>├── config.toml
-</span></span><span style="display:flex;"><span>├── content
-</span></span><span style="display:flex;"><span>├── data
-</span></span><span style="display:flex;"><span>├── layouts
-</span></span><span style="display:flex;"><span>├── public
-</span></span><span style="display:flex;"><span>├── resources
-</span></span><span style="display:flex;"><span>├── static
-</span></span><span style="display:flex;"><span>└── themes
-</span></span></code></pre></div><p>ページの設定は<code>config.toml</code>から変更できる。</p>
-<p>テーマは<a href="https://themes.gohugo.io/">公式ページ</a>からダウンロードし使用する。
-テーマの変更や言語設定なども<code>config.toml</code>から行う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat web-blog/config.toml 
-</span></span><span style="display:flex;"><span>baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://...&#39;</span> <span style="color:#75715e"># ページを公開するドメイン名</span>
-</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;en-us&#39;</span> <span style="color:#75715e"># 日本語ならja-jp</span>
-</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;blog name&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kraiklyn&#34;</span> <span style="color:#75715e"># ダウンロードしたテーマ</span>
-</span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
-</span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
-<pre tabindex="0"><code>$ hugo server -D
-</code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
-</span></span></code></pre></div><h2 id="thema">thema</h2>
+<h1 id="docker-での-copy-と-mount">docker での copy と mount</h1>
+<h2 id="コピー">コピー</h2>
+<p>ホストとコンテナ間でファイルをコピーするときは次のようにする</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker cp &lt;option&gt; &lt;コピー元path&gt; &lt;コピー先path&gt;
+</span></span></code></pre></div><p>コンテナのパスは<code>&lt;container name&gt;:&lt;path&gt;</code>のように書く</p>
+<!-- raw HTML omitted -->
+<h2 id="マウント">マウント</h2>
+<p>※マウントはコンテナをrunするときにオプションとして指定する</p>
+<h3 id="バインドマウント">バインドマウント</h3>
+<p>既存（ホスト側）のファイルやフォルダをマウントする方法のこと。</p>
+<p>普通のファイル同様に編集やバックアップが可能となるため、頻繁にアクセスするファイルなどはこちらに置く。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run <span style="color:#f92672">(</span>省略<span style="color:#f92672">)</span> -v &lt;マウント元のパス&gt;:&lt;マウントポイント&gt; <span style="color:#f92672">(</span>省略<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h3 id="ボリュームマウント">ボリュームマウント</h3>
+<p>ボリュームを作成し、マウントする方法のこと。</p>
+<p>Dockerホストから変更を加えたくないようなファイルなどはこちらに置く。</p>
 <ul>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
-<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
-<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
+<li>
+<p>ボリュームの作成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker volume create &lt;volume name&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>ボリュームの削除</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker volume rm &lt;volume name&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>マウント方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run <span style="color:#f92672">(</span>省略<span style="color:#f92672">)</span> -v &lt;ボリューム名&gt;:&lt;マウントポイント&gt; <span style="color:#f92672">(</span>省略<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>※ただしボリュームが存在しないときには新規作成される。</p>
+</li>
+<li>
+<p>docker volume コマンドにおけるサブコマンド</p>
+<table>
+<thead>
+<tr>
+<th>サブコマンド</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>ボリュームの作成</td>
+</tr>
+<tr>
+<td>inspect</td>
+<td>ボリュームの詳細情報を確認</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>ボリューム一覧を確認</td>
+</tr>
+<tr>
+<td>prune</td>
+<td>コンテナからマウントされていないボリュームをすべて削除</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>ボリュームの削除</td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<h2 id="参考">参考</h2>
+<h3 id="ボリュームマウントとバインドマウントを明示的に指定した設定方法">ボリュームマウントとバインドマウントを明示的に指定した設定方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ --mount type<span style="color:#f92672">=</span>&lt;bind or volume&gt;,src<span style="color:#f92672">=</span>&lt;マウント元&gt;,dst<span style="color:#f92672">=</span>&lt;マウント先&gt;
+</span></span></code></pre></div><p>※この方法ではバインドマウントとボリュームマウントが明示的に指定されているためわかりやすく、
+ボリュームが存在しない場合には新規作成されずエラーが出力される。そのため<code>-v</code>オプションより
+<code>--mount</code>オプションを使用することが推奨されている。</p>
 <ul>
-<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+<li>src は source でもOK</li>
+<li>dst は destination でもOK</li>
+<li>type=tmpfs としてメモリーを特定のマウント先に指定することもできる。</li>
 </ul>
+<!-- raw HTML omitted -->
+<h2 id="appendix">appendix</h2>
+<h3 id="ボリュームのバックアップ方法">ボリュームのバックアップ方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run --rm -v &lt;volume name&gt;:/src -v &lt;バックアップ先のフォルダ名&gt;:/dest busybox tar czf /dest/backup.tar.gz -C /src .
+</span></span></code></pre></div><ol>
+<li>軽量なLinux イメージの busybox を起動</li>
+<li>バックアップ対象をコンテナの /src にボリュームマウント</li>
+<li>Docker ホストの任意のディレクトリを /dest にバインドマウント</li>
+<li>/src 以下の全ファイルが /dest/backup.tar.gz にバックアップされる</li>
+<li>コンテナが破棄される</li>
+</ol>
+<p>※ただしこの方法ではバックアップしたいボリュームのボリューム名がわかっていなければならない。
+バックアップ対象をボリューム名ではなくコンテナのディレクトリ名で指定したい場合は<code>--volume-from</code>オプションを使用する！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run --rm --volume-from &lt;container name&gt; -v &lt;バックアップ先&gt;:/dest busybox tar czf /dest/bachup.tar.gz -C /var/lib/mysql .
+</span></span></code></pre></div><h3 id="バックアップのリストア">バックアップのリストア</h3>
+<p>バックアップを取っておいたデータを任意のvolumeに復元する方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run --rm -v &lt;volume名&gt;:/dest -v &lt;バックアップデータの置かれているディレクトリ&gt;:/src busybox tar xzf /src/backup.ta.gz -C /dest
+</span></span></code></pre></div><h3 id="データボリュームコンテナ">データボリュームコンテナ</h3>
 
             <footer class="footline">
             </footer>
@@ -235,9 +288,9 @@
           <li data-nav-id="/watanuki/latex/figure/index.html" class="dd-item"><a href="/watanuki/latex/figure/index.html">Figure</a></li>
           <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item"><a href="/watanuki/latex/table/index.html">Table</a></li>
           <li data-nav-id="/watanuki/latex/base/index.html" class="dd-item"><a href="/watanuki/latex/base/index.html">Basic</a></li></ul></li>
-          <li data-nav-id="/watanuki/docker/index.html" class="dd-item"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
+          <li data-nav-id="/watanuki/docker/index.html" class="dd-item parent"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
           <li data-nav-id="/watanuki/docker/post-installation-step/index.html" class="dd-item"><a href="/watanuki/docker/post-installation-step/index.html">Post Installation Steps for linux</a></li>
-          <li data-nav-id="/watanuki/docker/copy-mount/index.html" class="dd-item"><a href="/watanuki/docker/copy-mount/index.html">Copy and Mount from Docker container or to Docker container</a></li>
+          <li data-nav-id="/watanuki/docker/copy-mount/index.html" class="dd-item active"><a href="/watanuki/docker/copy-mount/index.html">Copy and Mount from Docker container or to Docker container</a></li>
           <li data-nav-id="/watanuki/docker/installation-docker/index.html" class="dd-item"><a href="/watanuki/docker/installation-docker/index.html">How to install Docker</a></li>
           <li data-nav-id="/watanuki/docker/container-cuda/index.html" class="dd-item"><a href="/watanuki/docker/container-cuda/index.html">Docker Container for Cuda</a></li>
           <li data-nav-id="/watanuki/docker/container-ssh/index.html" class="dd-item"><a href="/watanuki/docker/container-ssh/index.html">Connect to Docker Container via ssh</a></li>
@@ -260,8 +313,8 @@
           <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
           <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
           <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
-          <li data-nav-id="/watanuki/post/index.html" class="dd-item parent"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
-          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item active"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-ed2e83a7348f10833eb2cdf6b3dd9d69">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
         </ul>
         <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
         <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
