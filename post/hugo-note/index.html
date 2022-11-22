@@ -8,19 +8,19 @@
     <meta name="description" content="">
     <title>hugo note :: Chiyo&#39;s blog</title>
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="/watanuki/css/fontawesome-all.min.css?1669099245" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669099245" rel="stylesheet"></noscript>
-    <link href="/watanuki/css/featherlight.min.css?1669099245" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669099245" rel="stylesheet"></noscript>
-    <link href="/watanuki/css/auto-complete.css?1669099245" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/auto-complete.css?1669099245" rel="stylesheet"></noscript>
-    <link href="/watanuki/css/perfect-scrollbar.min.css?1669099245" rel="stylesheet">
-    <link href="/watanuki/css/nucleus.css?1669099245" rel="stylesheet">
-    <link href="/watanuki/css/fonts.css?1669099245" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fonts.css?1669099245" rel="stylesheet"></noscript>
-    <link href="/watanuki/css/theme.css?1669099245" rel="stylesheet">
-    <link href="/watanuki/css/theme-relearn-light.css?1669099245" rel="stylesheet" id="variant-style">
-    <link href="/watanuki/css/ie.css?1669099245" rel="stylesheet">
-    <link href="/watanuki/css/variant.css?1669099245" rel="stylesheet">
-    <link href="/watanuki/css/print.css?1669099245" rel="stylesheet" media="print">
-    <script src="/watanuki/js/url.js?1669099245"></script>
-    <script src="/watanuki/js/variant.js?1669099245"></script>
+    <link href="/watanuki/css/fontawesome-all.min.css?1669102508" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669102508" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/featherlight.min.css?1669102508" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669102508" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/auto-complete.css?1669102508" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/auto-complete.css?1669102508" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/perfect-scrollbar.min.css?1669102508" rel="stylesheet">
+    <link href="/watanuki/css/nucleus.css?1669102508" rel="stylesheet">
+    <link href="/watanuki/css/fonts.css?1669102508" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fonts.css?1669102508" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/theme.css?1669102508" rel="stylesheet">
+    <link href="/watanuki/css/theme-relearn-light.css?1669102508" rel="stylesheet" id="variant-style">
+    <link href="/watanuki/css/ie.css?1669102508" rel="stylesheet">
+    <link href="/watanuki/css/variant.css?1669102508" rel="stylesheet">
+    <link href="/watanuki/css/print.css?1669102508" rel="stylesheet" media="print">
+    <script src="/watanuki/js/url.js?1669102508"></script>
+    <script src="/watanuki/js/variant.js?1669102508"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -37,7 +37,7 @@
       var baseUriFull='https:\/\/moematsuda-ai.github.io\/watanuki/';
       window.variants && variants.init( [ 'relearn-light' ] );
     </script>
-    <script src="/watanuki/js/jquery.min.js?1669099245" defer></script>
+    <script src="/watanuki/js/jquery.min.js?1669102508" defer></script>
   </head>
   <body class="mobile-support html" data-url="/watanuki/post/hugo-note/index.html">
     <div id="body" class="default-animation">
@@ -66,6 +66,8 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#hugoでプロジェクトを作成">hugoでプロジェクトを作成</a></li>
+    <li><a href="#thema">thema</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
             </div>
@@ -114,9 +116,22 @@
 </span></span></code></pre></div><p>以下のコマンドで記事のファイルを作成できる。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/test.md
 </span></span></code></pre></div><p>このコマンドを実行すると<code>contents/posts/test.md</code>が作成される。</p>
-<p>次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
+<p>また、次のコマンドを実行すると<code>localhost:1313</code>でプレビューが見れるようになる。</p>
 <pre tabindex="0"><code>$ hugo server -D
 </code></pre><p>次のコマンドを実行でpublicフォルダに静的ファイルが作成される。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo 
+</span></span></code></pre></div><h2 id="thema">thema</h2>
+<ul>
+<li><a href="https://themes.gohugo.io/themes/hugo-theme-relearn/">Hugo Relearn Theme</a></li>
+<li><a href="https://themes.gohugo.io/themes/hugo-theme-learn/">Hugo Learn Theme</a></li>
+<li><a href="https://themes.gohugo.io/themes/tinyworks/">TinyWorks</a></li>
+<li><a href="https://themes.gohugo.io/themes/kraiklyn/">Kraiklyn</a></li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://hacknote.jp/archives/54404/">HUGOの使い方</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/22908/">静的サイトジェネレータ「Hugo」と技術文書公開向けテーマ「Docsy」でOSSサイトを作る</a></li>
+</ul>
 
             <footer class="footline">
             </footer>
@@ -196,12 +211,12 @@
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/watanuki/js/auto-complete.js?1669099245" defer></script>
-        <script src="/watanuki/js/lunr.min.js?1669099245" defer></script>
-        <script src="/watanuki/js/lunr.stemmer.support.min.js?1669099245" defer></script>
-        <script src="/watanuki/js/lunr.multi.min.js?1669099245" defer></script>
-        <script src="/watanuki/js/lunr.en.min.js?1669099245" defer></script>
-        <script src="/watanuki/js/search.js?1669099245" defer></script>
+        <script src="/watanuki/js/auto-complete.js?1669102508" defer></script>
+        <script src="/watanuki/js/lunr.min.js?1669102508" defer></script>
+        <script src="/watanuki/js/lunr.stemmer.support.min.js?1669102508" defer></script>
+        <script src="/watanuki/js/lunr.multi.min.js?1669102508" defer></script>
+        <script src="/watanuki/js/lunr.en.min.js?1669102508" defer></script>
+        <script src="/watanuki/js/search.js?1669102508" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -253,9 +268,9 @@
         </div>
       </div>
     </aside>
-    <script src="/watanuki/js/clipboard.min.js?1669099245" defer></script>
-    <script src="/watanuki/js/perfect-scrollbar.min.js?1669099245" defer></script>
-    <script src="/watanuki/js/featherlight.min.js?1669099245" defer></script>
-    <script src="/watanuki/js/theme.js?1669099245" defer></script>
+    <script src="/watanuki/js/clipboard.min.js?1669102508" defer></script>
+    <script src="/watanuki/js/perfect-scrollbar.min.js?1669102508" defer></script>
+    <script src="/watanuki/js/featherlight.min.js?1669102508" defer></script>
+    <script src="/watanuki/js/theme.js?1669102508" defer></script>
   </body>
 </html>
