@@ -24,6 +24,19 @@ with torch.no_grad(): y = x*2 We can use as decorator
       <description>pickleの使用方法 Saving with openでの保存、読み込み with open(&amp;#34;filename.pkl&amp;#34;, &amp;#34;wb&amp;#34;) as f: pickle.dump(data, f) with open(&amp;#34;filename.pkl&amp;#34;, &amp;#34;rb&amp;#34;) as f: hoge = pickle.load(f) pandasでの保存、読み込み import pandas as pd pd.to_pickle(data, &amp;#34;filename.pkl&amp;#34;) hoge = pd.read_pickle(&amp;#34;filename.pkl&amp;#34;) joblib(?)での保存、読み込み joblib.dump(data, &amp;#34;filename.jb&amp;#34;, compress=3) hoge = joblib.load(&amp;#34;filename.jb&amp;#34;) </description>
     </item>
     <item>
+      <title>Pandas</title>
+      <link>https://moematsuda-ai.github.io/watanuki/python/pandas/index.html</link>
+      <pubDate>Tue, 22 Nov 2022 08:11:35 +0000</pubDate>
+      <guid>https://moematsuda-ai.github.io/watanuki/python/pandas/index.html</guid>
+      <description>Pandasの概要 pandasはデータ解析を容易にするPythonのサードパーティライブラリです。 データ構造に対して様々な処理を施す機能を提供しており、他のライブラリをバックエンドとして利用して連携して動作できることやデータに対する豊富な処理機能を備えていることから、高度なデータ解析に欠かせないツールとなっている。NumpyのようにC言語による実装であるため配列演算の高速化が図られている点も大規模データの扱いを容易にする魅力の一つとなっている。
+PyDataとは？ PyDataとはPythonによるデータ管理/分析ツールのユーザと開発者のコミュニティです。 PyDataで話題とされるPythonツール群を総称してPyData Stackなどと呼ぶ。
+Pandasで何ができる？ Pndasはさまざまな形式で保存されたデータにアクセスし、効率的にそのデータを分析あるいは処理し、 その結果を可視化したり保存したりできるツールである。
+データを入出力する機能(CSV, Excel, RDB/Relational DataBase, HDF5など) データを効率的かつ高速に処理できる形式でデータを格納 データのNaN（Not a Number、欠損値）処理 データの一部取り出しや結合 データの柔軟な変更やピボット(pivot)を処理 データに対する統計処理や回帰処理等 データの集約とグループ演算 Pandasのデータ型 pandasにはプログラムで作成したデータや外部から読み込んだデータを保持しておくデータ構造としてシリーズ、データフレーム、パネルの3つの形式があり、それぞれ1次元、2次元、3次元の配列に対応している。 また、それぞれのデータの位置または属性を表現するために行ラベル、列ラベル、アイテム名といったラベル名を設定する。
+1. Series 1次元データ保存用のデータ構造。格納するデータに制限はなく、すべての要素が同じデータ型である必要もない。
+dat = pd.Serie([1, 3, 6, 12]) dat2 = pd.Series(np.array([1, 3, np.nan, 12])) dat3 = pd.Series([&amp;#39;aa&amp;#39;, &amp;#39;bb&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;]) dat4 = pd.Series([1, &amp;#39;aa&amp;#39;, 2.34, &amp;#39;d&amp;#39;]) 行ラベルを指定しなかった場合には自動的に0から始まる整数が割り振られる。行ラベルの設定には生成時に引数としてindexを指定するか、辞書型変数（またはリテラル）をシリーズに渡すことで表ラベルを指定する方法がある。
+dat5 = pd.Series([1, 3, 6, 12], index=[1, 10, 20, 33]) dat6 = pd.Series([1, 3, 5, 12], index=[&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;]) dat7 = pd.</description>
+    </item>
+    <item>
       <title>Useful Functions in Numpy</title>
       <link>https://moematsuda-ai.github.io/watanuki/python/numpy_function/index.html</link>
       <pubDate>Tue, 22 Nov 2022 08:11:04 +0000</pubDate>

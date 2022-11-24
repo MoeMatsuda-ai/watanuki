@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.104.3">
+    <meta name="generator" content="Relearn 5.6.5+tip">
+    <meta name="description" content="">
+    <title>Pandas :: Chiyo&#39;s blog</title>
+    <link href="/watanuki/python/pandas/index.xml" rel="alternate" type="application/rss+xml" title="Pandas :: Chiyo&#39;s blog">
+    <link href="/watanuki/python/pandas/index.print.html" rel="alternate" type="text/html" title="Pandas :: Chiyo&#39;s blog">
+    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
+    <link href="/watanuki/css/fontawesome-all.min.css?1669254382" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fontawesome-all.min.css?1669254382" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/featherlight.min.css?1669254382" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/featherlight.min.css?1669254382" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/auto-complete.css?1669254382" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/auto-complete.css?1669254382" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/perfect-scrollbar.min.css?1669254382" rel="stylesheet">
+    <link href="/watanuki/css/nucleus.css?1669254382" rel="stylesheet">
+    <link href="/watanuki/css/fonts.css?1669254382" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/watanuki/css/fonts.css?1669254382" rel="stylesheet"></noscript>
+    <link href="/watanuki/css/theme.css?1669254382" rel="stylesheet">
+    <link href="/watanuki/css/theme-relearn-dark.css?1669254382" rel="stylesheet" id="variant-style">
+    <link href="/watanuki/css/ie.css?1669254382" rel="stylesheet">
+    <link href="/watanuki/css/variant.css?1669254382" rel="stylesheet">
+    <link href="/watanuki/css/print.css?1669254382" rel="stylesheet" media="print">
+    <script src="/watanuki/js/url.js?1669254382"></script>
+    <script src="/watanuki/js/variant.js?1669254382"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      window.index_js_url="/watanuki/index.search.js";
+      var root_url="/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      window.T_No_results_found = 'No results found for \u0022{0}\u0022';
+      window.T_N_results_found = '{1} results found for \u0022{0}\u0022';
+      // some further base stuff
+      var baseUriFull='https:\/\/moematsuda-ai.github.io\/watanuki/';
+      window.variants && variants.init( [ 'relearn-dark', 'relearn-light', 'green', 'black', 'blue', 'learn' ] );
+    </script>
+    <script src="/watanuki/js/jquery.min.js?1669254382" defer></script>
+  </head>
+  <body class="mobile-support html" data-url="/watanuki/python/pandas/index.html">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable" dir="ltr">
+        <div>
+          <div class="navigation">
+            <a class="nav nav-next" href="/watanuki/python/numpy_function/index.html" title="Useful Functions in Numpy (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+            <a class="nav nav-prev" href="/watanuki/python/pickle/index.html" title="Pickle (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-print-link">
+            <a class="print-link" title='Print whole chapter (CTRL+ALT+p)' href="/watanuki/python/pandas/index.print.html">
+              <i class="fas fa-print fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/index.html"><span itemprop="name">Moai&#39;s blog</span></a><meta itemprop="position" content="1"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/watanuki/python/index.html"><span itemprop="name">Python</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Pandas</span><meta itemprop="position" content="3"></li>
+            </ol>
+          </div>
+          <div class="default-animation progress">
+            <div class="toc-wrapper" dir="ltr">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pandasの概要">Pandasの概要</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#pandasのデータ型">Pandasのデータ型</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#apispplicatopm-programming-interfaveとは">API(Spplicatopm Programming Interfave)とは？</a>
+      <ul>
+        <li><a href="#プロパティを使用したデータフレームのインデックス参照">プロパティを使用したデータフレームのインデックス参照</a></li>
+        <li><a href="#データフレームに対する直接インデックス参照">データフレームに対する直接インデックス参照</a></li>
+        <li><a href="#基本的な演算規則">基本的な演算規則</a></li>
+      </ul>
+    </li>
+    <li><a href="#pandasの使い方">Pandasの使い方</a>
+      <ul>
+        <li><a href="#dataflame">DataFlame</a></li>
+        <li><a href="#series">Series</a></li>
+        <li><a href="#csvファイルへの入出力">csvファイルへの入出力</a></li>
+      </ul>
+    </li>
+    <li><a href="#pandasでのindexing">Pandasでのindexing</a>
+      <ul>
+        <li><a href="#indexによるデータへのアクセス">indexによるデータへのアクセス</a></li>
+        <li><a href="#例文">例文</a></li>
+      </ul>
+    </li>
+    <li><a href="#pandas-summary-functions-and-maps">Pandas 「Summary Functions and Maps」</a></li>
+    <li><a href="#groutping-and-sorting">Groutping and Sorting</a>
+      <ul>
+        <li><a href="#groupwise-amalysis">Groupwise amalysis</a></li>
+        <li><a href="#その他">その他</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types-and-missing-values">Data Types and Missing Values</a></li>
+    <li><a href="#renaming-and-combining">Renaming and Combining</a></li>
+    <li><a href="#pandasの便利なfunction">Pandasの便利なfunction</a>
+      <ul>
+        <li><a href="#shape-attribute">&ldquo;shape&rdquo; attribute</a></li>
+        <li><a href="#head-command">&ldquo;head()&rdquo; command</a></li>
+        <li><a href="#差分を計算">差分を計算</a></li>
+        <li><a href="#index-の割当">index の割当</a></li>
+        <li><a href="#カラム名の変更">カラム名の変更</a></li>
+        <li><a href="#dataframeやseriesの文字列や空白を削除">DataFrameやSeriesの文字列や空白を削除</a></li>
+        <li><a href="#型変換と型判定">型変換と型判定</a></li>
+        <li><a href="#dataframe-または-series-で特定の文字列を検索">DataFrame または Series で特定の文字列を検索</a></li>
+        <li><a href="#series-や-dataframe-の結合">Series や DataFrame の結合</a></li>
+        <li><a href="#pandasで要素行列荷関数を適用">pandasで要素・行・列荷関数を適用</a></li>
+        <li><a href="#pandasdataframeの行や列を削除">pandas.DataFrameの行や列を削除</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+          <article class="default">
+<h1 id="pandas">Pandas</h1>
+
+<h2 id="pandasの概要">Pandasの概要</h2>
+<p><code>pandas</code>はデータ解析を容易にするPythonのサードパーティライブラリです。
+データ構造に対して様々な処理を施す機能を提供しており、他のライブラリをバックエンドとして利用して連携して動作できることやデータに対する豊富な処理機能を備えていることから、高度なデータ解析に欠かせないツールとなっている。NumpyのようにC言語による実装であるため配列演算の高速化が図られている点も大規模データの扱いを容易にする魅力の一つとなっている。</p>
+<!-- raw HTML omitted -->
+<h4 id="pydataとは">PyDataとは？</h4>
+<p><strong>PyData</strong>とはPythonによるデータ管理/分析ツールのユーザと開発者のコミュニティです。
+PyDataで話題とされるPythonツール群を総称して<strong>PyData Stack</strong>などと呼ぶ。</p>
+<!-- raw HTML omitted -->
+<h4 id="pandasで何ができる">Pandasで何ができる？</h4>
+<p>Pndasはさまざまな形式で保存されたデータにアクセスし、効率的にそのデータを分析あるいは処理し、
+その結果を可視化したり保存したりできるツールである。</p>
+<ul>
+<li>データを入出力する機能(CSV, Excel, RDB/<em>Relational DataBase</em>, HDF5など)</li>
+<li>データを効率的かつ高速に処理できる形式でデータを格納</li>
+<li>データのNaN（<em>Not a Number</em>、欠損値）処理</li>
+<li>データの一部取り出しや結合</li>
+<li>データの柔軟な変更やピボット(pivot)を処理</li>
+<li>データに対する統計処理や回帰処理等</li>
+<li>データの集約とグループ演算</li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="pandasのデータ型">Pandasのデータ型</h2>
+<p>pandasにはプログラムで作成したデータや外部から読み込んだデータを保持しておくデータ構造として<strong>シリーズ、データフレーム、パネル</strong>の3つの形式があり、それぞれ1次元、2次元、3次元の配列に対応している。
+また、それぞれのデータの位置または属性を表現するために<strong>行ラベル</strong>、<strong>列ラベル</strong>、<strong>アイテム名</strong>といったラベル名を設定する。</p>
+<!-- raw HTML omitted -->
+<h4 id="1-series">1. Series</h4>
+<p>1次元データ保存用のデータ構造。格納するデータに制限はなく、すべての要素が同じデータ型である必要もない。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Serie([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">12</span>])
+</span></span><span style="display:flex;"><span>dat2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, np<span style="color:#f92672">.</span>nan, <span style="color:#ae81ff">12</span>]))
+</span></span><span style="display:flex;"><span>dat3 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#e6db74">&#39;aa&#39;</span>, <span style="color:#e6db74">&#39;bb&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>])
+</span></span><span style="display:flex;"><span>dat4 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;aa&#39;</span>, <span style="color:#ae81ff">2.34</span>, <span style="color:#e6db74">&#39;d&#39;</span>])
+</span></span></code></pre></div><p>行ラベルを指定しなかった場合には自動的に0から始まる整数が割り振られる。行ラベルの設定には生成時に引数としてindexを指定するか、辞書型変数（またはリテラル）をシリーズに渡すことで表ラベルを指定する方法がある。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dat5 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">12</span>], index<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">33</span>])
+</span></span><span style="display:flex;"><span>dat6 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">12</span>], index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>])
+</span></span><span style="display:flex;"><span>dat7 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series({<span style="color:#e6db74">&#39;a&#39;</span>:<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;b&#39;</span>:<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;c&#39;</span>:<span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#39;d&#39;</span>:<span style="color:#ae81ff">12</span>})
+</span></span></code></pre></div><p>行ラベルはindexという属性で割り当てられているため、<code>index</code>という変数で行ラベルを参照したり変更したりすることも可能である。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dat8<span style="color:#f92672">.</span>index <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;un&#39;</span>, <span style="color:#e6db74">&#39;due&#39;</span>, <span style="color:#e6db74">&#39;trois&#39;</span>, <span style="color:#e6db74">&#39;quatre&#39;</span>]
+</span></span><span style="display:flex;"><span>print(dat8<span style="color:#f92672">.</span>index)
+</span></span></code></pre></div><p>また、シリーズ形式では辞書型と違いデータに順番があり、0からカウントアップする順序インデックスが割り当てられている。（c言語の配列の添字みたいなもの）
+そのため<strong>iloc</strong>プロパティで順序インデックスを使用することでデータを取り出すこともできる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dat6<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="2-dataframe">2. DataFrame</h4>
+<p>DataFrameは2次元のラベル付きデータ構造で、Pandasの中で最も使われることが多いデータタイプである。
+Numpyからは2次元のndarrayをそのまま入力することができる。</p>
+<p>データフレームでは行ラベル(<em>index</em>)と列ラベル(culmn)を同時に指定することができ、行ラベルは<code>index</code>、列ラベルは<code>culmn</code>でそれぞれ参照/変更することができる。</p>
+<p>以下はDataFlameを格納する場合の一例である。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fruit_dat <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;c_都道府県&#39;</span>:[<span style="color:#e6db74">&#39;山梨&#39;</span>, <span style="color:#e6db74">&#39;福島&#39;</span>, <span style="color:#e6db74">&#39;長野&#39;</span>, <span style="color:#e6db74">&#39;栃木&#39;</span>, <span style="color:#e6db74">&#39;福岡&#39;</span>, <span style="color:#e6db74">&#39;熊本&#39;</span>, <span style="color:#e6db74">&#39;青森&#39;</span>, <span style="color:#e6db74">&#39;長野&#39;</span>, <span style="color:#e6db74">&#39;岩手&#39;</span>], <span style="color:#e6db74">&#39;a_果物&#39;</span>:[<span style="color:#e6db74">&#39;モモ&#39;</span>, <span style="color:#e6db74">&#39;モモ&#39;</span>, <span style="color:#e6db74">&#39;モモ&#39;</span>, <span style="color:#e6db74">&#39;りんご&#39;</span>, <span style="color:#e6db74">&#39;りんご&#39;</span>, <span style="color:#e6db74">&#39;りんご&#39;</span>, <span style="color:#e6db74">&#39;いちご&#39;</span>, <span style="color:#e6db74">&#39;いちご&#39;</span>, <span style="color:#e6db74">&#39;いちご&#39;</span>]}
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(fruit_dat)<span style="color:#75715e">#辞書型からデータフレームに変換</span>
+</span></span><span style="display:flex;"><span>d<span style="color:#f92672">.</span>columns
+</span></span><span style="display:flex;"><span>print(Index(<span style="color:#e6db74">&#39;a_果物&#39;</span>, <span style="color:#e6db74">&#39;b_収穫量順位&#39;</span>, <span style="color:#e6db74">&#39;c_都道府県&#39;</span>], dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;object&#39;</span>))
+</span></span></code></pre></div><p>ただしデータの列の順序は、列ラベルによって自動的にソートされて順序が変わるため注意が必要である。
+上記の例でもデータを与えたときとデータフレームに格納後の順序は違っている。そこでデータフレームに格納する際に順序を変えないようにするには次のようにcolumns引数によって列の順序を指定することができる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>d2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(fruit_dat, columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;a_果物&#39;</span>, <span style="color:#e6db74">&#39;c_都道府県&#39;</span>, <span style="color:#e6db74">&#39;d_収穫量順位&#39;</span>])
+</span></span></code></pre></div><p>またシリーズを要素に持つ辞書型やリストからデータフレームを生成することも可能であり、データフレーム生成時に指定できるデータの方を次の表に示す。</p>
+<table>
+<thead>
+<tr>
+<th>データ型</th>
+<th>概要説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>辞書型</td>
+<td>辞書型の値としてリスト/タプル/シーケンスデータ/シリーズ/辞書型を値に持つもの</td>
+</tr>
+<tr>
+<td>リスト</td>
+<td>辞書型、シリーズ、リストまたはタプルのリスト</td>
+</tr>
+<tr>
+<td>別のデータフレーム</td>
+<td>データフレームの浅いコピーが生成される</td>
+</tr>
+<tr>
+<td>Numpyの2次元ndarrayもしくはMaskedArray</td>
+<td>データフレームの場合は2次元なので、2次元配列を受け付ける</td>
+</tr>
+</tbody>
+</table>
+<h6 id="階層化インデックスについて"><strong>階層化インデックス</strong>について</h6>
+<p>3次元以上のデータを2次元データ形式のデータフレームで扱うためには行ラベルや列ラベルを複数階層のデータにする必要がある。
+そのために必要なのが<strong>階層型インデックス</strong>である。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>), index <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]], columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Time_a&#39;</span>, <span style="color:#e6db74">&#39;Time_b&#39;</span>, <span style="color:#e6db74">&#39;Vel_a&#39;</span>, <span style="color:#e6db74">&#39;Vel_b&#39;</span>])
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>xs(<span style="color:#ae81ff">0</span>, level<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>); a<span style="color:#75715e">#データフレームのdxメソッドを使って、特定のラベル値のデータを抜き出す</span>
+</span></span></code></pre></div><p>この例ではランダムに生成した4×4の行列データに対して2次元リストによる行ラベル(index)指定により、
+xとyで区別される階層と0と1で区別される階層の2階層の行ラベルがつけられている。また2行目では表ラベルが(axis=0)の2層目(level=1)が0のデータを抽出している。</p>
+<p>あとから階層型インデックスに変換する場合には次のように列ラベルを<code>_</code>で分割して多階層化する。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>MultiIndex<span style="color:#f92672">.</span>from_tuples([tuple(c<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;_&#39;</span>)) <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns])
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="3-panel">3. Panel</h4>
+<p>パネルは3次元データの格納用に用意されたデータ構造である。
+データフレームよりも次元が1つ大きくなるため<code>items</code>という属性が1つ増えており、次のように生成することができる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## キーの準備（キー：アイテム名、値：データフレーム）</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Iyrm1&#39;</span>: pd<span style="color:#f92672">.</span>DataFrame(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>)), <span style="color:#e6db74">&#39;Item2&#39;</span> : pd<span style="color:#f92672">.</span>DataFrame(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>))}
+</span></span><span style="display:flex;"><span>pp1 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Panel(data); pp1
+</span></span></code></pre></div><p>ここではアイテム名として<code>Item1</code>, <code>Item2</code>が指定されており、<code>pp1.Item1</code>などのように記述することでそのアイテム名に対応するデータフレームにアクセスすることができる。</p>
+<p>ただしPanelではindexは<code>major_axis</code>, columnは<code>minor_axis</code>という属性で割り当てられているため
+行ラベルと列ラベルを指定してパネルを生成する場合には注意が必要である。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pp2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Pane(np<span style="color:#f92672">.</span>random<span style="color:#f92672">/</span>randn(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>), items<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Item1&#39;</span>, <span style="color:#e6db74">&#39;Item2&#39;</span>], major_axis<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>data_range(<span style="color:#e6db74">&#39;2/1/2016&#39;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>), minor_axis<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#e6db74">&#39;two&#39;</span>, <span style="color:#e6db74">&#39;three&#39;</span>])
+</span></span><span style="display:flex;"><span>print(pp2<span style="color:#f92672">.</span>major_axis)
+</span></span><span style="display:flex;"><span>print(pp2<span style="color:#f92672">.</span>Item1<span style="color:#f92672">.</span>index)
+</span></span></code></pre></div><p>ただし上記のプログラムの下2行は等価であり、同じ値を出力する。</p>
+<h2 id="apispplicatopm-programming-interfaveとは">API(Spplicatopm Programming Interfave)とは？</h2>
+<p><strong>API</strong>とはデータ処理/解析向けに実装されている様々な機能にアクセスする窓口となっている関数や
+メソッドのことである。</p>
+<p>Pandasの機能はPandas固有のデータ型ので意義が中心にあり、それにアクセスするための機能として、
+pandasの関数とデータ型のメソッドの2種類のAPIがある。</p>
+<p>外部ライブラリでは、Numexprやbottleneck(ndarray用の高速関数実装), Cythonが高速化のために使用され、
+MatplotlibやXlsxWriter(Excelへの書き込み機能を提供するライブラリ)などは拡張機能として利用できる。</p>
+<p>また、Pandasの機能にはixやlocなどの<strong>プロパティ</strong>も若干含まれている。これらは属性に直接アクセスしないで何らかの処理を経由して属性にアクセスする仕組みであり、インスタンスの属性を取り出したり設定したりするのに用いられる。</p>
+<!-- raw HTML omitted -->
+<h3 id="プロパティを使用したデータフレームのインデックス参照">プロパティを使用したデータフレームのインデックス参照</h3>
+<p>下記のようなインデックス参照では、値を<strong>参照</strong>することも、その参照ポイントに値を<strong>設定</strong>することも可能。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>at</td>
+<td>行ラベルと列ラベルによりスカラー値（1つのデータ）への参照を得る。<code>loc</code>より高速</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>行番号と列番号によりスカラー値（1つのデータ）への参照を得る。<code>loc</code>より高速</td>
+</tr>
+<tr>
+<td>loc</td>
+<td>行ラベルと列ラベルによりベクトル（複数データ）またはスカラー値（1つのデータ）への参照を得る。</td>
+</tr>
+<tr>
+<td>iloc</td>
+<td>行番号と列番号によりベクトル（複数データ）またはスカラー値への参照を得る</td>
+</tr>
+<tr>
+<td>ix</td>
+<td>通常はlocのように機能するが、ラベルが指定されていない場合はilocのように機能する。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>参照方法</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>df.at[&lsquo;y&rsquo;, &lsquo;b&rsquo;]</td>
+<td>y行かつb列の値</td>
+</tr>
+<tr>
+<td>df.loc[&lsquo;y&rsquo;, &lsquo;b&rsquo;]</td>
+<td>y行かつb列の値</td>
+</tr>
+<tr>
+<td>df.loc[&lsquo;x&rsquo;:&lsquo;y&rsquo;, &lsquo;b&rsquo;]</td>
+<td>「「x行からy行(y行含む)」かつ「b列」の値</td>
+</tr>
+<tr>
+<td>df.loc[:&lsquo;y&rsquo;, :]</td>
+<td>「最初の行からy行（y行含む）」かつ「b列」の値」</td>
+</tr>
+<tr>
+<td>df.iat[0, 1]</td>
+<td>0行1列の値</td>
+</tr>
+<tr>
+<td>df.iloc[1, 1]</td>
+<td>1行1列の値</td>
+</tr>
+<tr>
+<td>df.iloc[0:2, -2:]</td>
+<td>0〜１行かつ最後の２列の値</td>
+</tr>
+<tr>
+<td>df.iloc[:1, :]</td>
+<td>0行全列</td>
+</tr>
+<tr>
+<td>df.ix[&lsquo;x&rsquo;, [&lsquo;a&rsquo;, &rsquo;d&rsquo;]]</td>
+<td>「x行」かつ「a列またはd列」</td>
+</tr>
+<tr>
+<td>df.ix[&lsquo;x&rsquo;]</td>
+<td>x行を取り出し（結果はシリーズ）</td>
+</tr>
+<tr>
+<td>df.ix[&lsquo;x&rsquo;][&lsquo;a&rsquo;]</td>
+<td>x行かつa列</td>
+</tr>
+<tr>
+<td>df.ix[:, &lsquo;a&rsquo;]</td>
+<td>a列を取り出し（結果はシリーズ）</td>
+</tr>
+<tr>
+<td>df.ix[df.d &gt; 6, :2]</td>
+<td>「d列が６より大の行」かつ「最初の２列」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>同じデータを参照する方法は複数あるが、使っているOSやpandasの実装の改善等によって処理速度に差がある場合がある。そのような場合は<code>%timeit</code>マジックコマンドを使えば、簡単に調べることができる。</strong></p>
+<!-- raw HTML omitted -->
+<h3 id="データフレームに対する直接インデックス参照">データフレームに対する直接インデックス参照</h3>
+<table>
+<thead>
+<tr>
+<th>参照方法</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>df[&lsquo;a&rsquo;]</td>
+<td>列ラベルaの列</td>
+</tr>
+<tr>
+<td>df[[&lsquo;a&rsquo;, &lsquo;c&rsquo;]</td>
+<td>列ラベルaよc</td>
+</tr>
+<tr>
+<td>df[:2]</td>
+<td>０行目と１行目</td>
+</tr>
+<tr>
+<td>df[df[&rsquo;d&rsquo;] &gt; 6]</td>
+<td>列ラベルdの列の値が６より大の行の行全体</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3 id="基本的な演算規則">基本的な演算規則</h3>
+<p>シリーズやデータフレームなどに対する四則演算は、加減乗除の記号によって実現する方法とメソッドを使う方法の２種類がある。</p>
+<ol>
+<li>
+<p>加減乗除
+要素ごとに演算を行う</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ser_a1 <span style="color:#f92672">=</span> ser1 <span style="color:#f92672">+</span> ser2
+</span></span></code></pre></div></li>
+<li>
+<p>メソッド
+インスタンスデータが変更されるものではないため、何らかの変数に格納する必要がある。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ser_a2 <span style="color:#f92672">=</span> ser1<span style="color:#f92672">.</span>add(ser2)
+</span></span></code></pre></div><p><strong>NaN</strong>を含む式の計算はすべて<strong>NaN</strong>となるが、メソッドを使用した計算ではNaNを特定の
+値に置き換えて計算できるという利点がある。</p>
+</li>
+</ol>
+<h2 id="pandasの使い方">Pandasの使い方</h2>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="dataflame">DataFlame</h3>
+<h5 id="dataflameの定義">DataFlameの定義</h5>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;Yes&#39;</span>: [<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">21</span>], <span style="color:#e6db74">&#39;No&#39;</span>: [<span style="color:#ae81ff">131</span>, <span style="color:#ae81ff">2</span>]})
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>50</td>
+<td>131</td>
+</tr>
+<tr>
+<td>1</td>
+<td>21</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;Bob&#39;</span>: [<span style="color:#e6db74">&#39;I liked it.&#39;</span>, <span style="color:#e6db74">&#39;It was awful.&#39;</span>], <span style="color:#e6db74">&#39;Sue&#39;</span>: [<span style="color:#e6db74">&#39;Pretty good.&#39;</span>, <span style="color:#e6db74">&#39;Bland.&#39;</span>]})
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fruits <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame([[<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">21</span>]], columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Apples&#39;</span>, <span style="color:#e6db74">&#39;Bananas&#39;</span>])
+</span></span></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<h5 id="index化">index化</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fruit_sales <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame([[<span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">21</span>], [<span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">34</span>]], columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Apples&#39;</span>, <span style="color:#e6db74">&#39;Bananas&#39;</span>],index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;2017 Sales&#39;</span>, <span style="color:#e6db74">&#39;2018 Sales&#39;</span>])
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="series">Series</h3>
+<h5 id="seriesの定義">Seriesの定義</h5>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+</span></span></code></pre></div></li>
+</ol>
+<h5 id="index化-1">index化</h5>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">40</span>], index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;2015 Sales&#39;</span>, <span style="color:#e6db74">&#39;2016 Sales&#39;</span>, <span style="color:#e6db74">&#39;2017 Sales&#39;</span>], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Product A&#39;</span>)
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> quantities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;4 cups&#39;</span>, <span style="color:#e6db74">&#39;1 cup&#39;</span>, <span style="color:#e6db74">&#39;2 large&#39;</span>, <span style="color:#e6db74">&#39;1 can&#39;</span>]
+</span></span><span style="display:flex;"><span> items <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Flour&#39;</span>, <span style="color:#e6db74">&#39;Milk&#39;</span>, <span style="color:#e6db74">&#39;Eggs&#39;</span>, <span style="color:#e6db74">&#39;Spam&#39;</span>]
+</span></span><span style="display:flex;"><span> recipe <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(quantities, index<span style="color:#f92672">=</span>items, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Dinner&#39;</span>)
+</span></span></code></pre></div></li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="csvファイルへの入出力">csvファイルへの入出力</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>animals<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#34;cows_and_goats.csv&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../input/wine-reviews/winemag-data_first150k.csv&#39;</span>, index_col<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>※<code>index_col=0</code>で0列目を<code>index</code>に指定している。</p>
+<!-- raw HTML omitted -->
+<h5 id="unicodedecodeerror-utf-8-codec-cant-decode-byte-0x92-in-position-0-invalid-start-byte-というエラーが出る"><strong>UnicodeDecodeError: &lsquo;utf-8&rsquo; codec can&rsquo;t decode byte 0x92 in position 0: invalid start byte</strong> というエラーが出る</h5>
+<p>【解決法】</p>
+<ol>
+<li>
+<p>**shift-jisの場合</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;filename.csv&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;shift-jis&#34;</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>windowsで作成されたファイルは以下の場合も</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;filename.csv&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cp932&#34;</span>)
+</span></span></code></pre></div></li>
+</ol>
+<p>【参考】<a href="https://paper.hatenadiary.jp/entry/2016/10/05/140013#%E8%A7%A3%E6%B1%BA%E6%B3%95%EF%BC%91%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E6%8C%87%E5%AE%9A">エラー解決：pandas.read_csvで日本語を含んだcsvを読み込めない</a></p>
+<h2 id="pandasでのindexing">Pandasでのindexing</h2>
+<h3 id="indexによるデータへのアクセス">indexによるデータへのアクセス</h3>
+<ol>
+<li>
+<p><code>attribute</code> や <code>operator []</code> によるアクセス</p>
+<p><code>reviews</code>データが次のような値を持つとすると、</p>
+<pre><code> | --- |country|description|designation|
+ | --- | --- | --- | --- |
+ |0| Italy| 	Aromas include tropical fruit, broom, brimston... 	|Vulkà Bianco 	|
+ |1| Portugal| 	This is ripe and fruity, a wine that is smooth...| 	Avidagos 	|
+ |...| 	...| 	... |...|
+ |129969| 	France| 	A dry style of Pinot Gris, this is crisp with ... 	|NaN 	|
+ |129970| 	France| 	Big, rich and off-dry, this is powered by inte... 	|Lieu-dit Harth Cuvée Caroline 	|
+</code></pre>
+<p><code>reviews</code>の<code>country</code>プロパティへは以下のいずれかの方法でアクセスする</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews<span style="color:#f92672">.</span>country
+</span></span><span style="display:flex;"><span>reviews[<span style="color:#e6db74">&#39;country&#39;</span>]
+</span></span></code></pre></div><p>※ただし<code>[ ]</code>であれば<code>+, -, 空白</code> などの予約文字も扱え、以下のようにもう一度<code>[]</code>を使うだけでドリルダウンできる（下記の出力は<code>Italy</code>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews[<span style="color:#e6db74">&#39;country&#39;</span>][<span style="color:#ae81ff">0</span>]
+</span></span></code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</li>
+<li>
+<p><code>loc</code>や<code>iloc</code>によるアクセス</p>
+</li>
+</ol>
+<h3 id="例文">例文</h3>
+<ol>
+<li>
+<pre tabindex="0"><code>desc = reviews.description
+
+or
+
+desc = reviews[&#34;description&#34;]
+
+desc is a pandas Series object, with an index matching the reviews DataFrame. In general, when we select a single column from a DataFrame, we&#39;ll get a Series.
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>Solution:
+
+first_description = reviews.description.iloc[0]
+
+Note that while this is the preferred way to obtain the entry in the DataFrame, many other options will return a valid result, such as reviews.description.loc[0], reviews.description[0], and more!
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>first_row = reviews.iloc[0]
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>first_descriptions = reviews.description.iloc[:10]
+
+Note that many other options will return a valid result, such as desc.head(10) and reviews.loc[:9, &#34;description&#34;]. 
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>indices = [1, 2, 3, 5, 8]
+sample_reviews = reviews.loc[indices]
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>cols = [&#39;country&#39;, &#39;province&#39;, &#39;region_1&#39;, &#39;region_2&#39;]
+indices = [0, 1, 10, 100]
+df = reviews.loc[indices, cols]
+</code></pre><ol>
+<li></li>
+</ol>
+<pre tabindex="0"><code>cols = [&#39;country&#39;, &#39;variety&#39;]
+df = reviews.loc[:99, cols]
+
+or
+
+cols_idx = [0, 11]
+df = reviews.iloc[:100, cols_idx]
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>italian_wines = reviews[reviews.country == &#39;Italy&#39;]
+</code></pre></li>
+<li>
+<pre tabindex="0"><code>top_oceania_wines = reviews.loc[
+    (reviews.country.isin([&#39;Australia&#39;, &#39;New Zealand&#39;]))
+    &amp; (reviews.points &gt;= 95)
+]
+</code></pre></li>
+</ol>
+<h2 id="pandas-summary-functions-and-maps">Pandas 「Summary Functions and Maps」</h2>
+<ol>
+<li>
+<p>Numpyで要約統計量の取得</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>median_points <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>points<span style="color:#f92672">.</span>median()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>countries <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>country<span style="color:#f92672">.</span>unique()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews_per_country <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>country<span style="color:#f92672">.</span>value_counts()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>centered_price <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>price <span style="color:#f92672">-</span> reviews<span style="color:#f92672">.</span>price<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bargain_idx <span style="color:#f92672">=</span> (reviews<span style="color:#f92672">.</span>points <span style="color:#f92672">/</span> reviews<span style="color:#f92672">.</span>price)<span style="color:#f92672">.</span>idxmax()
+</span></span><span style="display:flex;"><span>bargain_wine <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>loc[bargain_idx, <span style="color:#e6db74">&#39;title&#39;</span>]
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n_trop <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>description<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> desc: <span style="color:#e6db74">&#34;tropical&#34;</span> <span style="color:#f92672">in</span> desc)<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>n_fruity <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>description<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> desc: <span style="color:#e6db74">&#34;fruity&#34;</span> <span style="color:#f92672">in</span> desc)<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>descriptor_counts <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([n_trop, n_fruity], index<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;tropical&#39;</span>, <span style="color:#e6db74">&#39;fruity&#39;</span>])
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">stars</span>(row):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> row<span style="color:#f92672">.</span>country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Canada&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> row<span style="color:#f92672">.</span>points <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">95</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> row<span style="color:#f92672">.</span>points <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">85</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>star_ratings <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>apply(stars, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;columns&#39;</span>)
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="groutping-and-sorting">Groutping and Sorting</h2>
+<h3 id="groupwise-amalysis">Groupwise amalysis</h3>
+<p>次のような<code>groupby()</code>関数を用いることで指定した列の同じ値を持つデータをグループ化し、
+同じ操作を行うことができる。</p>
+<ol>
+<li>point列の同じ値を持つものをグループ化し、その値が何回出現したかをカウントする。出力はpointの値と出現回数の
+以下どちらの方法でもOK！</li>
+</ol>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;points&#39;</span>)<span style="color:#f92672">.</span>points<span style="color:#f92672">.</span>count()
+</span></span></code></pre></div><p><code>point</code>の値の小さい順で出力
+【出力結果】</p>
+<pre tabindex="0"><code>points
+80     397
+81     692
+    ... 
+99      33
+100     19
+Name: points, Length: 21, dtype: int64
+</code></pre></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  reviews<span style="color:#f92672">.</span>value_counts(<span style="color:#e6db74">&#39;points&#39;</span>)
+</span></span></code></pre></div><p>出現回数の大きい順で出力</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>point列の同じ値を持つものをグループ化し、その<code>price</code>列の最小値を配列Seriesに格納</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;points&#39;</span>)<span style="color:#f92672">.</span>price<span style="color:#f92672">.</span>min()
+</span></span></code></pre></div><p>【出力結果】</p>
+<pre tabindex="0"><code>points
+80      5.0
+81      5.0
+    ... 
+99     44.0
+100    80.0
+Name: price, Length: 21, dtype: float64
+</code></pre></li>
+<li>
+<p><code>title</code>列に同じ値を持つものをグループ化し、そのグループ内で最も行数が少ない要素の<code>title</code>列の値を出力</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;winery&#39;</span>)<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> df: df<span style="color:#f92672">.</span>title<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">0</span>])
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="その他">その他</h3>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> reviews_written <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;taster_twitter_handle&#39;</span>)<span style="color:#f92672">.</span>size()
+</span></span><span style="display:flex;"><span> reviews_written <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;taster_twitter_handle&#39;</span>)<span style="color:#f92672">.</span>taster_twitter_handle<span style="color:#f92672">.</span>count()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> best_rating_per_price <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;price&#39;</span>)[<span style="color:#e6db74">&#39;points&#39;</span>]<span style="color:#f92672">.</span>max()<span style="color:#f92672">.</span>sort_index()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> price_extremes <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;variety&#39;</span>)<span style="color:#f92672">.</span>price<span style="color:#f92672">.</span>agg([min, max])
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> sorted_varieties <span style="color:#f92672">=</span> price_extremes<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;min&#39;</span>, <span style="color:#e6db74">&#39;max&#39;</span>], ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> reviewer_mean_ratings <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;taster_name&#39;</span>)<span style="color:#f92672">.</span>points<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> country_variety_counts <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>value_counts([<span style="color:#e6db74">&#39;country&#39;</span>, <span style="color:#e6db74">&#39;variety&#39;</span>])
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>country_variety_counts <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;country&#39;</span>, <span style="color:#e6db74">&#39;variety&#39;</span>])<span style="color:#f92672">.</span>variety<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p>※<code>count()</code>モジュールは<code>size()</code>モジュールでもOK!</p>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="参考文献">参考文献</h4>
+<ul>
+<li><a href="https://qiita.com/propella/items/a9a32b878c77222630ae">https://qiita.com/propella/items/a9a32b878c77222630ae</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-map-applymap-apply/">https://note.nkmk.me/python-pandas-map-applymap-apply/</a></li>
+<li><a href="https://ejje.weblio.jp/content/fit">https://ejje.weblio.jp/content/fit</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-at-iat-loc-iloc/">https://note.nkmk.me/python-pandas-at-iat-loc-iloc/</a></li>
+</ul>
+<h2 id="data-types-and-missing-values">Data Types and Missing Values</h2>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> dtype <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>points<span style="color:#f92672">.</span>dtype
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> point_strings <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>points<span style="color:#f92672">.</span>astype(str)
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> missing_price_reviews <span style="color:#f92672">=</span> reviews[reviews<span style="color:#f92672">.</span>price<span style="color:#f92672">.</span>isnull()]
+</span></span><span style="display:flex;"><span> n_missing_prices <span style="color:#f92672">=</span> len(missing_price_reviews)
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## Cute alternative solution: if we sum a boolean series, True is treated as 1 and False as 0</span>
+</span></span><span style="display:flex;"><span>n_missing_prices <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>price<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## or equivalently:</span>
+</span></span><span style="display:flex;"><span>n_missing_prices <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>isnull(reviews<span style="color:#f92672">.</span>price)<span style="color:#f92672">.</span>sum()
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> reviews_per_region <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;unknown&#34;</span>)<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;region_1&#39;</span>)<span style="color:#f92672">.</span>region_1<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>reviews_per_region <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>region_1<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#39;Unknown&#39;</span>)<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="renaming-and-combining">Renaming and Combining</h2>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> renamed <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;region_1&#39;</span>:<span style="color:#e6db74">&#39;region&#39;</span>, <span style="color:#e6db74">&#39;region_2&#39;</span>:<span style="color:#e6db74">&#39;locale&#39;</span>})
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>renamed <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>dict(region_1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;region&#39;</span>, region_2<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;locale&#39;</span>))
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> reindexed <span style="color:#f92672">=</span> reviews<span style="color:#f92672">.</span>rename_axis(<span style="color:#e6db74">&#39;wines&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rows&#39;</span>)
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> combined_products <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([gaming_products, movie_products])
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> powerlifting_combined <span style="color:#f92672">=</span> powerlifting_meets<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;MeetID&#39;</span>)<span style="color:#f92672">.</span>join(powerlifting_competitors<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;MeetID&#39;</span>))
+</span></span></code></pre></div><p>または</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>powerlifting_combined <span style="color:#f92672">=</span> powerlifting_meets<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#34;MeetID&#34;</span>)<span style="color:#f92672">.</span>join(powerlifting_competitors<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#34;MeetID&#34;</span>))
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="pandasの便利なfunction">Pandasの便利なfunction</h2>
+<h3 id="shape-attribute">&ldquo;shape&rdquo; attribute</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>wine_reviews<span style="color:#f92672">.</span>shape
+</span></span></code></pre></div><p>【出力】</p>
+<pre tabindex="0"><code>(129971, 14)
+</code></pre><ul>
+<li>DataFrameがどれくらいの大きさを持つかを出力する関数</li>
+<li>14の異なる列に分割された130,000のレコードを持つ</li>
+<li>約2,000万個のエントリを持つ</li>
+</ul>
+<h3 id="head-command">&ldquo;head()&rdquo; command</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>wine_reviews<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><ul>
+<li>先頭から5行を表示するコマンド</li>
+</ul>
+<h3 id="差分を計算">差分を計算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_re <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>diff()
+</span></span></code></pre></div><p>【出力結果】</p>
+<pre tabindex="0"><code>     a    b     c
+0  NaN  NaN   NaN
+1  1.0  3.0   7.0
+2  1.0  5.0  19.0
+3  1.0  7.0  37.0
+4  1.0  9.0  61.0
+</code></pre><p>【引数】</p>
+<table>
+<thead>
+<tr>
+<th>パラメータ</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>periods</td>
+<td>指定した行数分だけ前（もしくは後）の要素との差を求める<!-- raw HTML omitted --> ※負の値も指定可能（付の値では後ろの要素が<code>NaN</code>の値をとる）</td>
+</tr>
+<tr>
+<td>axis</td>
+<td><code>axis=1</code>と指定すると列ごとの差分を算出（デフォルトは<code>0</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-diff-pct-change/">pandasで行・列の差分・変化率を取得するdiff, pct_change</a></li>
+</ul>
+<h3 id="index-の割当">index の割当</h3>
+<ol>
+<li>
+<p>indexの初期化</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_i <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>reset_index()
+</span></span></code></pre></div><p>※ノーマルではindexの値が新しい列として挿入される
+※（）内に&rsquo;drop=False&rsquo;と記述するとデータ部はそのままでindexだけ変更できる</p>
+</li>
+<li>
+<p>DataFrameの列をindexに指定</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_i <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;name&#39;</span>)
+</span></span></code></pre></div><p>※ <code>name</code> という列を index として指定</p>
+<p>【引数】</p>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>コマンド</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drop</td>
+<td><code>drop = False</code></td>
+<td>指定列がデータ列にも残る<!-- raw HTML omitted -->デフォルトではindexに指定されたデータ列は消える(<code>drop = True</code>)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-reset-index/">pandas.DataFrame, Seriesのインデックスを振り直すreset_index</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-set-index/">pandas.DataFrameの列をインデックス（行名）に割り当てるset_index</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="カラム名の変更">カラム名の変更</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>arra<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>]
+</span></span></code></pre></div><p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-dataframe-rename/">pandas.DataFrameの行名・列名の変更</a></li>
+</ul>
+<h3 id="dataframeやseriesの文字列や空白を削除">DataFrameやSeriesの文字列や空白を削除</h3>
+<table>
+<thead>
+<tr>
+<th>概要</th>
+<th>コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文字列の置換</td>
+<td><code>.str.replace('置換前', '置換後')</code></td>
+</tr>
+<tr>
+<td>空白の削除(左右)</td>
+<td><code>.str.strip()</code></td>
+</tr>
+<tr>
+<td>空白の削除（左）</td>
+<td><code>.str.lstrip()</code></td>
+</tr>
+<tr>
+<td>空白の削除(右)</td>
+<td><code>.str.rstrip()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="型変換と型判定">型変換と型判定</h3>
+<table>
+<thead>
+<tr>
+<th>概要</th>
+<th>コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if文で型を判定(出力は<code>True</code> or <code>false</code></td>
+<td><code>if type(a) == int:</code></td>
+</tr>
+<tr>
+<td>str型とfloatまたはint型の変換</td>
+<td><code>.astype(変更後の型名(int or float or str))</code> <!-- raw HTML omitted --> ※strからintへは直接変換できないため一度float型に変換する</td>
+</tr>
+<tr>
+<td>各要素ごとに型の確認（配列として出力される）</td>
+<td><code>.dtype()</code></td>
+</tr>
+</tbody>
+</table>
+<p>【参考】</p>
+<ul>
+<li><a href="https://techacademy.jp/magazine/34202">Pythonでtype関数を利用して型判定する方法を現役エンジニアが解説【初心者向け】</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="dataframe-または-series-で特定の文字列を検索">DataFrame または Series で特定の文字列を検索</h3>
+<table>
+<thead>
+<tr>
+<th>概要</th>
+<th>コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全一致(==) <!-- raw HTML omitted --> 要素が文字列に完全一致するとTrueとなるpandas.Seriesを取得できる。</td>
+<td><code>変数名[変数名['列名'] == '検索する文字列']</code></td>
+</tr>
+</tbody>
+</table>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-str-contains-match/">pandasで特定の文字列を含む行を抽出（完全一致、部分一致）</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="series-や-dataframe-の結合">Series や DataFrame の結合</h3>
+<ul>
+<li><strong>concat 関数</strong></li>
+</ul>
+<p>下記のように記述することで DataFrame <code>s1</code> と<code>s2</code> が結合できる(結合したDataFrameが返却値)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>arr <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([s1, s2])
+</span></span></code></pre></div><p>【引数】</p>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>引数の指定方法</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>axis</td>
+<td>axis=0</td>
+<td>縦方向に（行で）連結</td>
+</tr>
+<tr>
+<td>axis</td>
+<td>axis=1</td>
+<td>横方向（列で）連結</td>
+</tr>
+<tr>
+<td>join</td>
+<td>よくわかってない&hellip; →　後で調べて</td>
+<td>内部結合・外部結合を指定</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>merge 関数</strong>
+また調べて&hellip;</li>
+</ul>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-concat/">pandas.DataFrame, Seriesを連結するconcat</a></li>
+<li><a href="https://pppurple.hatenablog.com/entry/2016/06/27/022310#concat%E9%96%A2%E6%95%B0">pandasの使い方（merge、join、concat編）</a></li>
+</ul>
+<h3 id="pandasで要素行列荷関数を適用">pandasで要素・行・列荷関数を適用</h3>
+<table>
+<thead>
+<tr>
+<th>対象</th>
+<th>関数</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Series</td>
+<td><code>map</code></td>
+<td>Series の各要素に関数を適用</td>
+</tr>
+<tr>
+<td>Series, DataFrame</td>
+<td><code>apply</code></td>
+<td>Series の各要素に関数を適用（デフォルトは<code>axis=0</code>で各列に対する処理、<code>axis=0</code>で各行に対する処理も可能）</td>
+</tr>
+<tr>
+<td>DataFrame</td>
+<td><code>applymap</code></td>
+<td>DataFrameの各要素に関数を適用</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fx <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> a
+</span></span></code></pre></div><p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-map-applymap-apply/">pandasで要素、行、列に関数を適用するmap, applymap, apply</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="pandasdataframeの行や列を削除">pandas.DataFrameの行や列を削除</h3>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-drop/">pandas.DataFrameの行・列を指定して削除するdrop</a></li>
+</ul>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-str-replace-strip-etc/">pandasの文字列メソッドで置換や空白削除などの処理を行う</a></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>【参考】</p>
+<ul>
+<li><a href="https://note.nkmk.me/python-pandas-str-replace-strip-etc/">pandasの文字列メソッドで置換や空白削除などの処理を行う</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-str-num-conversion/">pandasで文字列と数値を相互変換、書式変更</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-str-contains-match/">pandasで特定の文字列を含む行を抽出（完全一致、部分一致）</a></li>
+<li><a href="https://techacademy.jp/magazine/34202">Pythonでtype関数を利用して型判定する方法を現役エンジニアが解説【初心者向け】</a></li>
+<li><a href="https://pppurple.hatenablog.com/entry/2016/06/27/022310#concat%E9%96%A2%E6%95%B0">pandasの使い方（merge、join、concat編）</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-concat/">pandas.DataFrame, Seriesを連結するconcat</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-set-index/">pandas.DataFrameの列をインデックス（行名）に割り当てるset_index</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-reset-index/">pandas.DataFrame, Seriesのインデックスを振り直すreset_index</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-dataframe-rename/">pandas.DataFrameの行名・列名の変更</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-map-applymap-apply/">pandasで要素、行、列に関数を適用するmap, applymap, apply</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-diff-pct-change/">pandasで行・列の差分・変化率を取得するdiff, pct_change</a></li>
+<li><a href="https://note.nkmk.me/python-pandas-assign-append/">pandas.DataFrameに列や行を追加（assign, appendなど）</a></li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="sidebar" class="default-animation" dir="ltr">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+          <style>
+            #logo svg,
+            #logo svg * {
+              color: #282828;
+              color: var(--MENU-SECTIONS-BG-color);
+              fill: #282828 !important;
+              fill: var(--MENU-SECTIONS-BG-color) !important;
+              opacity: .945;
+            }
+            a#logo {
+              color: #282828;
+              color: var(--MENU-SECTIONS-BG-color);
+              font-family: 'Work Sans', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
+              font-size: 30px;
+              font-weight: 300;
+              margin-top: -13px;
+              max-width: 60%;
+              text-transform: uppercase;
+              width: 226px;
+              white-space: nowrap;
+            }
+            a#logo:hover {
+              color: #282828;
+              color: var(--MENU-SECTIONS-BG-color);
+            }
+            #logo svg {
+              margin-bottom: -20px;
+              margin-left: -23.5px;
+              width: 40.5%;
+            }
+            @media only all and (max-width: 59.938em) {
+              a#logo {
+                font-size: 25px;
+                margin-top: -3px;
+              }
+              #logo svg {
+                margin-bottom: -12px;
+                margin-left: -23px;
+              }
+            }
+            @media all and (-ms-high-contrast:none) {
+              /* IE11s understanding of positioning is weird at best */
+              a#logo {
+                margin-top: -58px;
+              }
+              #logo svg {
+                margin-bottom: -62px;
+              }
+            }
+          </style>
+          <a id="logo" href="/watanuki/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.044 64.044">
+              <path d="M46.103 136.34c-.642-.394-1.222-2.242-1.98-2.358-.76-.117-1.353.506-1.618 1.519-.266 1.012-.446 4.188.173 5.538.213.435.482.787 1.03.845.547.057.967-.504 1.45-1.027.482-.523.437-.9 1.142-.612.705.289 1.051.4 1.586 1.229.535.828 1.085 4.043.868 5.598-.241 1.458-.531 2.8-.59 4.088.26.075.517.148.772.217 2.68.724 5.373 1.037 7.873.02.001-.028.01-.105.008-.11-.048-.165-.18-.41-.36-.698-.18-.29-.414-.645-.586-1.114a3.212 3.212 0 0 1-.125-1.735c.056-.21.153-.342.249-.475 1.237-1.193 2.932-1.373 4.244-1.384.557-.004 1.389.016 2.198.255.809.239 1.706.724 2.068 1.843.187.578.114 1.17-.043 1.623-.153.438-.369.783-.545 1.091-.178.31-.329.6-.401.821-.007.02-.003.071-.005.094 2.256 1.008 4.716.91 7.189.398.55-.114 1.11-.247 1.673-.377.344-1.085.678-2.145.852-3.208.124-.752.158-2.311-.078-3.538-.118-.613-.306-1.15-.52-1.489-.221-.349-.413-.501-.747-.538-.243-.027-.51.013-.796.098-.67.223-1.33.606-1.966.76l-.008.002-.109.032c-.556.152-1.233.158-1.797-.36-.556-.51-.89-1.367-1.117-2.596-.283-1.528-.075-3.279.89-4.518l.071-.09h.07c.65-.71 1.485-.802 2.16-.599.706.213 1.333.629 1.772.84.736.354 1.185.319 1.475.171.291-.148.5-.439.668-.955.332-1.017.301-2.819.022-4.106-.148-.684-.13-1.292-.13-1.883-1.558-.463-3.067-.982-4.574-1.208-1.128-.169-2.263-.173-3.298.164-.13.046-.256.095-.38.15-.373.164-.633.342-.805.52-.077.098-.081.105-.087.21-.004.068.031.289.13.571.1.282.256.634.467 1.03.279.524.448 1.063.431 1.618a2.12 2.12 0 0 1-.499 1.309 1.757 1.757 0 0 1-.62.51h-.002c-.515.291-1.107.404-1.723.464-.86.083-1.787.026-2.598-.097-.806-.123-1.47-.28-1.948-.555-.444-.256-.79-.547-1.037-.925a2.273 2.273 0 0 1-.356-1.301c.029-.837.403-1.437.625-1.897.111-.23.191-.433.236-.583.045-.15.044-.25.046-.24-.005-.029-.127-.355-1.015-.741-1.138-.495-2.322-.673-3.533-.668h-.015a9.711 9.711 0 0 0-.521.016h-.002c-1.163.057-2.35.308-3.541.569.383 1.531.79 2.753.818 4.502-.096 1.297.158 2.114-1.03 2.935-.85.588-1.508.729-2.15.335" style="fill:#282828;fill-opacity:1;stroke:none;stroke-width:1.03763;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" transform="translate(-40.698 -95.175)"/>
+              <path d="M61.472 101.34v.002c-.3-.003-.603.01-.894.04-.544.055-1.39.165-1.778.306-1.238.364.13 2.344.41 2.913.28.569.285 2.03.14 2.134-.144.103-.375.261-.934.345-.56.084.03-.037-1.589.086-1.62.122-5.506.29-8.265.248-.022.26-.036.521-.097.808-.309 1.442-.63 3.163-.494 4.074.071.473.168.65.414.8.23.14.737.235 1.62-.004.834-.227 1.3-.442 1.887-.456.595-.016 1.555.472 1.965.717.411.245-.03-.008.002 0s.128.05.176.102c.049.053-.276-.523.104.199.379.721.72 3.256.002 4.68-.46.913-1.01 1.49-1.64 1.711-.63.22-1.229.067-1.734-.135-.881-.353-1.584-.7-2.205-.647-1.199 1.94-1.186 4.17-.6 6.602.097.397.212.814.327 1.23 2.68-.556 5.542-1.016 8.337.132 1.064.437 1.73 1.015 1.902 1.857.169.831-.193 1.508-.438 1.986-.122.238-.23.46-.307.642-.07.164-.096.28-.104.324.069.429.309.723.686.945.385.227.89.355 1.35.423.723.104 1.567.152 2.287.086.693-.064 1.032-.338 1.241-.544a2.447 2.447 0 0 0 .303-.437.175.175 0 0 0 .013-.035c-.004-.066-.037-.246-.195-.527-.46-.816-.87-1.595-.817-2.51.028-.476.218-.938.529-1.288.304-.343.698-.586 1.186-.79 1.442-.606 2.96-.609 4.372-.409 1.525.216 2.963.679 4.378 1.083.226-2.09.784-3.9.592-5.77-.058-.565-.287-1.333-.598-1.827-.32-.508-.59-.717-1.036-.642-.648.11-1.472.935-2.707 1.078-.791.092-1.494-.267-1.95-.86-.45-.583-.678-1.335-.78-2.101-.202-1.525.031-3.229.89-4.27.615-.747 1.45-.887 2.15-.74.687.145 1.307.492 1.857.745v-.002c.546.252 1.033.388 1.281.344a.547.547 0 0 0 .353-.188c.113-.124.242-.35.384-.75.604-1.712.206-3.68-.303-5.654-.667.145-1.336.293-2.018.413-1.341.236-2.73.392-4.136.273-.656-.055-1.695-.085-2.58-.476-.442-.195-.903-.514-1.157-1.093-.259-.591-.205-1.313.08-2.014.223-.64 1.082-2.178.692-2.585-.391-.407-1.651-.56-2.554-.571z" style="fill:#282828;fill-opacity:1;stroke:none;stroke-width:.992837;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" transform="translate(-40.698 -95.175)"/>
+              <path d="M83.128 98.116c-.484 1.875-1.057 3.757-2.486 5.033-.638.57-1.13.666-1.483.548-.401-.134-.715-.506-1.058-.973-.338-.461-.655-.97-1.076-1.332-.192-.165-.404-.315-.683-.38-.279-.066-.599-.02-.9.102-.489.196-.89.58-1.28 1.047a6.1 6.1 0 0 0-.985 1.632c-.234.591-.356 1.174-.277 1.713.072.487.392.977.905 1.185.463.187.926.156 1.36.154.433 0 .843.01 1.242.147.55.189.79.736.822 1.368.034.66-.145 1.412-.393 1.988l-.008.021c-.74 1.705-1.946 2.893-3.004 4.349l-.664.915.979.099c.924.092 1.788.26 2.468.675.46.281 1.806 1.205 2.794 2.222.497.513.888 1.031 1.047 1.502.078.231.095.422.05.6a.93.93 0 0 1-.345.474c-.301.223-.606.395-.864.532l-.354.186c-.107.058-.189.087-.345.228a.637.637 0 0 1 .062-.045l-.064.041-.209.236-.103.343s.003.126.007.152c.003.017.003.007.004.015v.002c.016.195.061.307.133.476a4.1 4.1 0 0 0 .32.596 5.7 5.7 0 0 0 2.8 2.258c.284.108.908.321 1.548.36.33.02.59.015.912-.13h.002c.08-.037.228-.095.382-.281.153-.186.19-.355.212-.445l.019-.075.003-.078c.023-.585-.037-1.296.072-1.899.153-.657.435-.956 1.009-.909 2.771.239 4.74 1.955 6.693 3.83l.742.714.279-1.155c.55-2.29 1.093-4.464 2.928-5.977.692-.57 1.184-.642 1.527-.509.39.151.676.536.996.995.319.458.605.926 1.07 1.212.194.119.464.232.784.209.32-.024.638-.163.988-.384 1.022-.645 1.778-1.756 2.086-2.942.136-.522.102-.991-.046-1.301-.158-.334-.433-.553-.754-.707-.653-.314-1.468-.373-2.094-.486-.825-.15-1.22-.475-1.345-.878-.13-.417 0-.953.335-1.61.6-1.173 1.887-2.602 3.13-3.911l.498-.526-.449-.432c-1.545-1.49-3.163-3.01-5.252-3.715h-.002c-.473-.16-1.097-.413-1.73-.424h-.003c-.311-.004-.596.04-.883.24v.002c-.22.155-.483.537-.583.937l-.008.036-.006.038c-.116.773-.06 1.467-.217 1.995-.063.212-.198.418-.359.507-.202.111-.492.153-.976.072-.582-.097-1.978-.69-3.021-1.503-.523-.407-.934-.85-1.117-1.3a1.153 1.153 0 0 1-.083-.63c.03-.184.1-.477.308-.593.21-.116.941-.32 1.377-.642h.002c.192-.141.403-.367.518-.64.114-.275.127-.526.123-.774-.006-.142-.036-.192-.08-.3a8.417 8.417 0 0 0-3-3.027c-1.226-.725-2.585-1.135-3.927-1.539-.434-.12-.844-.111-1.02.466zm.912.947c1.186.364 2.357.718 3.345 1.303 1.035.612 1.864 1.488 2.507 2.528-.514.263-1.095.5-1.44.79-.345.29-.729.914-.815 1.434-.084.509 0 .968.155 1.347.301.74.85 1.276 1.44 1.735 1.18.92 2.554 1.545 3.47 1.698.604.1 1.186.088 1.739-.216.594-.327.935-.911 1.088-1.427.264-.884.193-1.664.262-2.17h.1c.3.006.926.206 1.417.371 1.646.554 3.044 1.773 4.431 3.089-1.102 1.174-2.222 2.423-2.888 3.73-.42.823-.73 1.789-.453 2.687.283.913 1.1 1.415 2.138 1.603.691.126 1.472.226 1.84.403.19.091.258.182.278.223.03.064.058.075-.023.387-.21.804-.761 1.598-1.413 2.01-.247.155-.365.183-.407.187-.042.003-.061.002-.172-.066-.144-.088-.455-.473-.772-.929-.317-.454-.714-1.07-1.452-1.356-.783-.304-1.776-.022-2.713.75-1.942 1.6-2.626 3.764-3.146 5.8-1.802-1.676-3.772-3.138-6.589-3.517h-.002c-.346-.095-1.013-.031-1.293.143-.735.501-1.005 1.132-1.168 2.007-.125.69-.082 1.216-.074 1.659-.055.006-.046.01-.104.006-.42-.026-1.035-.215-1.244-.295-.947-.361-1.774-1.006-2.314-1.857-.054-.085-.072-.132-.109-.2l.027-.016c.284-.15.656-.36 1.045-.648.44-.327.789-.798.93-1.35a2.4 2.4 0 0 0-.068-1.379c-.254-.751-.753-1.353-1.295-1.911-1.09-1.124-2.452-2.049-2.99-2.378-.609-.372-1.303-.44-1.981-.56.875-1.094 1.878-2.251 2.596-3.921.294-.823.543-1.907.513-2.658-.049-.97-.489-2.013-1.52-2.367-.579-.2-1.131-.204-1.58-.203-.45.002-.786-.006-.97-.08h-.002c-.264-.107-.236-.108-.268-.33-.025-.17.021-.553.183-.962a4.67 4.67 0 0 1 .725-1.192c.29-.348.617-.59.705-.626.142-.057.176-.05.22-.04.045.011.127.052.263.17.235.201.56.671.92 1.161.354.484.791 1.08 1.543 1.33.8.267 1.784-.052 2.671-.846 1.594-1.424 2.235-3.317 2.714-5.051zm11.705 7.023c-.02.014.042-.002.042 0l-.008.035c.05-.2-.028-.04-.034-.035zM79.472 122.45a.198.198 0 0 1 .005.023v.014c-.002-.01-.003-.03-.005-.037zm-.29.732-.006.01-.044.027c.016-.01.033-.024.05-.036z" style="color:#000;fill:#282828;stroke-width:1.02352;-inkscape-stroke:none" transform="translate(-40.698 -95.175)"/>
+              <path d="M76.694 128.845c-.85-.012-1.668.253-2.434.67-.01.592-.015 1.17.109 1.772.323 1.573.422 3.553-.07 5.147-.247.804-.684 1.535-1.347 1.891-.663.356-1.467.296-2.362-.159-.522-.266-1.059-.62-1.487-.757-.223-.072-.392-.096-.522-.069-.13.027-.232.094-.362.27-.53.719-.681 1.823-.497 2.876.177 1.012.418 1.438.543 1.56.143.137.26.154.604.055.548-.158 1.523-.857 2.573-.972l.02-.002.5.058c.686.081 1.247.562 1.622 1.19.372.62.591 1.37.73 2.136.279 1.532.25 3.16.083 4.232-.14.91-.394 1.72-.632 2.53 1.719-.385 3.485-.692 5.307-.36 1.174.214 2.749.574 3.762 1.977l.088.122.046.159c.162.551.16 1.114.024 1.578-.13.45-.348.772-.533 1.023-.181.246-.336.444-.437.606-.102.16-.141.275-.145.336-.01.17 0 .197.07.315.057.1.186.242.39.366.408.246 1.106.414 1.843.45a7.842 7.842 0 0 0 2.174-.21 4.28 4.28 0 0 0 .822-.296c.218-.106.385-.242.377-.233l.029-.031c.025-.035.05-.072.05-.068 0-.004 0-.017-.003-.05a2.733 2.733 0 0 0-.21-.579c-.26-.548-.839-1.333-.822-2.46.01-.657.27-1.21.598-1.576.32-.357.696-.575 1.074-.736.759-.323 1.57-.418 2.054-.458 1.653-.136 3.252.296 4.755.765.457.142.905.29 1.352.434.325-2.258.902-4.247.598-6.217-.071-.46-.25-1.169-.486-1.684-.238-.518-.495-.762-.675-.779-.351-.032-.716.14-1.174.418-.457.277-1.005.665-1.695.742-.745.082-1.406-.291-1.84-.908-.428-.608-.653-1.394-.754-2.196-.203-1.596.016-3.377.794-4.493.568-.813 1.358-.984 2.024-.835.65.146 1.243.51 1.769.779.524.267.99.413 1.237.365a.527.527 0 0 0 .346-.2c.11-.132.235-.373.37-.798.612-1.918.27-3.894-.246-6.054-2.815-.851-5.49-1.534-8.089-.267a.727.727 0 0 0-.223.148c-.024.028-.018.021-.026.056.001-.003-.01.178.07.44.162.522.611 1.29.911 1.978l.004.009.029.063.024.084V133c.162.635.016 1.297-.274 1.727-.272.404-.618.636-.952.81-.675.353-1.399.484-1.724.533a5.888 5.888 0 0 1-3.973-.795c-.512-.311-.876-.594-1.133-1.02-.282-.466-.318-1.084-.172-1.557.252-.814.715-1.266.971-1.89a.663.663 0 0 0 .047-.14c.001-.013 0-.006-.007-.037a.761.761 0 0 0-.184-.268c-.264-.267-.865-.595-1.54-.826-1.356-.462-3.07-.659-3.583-.686-.062-.002-.121-.006-.178-.006z" style="fill:#282828;fill-opacity:1;stroke:none;stroke-width:.991342;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" transform="translate(-40.698 -95.175)"/>
+            </svg>
+            Relearn
+          </a>
+        </div>
+        <form action="/watanuki/search.html" method="get"><div class="searchbox default-animation">
+          <button type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+          <label class="a11y-only" for="search-by">Search</label>
+          <input data-search-input id="search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div></form>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/watanuki/js/auto-complete.js?1669254382" defer></script>
+        <script src="/watanuki/js/lunr.min.js?1669254382" defer></script>
+        <script src="/watanuki/js/lunr.stemmer.support.min.js?1669254382" defer></script>
+        <script src="/watanuki/js/lunr.multi.min.js?1669254382" defer></script>
+        <script src="/watanuki/js/lunr.en.min.js?1669254382" defer></script>
+        <script src="/watanuki/js/search.js?1669254382" defer></script>
+      </div>
+      <div id="homelinks" class="default-animation">
+        <ul>
+          <li>
+              <a class="padding" href="/watanuki/index.html"><i class='fas fa-home'></i> Home</a>
+          </li>
+        </ul>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/watanuki/docker/index.html" class="dd-item"><a href="/watanuki/docker/index.html">Docker</a><ul id="subsections-138bddd2d1dc51245528eafa51e353d0">
+          <li data-nav-id="/watanuki/docker/post-installation-step/index.html" class="dd-item"><a href="/watanuki/docker/post-installation-step/index.html">Post Installation Steps for linux</a></li>
+          <li data-nav-id="/watanuki/docker/copy-mount/index.html" class="dd-item"><a href="/watanuki/docker/copy-mount/index.html">Copy and Mount from Docker container or to Docker container</a></li>
+          <li data-nav-id="/watanuki/docker/installation-docker/index.html" class="dd-item"><a href="/watanuki/docker/installation-docker/index.html">How to install Docker</a></li>
+          <li data-nav-id="/watanuki/docker/container-cuda/index.html" class="dd-item"><a href="/watanuki/docker/container-cuda/index.html">Docker Container for Cuda</a></li>
+          <li data-nav-id="/watanuki/docker/container-ssh/index.html" class="dd-item"><a href="/watanuki/docker/container-ssh/index.html">Connect to Docker Container via ssh</a></li>
+          <li data-nav-id="/watanuki/docker/instalation-docker-compose/index.html" class="dd-item"><a href="/watanuki/docker/instalation-docker-compose/index.html">How to install Docker Compose</a></li>
+          <li data-nav-id="/watanuki/docker/docker-compose-cuda/index.html" class="dd-item"><a href="/watanuki/docker/docker-compose-cuda/index.html">Docker Compose</a></li>
+          <li data-nav-id="/watanuki/docker/base/index.html" class="dd-item"><a href="/watanuki/docker/base/index.html">Basic docker usage</a></li>
+          <li data-nav-id="/watanuki/docker/appendix/index.html" class="dd-item"><a href="/watanuki/docker/appendix/index.html">Appendix</a></li></ul></li>
+          <li data-nav-id="/watanuki/github/index.html" class="dd-item"><a href="/watanuki/github/index.html">Github</a><ul id="subsections-0e2ea9080d0c677f89981a4536faf1bb">
+          <li data-nav-id="/watanuki/github/repository-edit/index.html" class="dd-item"><a href="/watanuki/github/repository-edit/index.html">Repository Operations</a></li>
+          <li data-nav-id="/watanuki/github/commit/index.html" class="dd-item"><a href="/watanuki/github/commit/index.html">About resetting commit and rm the file</a></li>
+          <li data-nav-id="/watanuki/github/ssh/index.html" class="dd-item"><a href="/watanuki/github/ssh/index.html">Public key authentication settings in github</a></li>
+          <li data-nav-id="/watanuki/github/diff/index.html" class="dd-item"><a href="/watanuki/github/diff/index.html">Confirmation of difference</a></li>
+          <li data-nav-id="/watanuki/github/branch/index.html" class="dd-item"><a href="/watanuki/github/branch/index.html">Branch</a></li>
+          <li data-nav-id="/watanuki/github/create-repository/index.html" class="dd-item"><a href="/watanuki/github/create-repository/index.html">How to Create Repository</a></li>
+          <li data-nav-id="/watanuki/github/settings/index.html" class="dd-item"><a href="/watanuki/github/settings/index.html">Settings</a></li></ul></li>
+          <li data-nav-id="/watanuki/gnuplot/index.html" class="dd-item"><a href="/watanuki/gnuplot/index.html">Gnuplot</a><ul id="subsections-96e1c1d59e724966aa5bbafac0938a58">
+          <li data-nav-id="/watanuki/gnuplot/output_equation_on_latex/index.html" class="dd-item"><a href="/watanuki/gnuplot/output_equation_on_latex/index.html">How to insert formulas like latex</a></li>
+          <li data-nav-id="/watanuki/gnuplot/command_file/index.html" class="dd-item"><a href="/watanuki/gnuplot/command_file/index.html">Command file</a></li>
+          <li data-nav-id="/watanuki/gnuplot/base/index.html" class="dd-item"><a href="/watanuki/gnuplot/base/index.html">basic operation</a></li>
+          <li data-nav-id="/watanuki/gnuplot/install/index.html" class="dd-item"><a href="/watanuki/gnuplot/install/index.html">How to install gnuplot</a></li></ul></li>
+          <li data-nav-id="/watanuki/latex/index.html" class="dd-item"><a href="/watanuki/latex/index.html">Latex</a><ul id="subsections-e514a696637a00c4d532475690a2be70">
+          <li data-nav-id="/watanuki/latex/problem/index.html" class="dd-item"><a href="/watanuki/latex/problem/index.html">Problem</a></li>
+          <li data-nav-id="/watanuki/latex/references/index.html" class="dd-item"><a href="/watanuki/latex/references/index.html">References</a></li>
+          <li data-nav-id="/watanuki/latex/item/index.html" class="dd-item"><a href="/watanuki/latex/item/index.html">Bulletins in latex</a></li>
+          <li data-nav-id="/watanuki/latex/figure/index.html" class="dd-item"><a href="/watanuki/latex/figure/index.html">Figure</a></li>
+          <li data-nav-id="/watanuki/latex/table/index.html" class="dd-item"><a href="/watanuki/latex/table/index.html">Table</a></li>
+          <li data-nav-id="/watanuki/latex/base/index.html" class="dd-item"><a href="/watanuki/latex/base/index.html">Basic</a></li></ul></li>
+          <li data-nav-id="/watanuki/markdown/index.html" class="dd-item"><a href="/watanuki/markdown/index.html">Markdown</a><ul id="subsections-585a39e92be72923254254ae75dcacef">
+          <li data-nav-id="/watanuki/markdown/base/index.html" class="dd-item"><a href="/watanuki/markdown/base/index.html">Basic operation</a></li></ul></li>
+          <li data-nav-id="/watanuki/post/index.html" class="dd-item"><a href="/watanuki/post/index.html">Posts</a><ul id="subsections-43a8ec4837edcf4e480ce62f47dd2fbd">
+          <li data-nav-id="/watanuki/post/hugo-note/index.html" class="dd-item"><a href="/watanuki/post/hugo-note/index.html">hugo note</a></li></ul></li>
+          <li data-nav-id="/watanuki/python/index.html" class="dd-item parent"><a href="/watanuki/python/index.html">Python</a><ul id="subsections-c8861a2651b27ee3930a98ce392020d1">
+          <li data-nav-id="/watanuki/python/torch/index.html" class="dd-item"><a href="/watanuki/python/torch/index.html">Torch</a></li>
+          <li data-nav-id="/watanuki/python/pickle/index.html" class="dd-item"><a href="/watanuki/python/pickle/index.html">Pickle</a></li>
+          <li data-nav-id="/watanuki/python/pandas/index.html" class="dd-item active"><a href="/watanuki/python/pandas/index.html">Pandas</a></li>
+          <li data-nav-id="/watanuki/python/numpy_function/index.html" class="dd-item"><a href="/watanuki/python/numpy_function/index.html">Useful Functions in Numpy</a></li>
+          <li data-nav-id="/watanuki/python/numpy/index.html" class="dd-item"><a href="/watanuki/python/numpy/index.html">Numpy</a></li>
+          <li data-nav-id="/watanuki/python/matplotlib/index.html" class="dd-item"><a href="/watanuki/python/matplotlib/index.html">Matplotlib</a></li>
+          <li data-nav-id="/watanuki/python/jupyter/index.html" class="dd-item"><a href="/watanuki/python/jupyter/index.html">Jupyter notebook</a></li>
+          <li data-nav-id="/watanuki/python/function/index.html" class="dd-item"><a href="/watanuki/python/function/index.html">Function</a></li>
+          <li data-nav-id="/watanuki/python/filter/index.html" class="dd-item"><a href="/watanuki/python/filter/index.html">Filter with python</a></li>
+          <li data-nav-id="/watanuki/python/dict/index.html" class="dd-item"><a href="/watanuki/python/dict/index.html">Dict</a></li>
+          <li data-nav-id="/watanuki/python/create-library/index.html" class="dd-item"><a href="/watanuki/python/create-library/index.html">Create Library</a></li>
+          <li data-nav-id="/watanuki/python/class/index.html" class="dd-item"><a href="/watanuki/python/class/index.html">Class</a></li>
+          <li data-nav-id="/watanuki/python/anaconda-update/index.html" class="dd-item"><a href="/watanuki/python/anaconda-update/index.html">Anaconda Update</a></li>
+          <li data-nav-id="/watanuki/python/tuple/index.html" class="dd-item"><a href="/watanuki/python/tuple/index.html">Tuple</a></li>
+          <li data-nav-id="/watanuki/python/module/index.html" class="dd-item"><a href="/watanuki/python/module/index.html">python</a></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://github.com/MoeMatsuda-ai/watanuki"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="/watanuki/tags"><i class='fas fa-tags'></i> Tags</a></li>
+          </ul>
+        </div>
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVariantSwitch showFooter">
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVariantSwitch">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-language">Language</label>
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch showVariantSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-variant">Theme</label>
+                  <select id="select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <option id="relearn-dark" value="relearn-dark" selected>Relearn Dark</option>
+                    <option id="relearn-light" value="relearn-light">Relearn Light</option>
+                    <option id="green" value="green">Green</option>
+                    <option id="black" value="black">Black</option>
+                    <option id="blue" value="blue">Blue</option>
+                    <option id="learn" value="learn">Learn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+              <script>window.variants && variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks"><button class="padding" onclick="clearHistory();"><i class="fas fa-history fa-fw"></i> Clear History</button></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter showFooter">
+	    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+        </div>
+      </div>
+    </aside>
+    <script src="/watanuki/js/clipboard.min.js?1669254382" defer></script>
+    <script src="/watanuki/js/perfect-scrollbar.min.js?1669254382" defer></script>
+    <script src="/watanuki/js/featherlight.min.js?1669254382" defer></script>
+    <script src="/watanuki/js/theme.js?1669254382" defer></script>
+  </body>
+</html>

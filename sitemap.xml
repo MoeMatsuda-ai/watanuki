@@ -9,16 +9,48 @@
     <lastmod>2022-11-22T09:19:35+00:00</lastmod>
   </url>
   <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/gnuplot/index.html</loc>
+    <lastmod>2022-11-24T01:07:41+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://moematsuda-ai.github.io/watanuki/latex/index.html</loc>
     <lastmod>2022-11-22T09:32:05+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/markdown/index.html</loc>
+    <lastmod>2022-11-24T01:38:14+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/post/index.html</loc>
+    <lastmod>2022-11-22T06:18:27+00:00</lastmod>
   </url>
   <url>
     <loc>https://moematsuda-ai.github.io/watanuki/python/index.html</loc>
     <lastmod>2022-11-22T08:12:48+00:00</lastmod>
   </url>
   <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/markdown/base/index.html</loc>
+    <lastmod>2022-11-24T01:38:14+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://moematsuda-ai.github.io/watanuki/index.html</loc>
-    <lastmod>2022-11-22T09:32:05+00:00</lastmod>
+    <lastmod>2022-11-24T01:38:14+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/gnuplot/output_equation_on_latex/index.html</loc>
+    <lastmod>2022-11-24T01:07:41+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/gnuplot/command_file/index.html</loc>
+    <lastmod>2022-11-24T01:07:10+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/gnuplot/base/index.html</loc>
+    <lastmod>2022-11-24T01:07:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/gnuplot/install/index.html</loc>
+    <lastmod>2022-11-24T00:26:02+00:00</lastmod>
   </url>
   <url>
     <loc>https://moematsuda-ai.github.io/watanuki/latex/problem/index.html</loc>
@@ -117,6 +149,10 @@
     <lastmod>2022-11-22T08:12:12+00:00</lastmod>
   </url>
   <url>
+    <loc>https://moematsuda-ai.github.io/watanuki/python/pandas/index.html</loc>
+    <lastmod>2022-11-22T08:11:35+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://moematsuda-ai.github.io/watanuki/python/numpy_function/index.html</loc>
     <lastmod>2022-11-22T08:11:04+00:00</lastmod>
   </url>
@@ -166,10 +202,6 @@
   </url>
   <url>
     <loc>https://moematsuda-ai.github.io/watanuki/post/hugo-note/index.html</loc>
-    <lastmod>2022-11-22T06:18:27+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://moematsuda-ai.github.io/watanuki/post/index.html</loc>
     <lastmod>2022-11-22T06:18:27+00:00</lastmod>
   </url>
   <url>
