@@ -3,6 +3,13 @@ var relearn_search_index = [
     "content": "",
     "description": "",
     "tags": null,
+    "title": "C",
+    "uri": "/watanuki/c/index.html"
+  },
+  {
+    "content": "",
+    "description": "",
+    "tags": null,
     "title": "Docker",
     "uri": "/watanuki/docker/index.html"
   },
@@ -54,6 +61,20 @@ var relearn_search_index = [
     "tags": null,
     "title": "Moai's blog",
     "uri": "/watanuki/index.html"
+  },
+  {
+    "content": "ファイル分割 c言語のファイル分割では関数等を書き込むファイル.c``.hファイルとmain関数を書き込むファイルの3つのファイルを用意する\n関数を書き込むcalc.cファイル\n#ifndef _CALC_H_ #define _CALC_H_ // 関数avgのプロトタイプ宣言 double avg(double,double); #endif // _CALC_H_ calc.hファイル\n#include \"calc.h\" // 平均値を求める関数 double avg(double l,double m){ // 引数l,mの平均値を求め、rに代入する。 double r = (l + m) / 2.0; return r; } このファイルでは次のようにファイルに書き込み、プロトタイプ宣言を行う\n#ifnfdef _(大文字で記述したファイル名)_H_ #define _(大文字で記述したファイル名)_H_ プロトタイプ宣言; プロトタイプ宣言; ： #endif // _（大文字で記述したファイル名)_H_ ここで登場した#ifndef``#define``#endifはマクロといい、二重インクルードを防いでいる\nmain関数を書き込むmain.cファイル\n#include \u003cstdio.h\u003e #include \"calc.h\" void main(){ double d1,d2,d3; double a = 1.2,b = 3.4,c = 2.7; // 同じ計算が3回(関数を呼び出して計算） d1 = avg(a,b); d2 = avg(4.1,5.7); d3 = avg(c,2.8); printf(\"d1 = %f,d2 = %f,d3 = %f¥n\",d1,d2,d3); } コンパイルの仕方 gcc はコマンドラインで与えられたソースファイルしか読み込まないため、すべての.cソースファイルをまとめ上げて実行する必要がある\n下記2パターンの方法で実行が可能\n(即席回答)１コマンドで\n$ gcc main.c calc.c ※-o オプションで実行ファイル名を指定することも可能\nこの方法ではオブジェクトファイル*.oは最後に掃除・削除されるため残らない\n3コマンドで\n$ gcc -c main.c $ gcc -c calc.c $ gcc main.o calc.o -c オプションではオブジェクトファイル*.oを作るところまでしてくれる\nこの方法では途中までの.oファイルも残るため、途中でコンパイルエラーが起きてもそれまでのオブジェクトファイルは残るという利点がある。したがってたくさんの*.cファイルで構成される実務プログラムではこの方法で１本ずつコンパイルシていくのが一般的担っている。\nc言語コンパイルのちょこっと解説 gcc は、3つの下請けを順次起動する、親玉に過ぎません。\nプリプロセッサ - #include や #define を処理、本来(?)のC言語ソースにする コンパイラ - *.c をコンパイルし、オブジェクトファイル *.o を作る リンカ - 1個以上の *.o をまとめあげ、1個の実行形式ファイル(Windowsなら *.exe)を作る gcc の -c オプションは、「上記2.まででいいよ」指示です。\n即席回答 1. のやりかたは、これを全部まとめて1回にしてるだけ。\n*.o は、実は途中でできてますが、こういう要求のしかたをされたgcc は、最後にキレイに掃除・削除してしまいます。\n参考 一週間で身につくc言語の基本 -ファイル分割- 一週間で身につくc言語の基本 -複雑なファイル分割- Yahoo!知恵袋 -ソースファイルを複数使ったプログラムのコンパイル- もう一度基礎からc言語 -プロトタイプ宣言の省略- ",
+    "description": "",
+    "tags": null,
+    "title": "Saparete_file",
+    "uri": "/watanuki/c/saparete_file/index.html"
+  },
+  {
+    "content": "操作方法 gnuplotをC言語のプログラムから制御するには，パイプを使うのが最も簡単である．ここでは，C言語のプログラムによりパイプの生成しgnuplotを起動を行い，パイプを通してコマンドを送る．C言語のプログラム内にコマンドを記述することにより，プログラマーの意図したとおりにgnuplotを操作することができる．\nパイプを開く\nパイプを開くためには，ファイルポインターをつかう．そのためファイルポインターを格 納する変数を用意しなくてはならない．パイプの先もファイルとして扱われるのである． FILE *hoge; 次にgnuplotを立ち上げて，そこにパイプを接続する必要がある．次のようにする． hoge = popen(\"gnuplot -persist\",\"w\"); popen()関数がパイプを開く命令である．これで，gnuplot が立ち上がり，パイプを 通して，コマンドを送ることができる．オプションのpersistで，gnuplotが終了し てもグラフが残るようにしている．そうしないと，コンピューターの動作は高速なので， gnuplotは一瞬にして終了し，グラフが消えてしまい，ほとんど動作内容が分からなく なる．popen()関数の戻り値はパイプの情報を示すファイルポインターである．この ファイルポインターを指定して，コマンドを送ることになる． パイプを通してコマンドを送る パイプを通して，gnuplotにコマンドを送るのはfprintf()関数を使う． c fprintf(hoge, \"plot sin(x)\\n\"); このfprintfを使って，gnuplotにいくらでもコマンドを送ることができる．あたかも，C言語の向こう側でgnuplotが立ち上がって，それから命令を送っているかのように動作する．このようなことができるのが，コマンドを打ち込むCharacter-based User Interface(CUI)の良いところである．\nパイプを閉じる すべての動作が終了したならば，パイプを閉じなくてはならない．これも，ファイルの操作と全く同じである． c pclose(hoge); （例）三角関数のグラフ作成プログラム\n1 #include \u003cstdio.h\u003e 2 3 int main(void){ 4 FILE *gp; 5 6 gp = popen(\"gnuplot -persist\",\"w\"); 7 fprintf(gp, \"plot sin(x)\\n\"); 8 9 pclose(gp); 10 11 return 0; 12 } 参考文献 c言語からgnuplotを操作する(平成19年7月11日、山本昌志) ",
+    "description": "",
+    "tags": null,
+    "title": "Using gnuplot on C",
+    "uri": "/watanuki/c/using_gnuplot/index.html"
   },
   {
     "content": "プリアンブル Packages \\documentclass[dvipdfmx]{jsarticle} \\usepackage[dvipdfmx]{graphicx} \\usepackage[dvipdfmx]{color} \\usepackage{amsmath} \\usepackage{mathtools} \\usepackage{ascmac} \\usepackage{comment} \\usepackage{algorithmic} \\usepackage{algorithm} \\usepackage{here} \\usepackage{listings,jvlisting} \\usepackage{bm} \\usepackage{multicol} \\usepackage[square,sort,comma,numbers]{natbib} \\usepackage[subrefformat=simple]{subcaption}%サブキャプションを付けたいときに必要 gnuplotでlatex形式の数式を表示するための設定 % \\usepackage{gnuplot-lua-tikz} % \\usepackage{tikz} algorithm (疑似コード) の表示の設定 \\renewcommand{\\algorithmicrequire}{\\textbf{Input:}} \\renewcommand{\\algorithmicensure}{\\textbf{Output:}} ### 参考文献の文献番号の表示形式を変更 \\makeatletter%再定義に＠が使用される場合に\\makeatletterと\\makeatotherで挟む \\def\\@cite#1{\\textsuperscript{#1)}}%引用文献の文献番号の表示方法を変更 \\def\\@biblabel#1{#1)}%参考文献の先頭も変更 \\makeatother 文献番号等の色やリンクの設定 \\usepackage[dvipdfmx]{hyperref} \\hypersetup{% hyperrefオプションリスト setpagesize=false, bookmarksnumbered=true,%ブックマークを作成 bookmarksopen=true,%ブックマークを開く colorlinks=true,%カラーリンクを使用 linkcolor=black, %内部参照リンクカラー citecolor=blue, %文献カラー % filecolor=, %ローカルファイル参照リンクカラー urlcolor=blue, } program（c言語）の記述形式についての設定 \\renewcommand{\\lstlistingname}{program} % %c言語の設定 気に入ってる方 \\lstset{ language=c, basicstyle={\\ttfamily\\small}, tabsize=2, frame=trBL, numbers=left, numberstyle={\\ttfamily\\small}, breaklines=true, captionpos=t %キャプションを一番下にするならcaptions=b } jsreportでchapterの改行を削除する設定 % chapterの改行を削除 \\makeatletter \\def\\@makechapterhead#1{% \\vspace*{2\\Cvs}% 欧文は50pt {\\parindent \\z@ \\raggedright \\normalfont \\ifnum \\c@secnumdepth \u003e\\m@ne \\huge\\headfont \\@chapapp\\thechapter\\@chappos %% \\par\\nobreak %% \\vskip \\Cvs % 欧文は20pt \\fi \\interlinepenalty\\@M%先頭の空白で、章とチャプター名の間に空白が挿入される \\huge \\headfont #1\\par\\nobreak \\vskip 3\\Cvs} } % 欧文は40pt \\makeatother In document bibtexの表示 \\bibliographystyle{junsrt} \\nocite{*} \\bibliography{reference} ",
