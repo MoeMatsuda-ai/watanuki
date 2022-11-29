@@ -59,8 +59,22 @@ var relearn_search_index = [
     "content": "",
     "description": "",
     "tags": null,
+    "title": "Keyboard",
+    "uri": "/watanuki/keyboard/index.html"
+  },
+  {
+    "content": "",
+    "description": "",
+    "tags": null,
     "title": "Moai's blog",
     "uri": "/watanuki/index.html"
+  },
+  {
+    "content": "US配列でmozc（日本語）の使用 Ubuntu 22.04 入力ソースの変更 設定の地域と言語から，入力ソースを日本語（Mozc）のみにする Mozcのみに設定すると自動的に（たぶん）US配列に対応します キー割当の変更（半角全角キーをctrl+spaceに変更） 設定の『キーボード」の設定を選択 日本語（Mozc）の右側をクリックし，設定をクリック Mozc プロパティの「キー設定の選択」の「編集」を選択し，Hankak/zenkakuのところをすべてCtrl+Spaceに変更 モード/コマンドが以下3つのところの入力キーのところを3回クリック 変換前入力/半角空白を入力 変換中/半角空白を入力 直接入力/IMEを有効化 入力文字なし/IMEを無効化 ctrl+Spaceを押す 参考 Ubuntu18.04にて，USキーボードを用いて英数字と日本語（ひらがな）の切り替えを行う方法 ",
+    "description": "",
+    "tags": null,
+    "title": "Mozc_settings",
+    "uri": "/watanuki/keyboard/mozc_settings/index.html"
   },
   {
     "content": "操作方法 gnuplotをC言語のプログラムから制御するには，パイプを使うのが最も簡単である．ここでは，C言語のプログラムによりパイプの生成しgnuplotを起動を行い，パイプを通してコマンドを送る．C言語のプログラム内にコマンドを記述することにより，プログラマーの意図したとおりにgnuplotを操作することができる．\nパイプを開く\nパイプを開くためには，ファイルポインターをつかう．そのためファイルポインターを格 納する変数を用意しなくてはならない．パイプの先もファイルとして扱われるのである． FILE *hoge; 次にgnuplotを立ち上げて，そこにパイプを接続する必要がある．次のようにする． hoge = popen(\"gnuplot -persist\",\"w\"); popen()関数がパイプを開く命令である．これで，gnuplot が立ち上がり，パイプを 通して，コマンドを送ることができる．オプションのpersistで，gnuplotが終了し てもグラフが残るようにしている．そうしないと，コンピューターの動作は高速なので， gnuplotは一瞬にして終了し，グラフが消えてしまい，ほとんど動作内容が分からなく なる．popen()関数の戻り値はパイプの情報を示すファイルポインターである．この ファイルポインターを指定して，コマンドを送ることになる． パイプを通してコマンドを送る パイプを通して，gnuplotにコマンドを送るのはfprintf()関数を使う． c fprintf(hoge, \"plot sin(x)\\n\"); このfprintfを使って，gnuplotにいくらでもコマンドを送ることができる．あたかも，C言語の向こう側でgnuplotが立ち上がって，それから命令を送っているかのように動作する．このようなことができるのが，コマンドを打ち込むCharacter-based User Interface(CUI)の良いところである．\nパイプを閉じる すべての動作が終了したならば，パイプを閉じなくてはならない．これも，ファイルの操作と全く同じである． c pclose(hoge); （例）三角関数のグラフ作成プログラム\n1 #include \u003cstdio.h\u003e 2 3 int main(void){ 4 FILE *gp; 5 6 gp = popen(\"gnuplot -persist\",\"w\"); 7 fprintf(gp, \"plot sin(x)\\n\"); 8 9 pclose(gp); 10 11 return 0; 12 } 参考文献 c言語からgnuplotを操作する(平成19年7月11日、山本昌志) ",
