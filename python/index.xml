@@ -37,6 +37,22 @@ dat = pd.Serie([1, 3, 6, 12]) dat2 = pd.Series(np.array([1, 3, np.nan, 12])) dat
 dat5 = pd.Series([1, 3, 6, 12], index=[1, 10, 20, 33]) dat6 = pd.Series([1, 3, 5, 12], index=[&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;]) dat7 = pd.</description>
     </item>
     <item>
+      <title>Trouble</title>
+      <link>https://moematsuda-ai.github.io/watanuki/python/otherwise/index.html</link>
+      <pubDate>Tue, 22 Nov 2022 08:11:18 +0000</pubDate>
+      <guid>https://moematsuda-ai.github.io/watanuki/python/otherwise/index.html</guid>
+      <description>よくあるトラブル 標準関数名と同じ名前の関数や変数を作ってしまうと，標準関数にアクセスできなくなるので要注意。
+関数名の頭に?をつけて，例えば
+?sum として実行すると，指定した関数の使い方が表示される。動作が怪しいときには，これを使って参照されている関数の確認できる。
+定義した変数や関数を消去したいときにはdel()を使う
+Q1) Pythonの標準関数に最大値を返す関数max()がある。
+max(3,5)の返り値が5であることを，次のセルで実行して確認しなさい。
+max(3,5)
+Q2) max=3を実行した後に max(3,5)を実行するとどのようなエラーがでるか，次セルで実行して確認しなさい。
+max=3 print(max(3,5)) max = 3 del(max) print(max(3, 5)) 実行結果 5 Q3) 前のセルの&amp;rsquo;max=3&amp;rsquo;の次の行に，変数maxを削除して標準関数max()を再び使えるようにする命令を追加しなさい。その結果，エラーが出なくなることを確認しなさい。
+max=3 ここに何か命令文を入れる print(max(3,5)) # エラーが出なくなることを確認する </description>
+    </item>
+    <item>
       <title>Useful Functions in Numpy</title>
       <link>https://moematsuda-ai.github.io/watanuki/python/numpy_function/index.html</link>
       <pubDate>Tue, 22 Nov 2022 08:11:04 +0000</pubDate>
@@ -75,6 +91,15 @@ Matplotlibにおけるグラフを書く方法 pypplot インターフェース
 (例)
 import numpy as np step=0.1 time=np.arange(0,20+step,step) # 0以上20+step未満の数値をstep刻みで生成 sint=np.sin(time) # timeの各要素に対するsin関数の値をリスト化 cost=np.cos(time) # timeの各要素に対するsin関数の値をリスト化 plt.figure(figsize=(8, 4)) plt.plot(time, sint, label=&amp;#34;sin t&amp;#34;) # x,y軸データから，labelは省略可 plt.plot(time, cost, label=&amp;#34;cos t&amp;#34;) # pltにcos関数のグラフも追加 # ラベル等の追加 plt.xlabel(&amp;#34;time [s]&amp;#34;) # pltにx軸ラベル追加 plt.ylabel(&amp;#34;y&amp;#34;) # pltにy軸ラベル追加 plt.legend(loc=&amp;#34;upper right&amp;#34;) # pltに凡例(plot()の引数に指定したlabel)を追加 # plt.savefig(&amp;#39;figure.png&amp;#39;) # グラフを保存したい場合。拡張子に応じてpng,jpg,pdf等の出力可能 plt.show() # グラフオブジェクトpltの描画 オブジェクト指向インターフェース グラフの見栄え等に関する細かい設定をすることができる。 コンテナと呼ばれるオブジェクトの中に、描画パーツやさらにコンテナを配置していくことでグラフを作成する。 matplotlibのオブジェクト指向インターフェースの基本構造 matplotlibのオブジェクト指向インタフェースでは，以下のように階層的にコンテナや基本パーツを配置する。
 Figure (図)コンテナ 全ての描画オブジェクトに対して，一番上の階層にあるクラス。 複数のグラフ等(Axesオブジェクト等)を配置するキャンバス的な役割のオブジェクト Axes (座標系)コンテナ 個々のグラフ等に対応するオブジェクト 以下の座標軸(Axis)や描画グラフ(Primitives)を要素として登録する Axis (座標軸)コンテナ 個々の座標軸を表現するオブジェクト ラベルや目盛りなどを要素とする Primitives (基本パーツ) 直線オブジェクト(Line2D), テキストオブジェクト(Text)など各グラフに描画するオブジェクト コンテナの中に配置する (例)</description>
+    </item>
+    <item>
+      <title>List</title>
+      <link>https://moematsuda-ai.github.io/watanuki/python/list/index.html</link>
+      <pubDate>Tue, 22 Nov 2022 08:09:47 +0000</pubDate>
+      <guid>https://moematsuda-ai.github.io/watanuki/python/list/index.html</guid>
+      <description>データの集合を扱うためのデータ型 以下は標準で用意されているもの。
+名前 例 リスト(list) L=[&amp;quot;kiwi&amp;quot;, &amp;quot;banana&amp;quot;, 100 ] インデックス番号付き集合 タプル(tuple) T=(&amp;quot;kiwi&amp;quot;, &amp;quot;banana&amp;quot;, 100 ) インデックス番号付き集合(代入不可) 辞書(dict) D={&amp;quot;kiwi&amp;quot;:3, &amp;quot;banana&amp;quot;:2, &amp;quot;apple&amp;quot;:3} インデックス番号無し (key,value) 対応表 集合(set) S={&amp;quot;kiwi&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;apple&amp;quot;} インデックス番号無し集合 以下は拡張モジュールを利用するもの。
+名前 例 numpy.ndarray N=np.array([1,2,3]) 数値計算用の多次元配列 pandas.Series s=pd.Series([280,198],index=[&#39;tomato&#39;,&#39;banana&#39;]) 行に名前がある1次元配列 pandas.DataFrame df=pd.DataFrame([[&#39;tomato&#39;,280],[&#39;banana&#39;, 198]], columns=[&#39;name&#39;,&#39;price&#39;]) 列や行に名前がある2次元配列 リストの定義の仕方 定義の仕方 コマンド printによる出力結果 </description>
     </item>
     <item>
       <title>Jupyter notebook</title>
@@ -172,6 +197,46 @@ IPython
 Webブラウザを通じてIPythonと接続することができる、mathematica風のHTMLノートブック インラインのグラフ描画、複数行の編集、文法のハイライトが可能なQtフレームワークを用いたGUIコンソール 並列・分散コンピューティングをインタラクティブに行える基盤 Scipy
 科学計算の計算における様々な一般的な問題に取り組めるパッケージ群。
 scipy.integrate：数値積分ルーチンや微分方程式ソルバ scipy.linalg：線形代数ルーチンやnumpy.linalgで提供されている機能を拡張した行列の分解機能 scipy.optimaze：関数の最適化（最短化）と求根アルゴリズム scipy.signal：信号処理ツール scipy.sparse：疎（スパース）なデータを持つ行列や線形システムの解法 scipy.special：ガンマ関数のような多数の一般的な数学の関数を実装したFortanのライブラリSPECFUNを使うためのラッパー scipy.stats：標準的な連続分布や離散分布（密度関数、サンプラー、連続分布関数）、様々な統計検定、その他の記述統計 scipy.weave：配列計算の加速のために用いるインラインでのC++コードを利用するためのツール 標準モジュール モジュール名 記述法 概要 print print(&amp;ldquo;出力1&amp;rdquo;, &amp;ldquo;出力2&amp;rdquo;, sep=&amp;lsquo;sep&amp;rsquo;, end=&amp;lsquo;end&amp;rsquo;) 引数を出力する。sepには値の間に挿入される文字列（デフォルトはsep=&amp;rsquo; &amp;lsquo;）、endには最後の値の後につかされる文字列（デフォルトはend=&amp;rsquo;\n&amp;rsquo;）を指定 dir dir(オブジェクト名) オブジェクトのすべての属性（含まれる関数やメソッド等）を表示 type type(オブジェクト名) どのような型のオブジェクトであるかを確認できる。 sum sum(リスト) リスト要素の数値の合計を返却する input input(&amp;ldquo;文字列&amp;rdquo;) 文字列を出力し、キーボードからの入力を返却する max max(x,y,z,key=function) x,y,zの中で最も大きい値を返却する。key&#39;に任意の関数f(x)を渡すと argmax f(x)&amp;lsquo;を計算する（関数f(x), f(y), f(z) の計算結果が最大となる変数を返す) Jupyter notebook コマンド 記述法 概要 %timeit %timeit function() 指定した関数の実行時間を計算 NumPyライブラリ モジュール名 記述法 import 概要 arange np.</description>
+    </item>
+    <item>
+      <title>Pythonの基本</title>
+      <link>https://moematsuda-ai.github.io/watanuki/python/base/index.html</link>
+      <pubDate>Tue, 22 Nov 2022 08:04:32 +0000</pubDate>
+      <guid>https://moematsuda-ai.github.io/watanuki/python/base/index.html</guid>
+      <description>Pythonのプログラムの作成と実行 方法1: C言語のように，テキスト形式でプログラムを書いて実行する。
+$ vi program.py # プログラム作成 $ python program.py # プログラム実行 注) Pythonはインタプリタ型言語なのでコンパイルは不要。
+方法2: jupyter notebook等を用いてインタラクティブに実行する。本演習ではこちらの方法を使う。
+コメント #：1行コメント 複数行コメント：&amp;ldquo;&amp;ldquo;&amp;ldquo;コメント&amp;rdquo;&amp;rdquo;&amp;rdquo;　※ダブルクォートの代わりにシングルを使っても良い モジュール・パッケージ・ライブラリ モジュール: クラスや関数を記述したファイル(.py) パッケージ: いくつかのモジュールを一つのディレクトリ(フォルダ)にまとめたもの ライブラリ: いくつかのパッケージをまとめたもの。モジュールやパッケージをライブラリと呼ぶこともある 標準ライブラリ math: 数学関数モジュール random: 乱数発生モジュール 外部ライブラリ：追加インストール必要 NumPy: 数値計算用の多次元配列ライブラリ。C言語で作られているので高速 SciPy: 科学計算ライブラリ pandas: データフレーム(エクセルのような表形式)のデータ解析ライブラリ scikit-learn: 機械学習ライブラリ モジュールやパッケージ，ライブラリに含まれるオブジェクト(クラスや関数等)を使うには，以下の例のようにimportを用いて読み込みを行う。
+Pythonのデータ型について すべてのPythonオブジェクトはC言語の構造体で定義されており、C言語等の静的型付言語などと比べてオーバーヘッドが生じる
+【例】 integer(long)型
+struct _longobject{ long ob_refcnt; PyTypeObject ob_type; size_t ob_size; long ob_digit[1]; }; ob_refcnt : Pythonが目盛りの割当と解除を自動的に行うための参照カウンタ ob_type : 変数の方を表すコード ob_size : この後に続くデータの大きさ ob_digit : このPython変数が持つ実際の整数値 PythonリストとNumpy配列 | &amp;mdash; | &amp;mdash; | |Pytonリスト|ポインタ列へのポインタを格納した動的配列。各ポインタは完全なPythonオブジェクトを示すため、柔軟性に利点を持つ一方ですべての変数が同じ方であるケースでは情報が冗長になる。| |Numpy配列|すべてのデータの型が同じ固定型の配列のため柔軟性に欠ける一方でデータの保存と操作がはるかに効率的|</description>
+    </item>
+    <item>
+      <title>Ipython</title>
+      <link>https://moematsuda-ai.github.io/watanuki/python/ipython/index.html</link>
+      <pubDate>Tue, 22 Nov 2022 07:59:06 +0000</pubDate>
+      <guid>https://moematsuda-ai.github.io/watanuki/python/ipython/index.html</guid>
+      <description>IPythonについて 2001年にフェルナンド・ペレスの片手間のプロジェクトとして始められた。良い対話型のインタプリタを作ることを目的として制作され、2012年にはPythonによる科学技術計算作業の中でなくてはならない位置を占めるように！
+IPython自体は何ら計算機能や分析機能を提供するものではないものの、対話的な（インタラクティブな）計算及びツール開発の生産性を向上させるのに大きく役立っている。
+IPythonを使用することで、編集ーコンパイルー実行サイクルから脱却し、実行ーデータ探索サイクルに乗ってデータ分析を進めることができ、またOS及びファイルシステムとも厳密に連携するため、IPythonはそのほとんどの場面で作業の高速化を手助けしてくれる。
+IPython の基本 IPython の起動
+コマンドラインで以下のように入力することで起動
+$ ipython 変数の表示
+単に変数名のみを記述し実行した場合にはその変数オブジェクトの文字列表現が返る。特に標準Python環境のprint関数による変数表示と比べ、多くのPythonオブジェクト型が読みやすく、きれいに整形される。
+タブ補完
+IPythonにはPython標準インタプリタにはないタブ補完機能が搭載されている。
+タブ補完の探索範囲は「利用中の名前空間」、「オブジェクト属性」あるいは「モジュール属性」にとどまらず、ユーザがファイル名の一部（のような文字列）を入力してタブ補完した場合、そのコンピュータファイルシステムを大賞に候補を出してくれる。また、関数のキーワード引数に対してもタブ補完することができる！！
+※デフォルトではIPythonが補完候補に表示しないメソッドや属性がいくつかある。候補表示が乱雑になるのを防ぐため、アンダースコア(_)から始まるマジックメソッドやプライベートメソッド、プライベート属性と言ったものを候補から除外する。これらの候補を明示的に表示したい場合は、IPythonシェルにアンドースコアを入力してタブ補完を呼び出す。これらの候補を常に表示させるように、IPython構成機能で設定することができる。
+オブジェクトイントロスペクション
+変数や関数などの前や後に?をつけることでそのオブジェクトの一般情報を見ることができる機能
+変数 →　Type や 長さ など
+関数やインスタンスメソッド　→　存在していれば ドキュメンテーション文字列（docstring） が表示される。
+※? の代わりに ?? とすると関数のソースコードも表示される
+ワイルドカード
+UNIXやWindowsのコマンドラインシェル上で使用するワイルドカード(*)機能を, IPythonでは?で使用する。
+マジックコマンド
+コマンドの先頭が%で始まるコマンドのことをマジックコマンドとよぶ。IPythonでの特別なコマンドであり、デフォルトでは同名の変数が定義されていない限り%を付けなくても実行が可能（automagic(オードマジック)機能）
+コマンド 説明 %quickref IPythonのクイックリファレンスを表示 %magic 全マジックコマンドの詳細記述を表示 %lsmagic 利用可能なMagicコマンドの単純な一覧を表示 %debug 対話的デバッガの起動。直前に発生した例外に対して、トレースバックの最下層から開始 %hist コマンド入力の履歴を表示(オプション指定により出力履歴も表示) %pdb 例外発生時のデバッガ自動起動の切り替え(ON %paste クリップボード内の整形済みPythonコード片の実行 %cpaste クリップボード内Pythonコードの実行のための特別なプロンプトを表示 %reset 名前空間から変数を含めた名前を消去 %page OBJECT 引数OBJECTをきれいに表示。ページャを起動 %run script.py 引数script.pyをPythonスクリプトとみなしてIPython内で実行。 %prun statement cProfile付きの命令を実行し、プロファイラ出力を表示 %time statement 引数で与えられた命令の実行時間を計測 %timeit statement 引数で与えられた命令の実行時間を複数回計測。実行時間のごく短い命令の計測に有効 %who, %who_ls, %whos 引数に型名、関数名などを取る。利用中の名前空間の中で定義された、その種類の変数のリストを戻す。3種類の違いは戻り値のフォーマット。%who は単に一覧を戻し、%whos_ls はリストとして戻す。%whos は整形して見やすく表示してくれる。 %xdel *variable IPython内のオブジェクトを削除し、可能な限りオブジェクトへの参照をも削除する。 ※マジックコマンドのヘルプは%command?</description>
     </item>
   </channel>
 </rss>
